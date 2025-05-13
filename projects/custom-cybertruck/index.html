@@ -33,17 +33,19 @@
             <li>
               <a href="#design-process" class="toc-link text-gray-700 hover:text-blue-600">3. Design Process</a>
               <ul class="ml-4 mt-1 space-y-1">
-                <li><a href="#initial-concepts" class="toc-link text-gray-600 hover:text-blue-500">3.1 Initial Concepts</a></li>
-                <li><a href="#cad-modeling" class="toc-link text-gray-600 hover:text-blue-500">3.2 CAD Modeling</a></li>
-                <li><a href="#material-selection" class="toc-link text-gray-600 hover:text-blue-500">3.3 Material Selection</a></li>
-                <li><a href="#wheel-tire-selection" class="toc-link text-gray-600 hover:text-blue-500">3.4 Wheel & Tire Selection</a></li>
+                <li><a href="#front-bumper-design" class="toc-link text-gray-600 hover:text-blue-500">3.1 Front Bumper</a></li>
+                <li><a href="#rear-bumper-design" class="toc-link text-gray-600 hover:text-blue-500">3.2 Rear Bumper</a></li>
+                <li><a href="#roof-rack-design" class="toc-link text-gray-600 hover:text-blue-500">3.3 Roof Rack</a></li>
+                <li><a href="#ladder-design" class="toc-link text-gray-600 hover:text-blue-500">3.4 Side Access Ladder</a></li>
+                <li><a href="#molle-panels-design" class="toc-link text-gray-600 hover:text-blue-500">3.5 Molle Panels</a></li>
+                <li><a href="#lighting-integration-design" class="toc-link text-gray-600 hover:text-blue-500">3.6 Offroad Lighting</a></li>
+                <li><a href="#wheel-tire-selection" class="toc-link text-gray-600 hover:text-blue-500">3.7 Wheel & Tire Selection</a></li>
               </ul>
             </li>
             <li><a href="#key-features" class="toc-link text-gray-700 hover:text-blue-600">4. Key Features & Innovations</a></li>
             <li><a href="#challenges" class="toc-link text-gray-700 hover:text-blue-600">5. Challenges & Solutions</a></li>
             <li><a href="#gallery" class="toc-link text-gray-700 hover:text-blue-600">6. Gallery</a></li>
             <li><a href="#outcome" class="toc-link text-gray-700 hover:text-blue-600">7. Outcome & Learnings</a></li>
-            <!-- Add more sections as needed -->
           </ul>
         </div>
       </aside>
@@ -77,34 +79,64 @@
         <section id="design-process" class="mb-10 scroll-mt-20">
           <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. Design Process</h2>
           <p class="text-lg leading-relaxed mb-6">
-            The design process was highly iterative, involving close collaboration with the client to translate their "Texas as possible" vision into a tangible and striking Cybertruck modification. Our team at the makerspace leveraged its fabrication expertise to guide design choices.
+            The design process was highly iterative, involving close collaboration with the client to translate their "Texas as possible" vision into a tangible and striking Cybertruck modification. After initial concepts involving custom sheet metal body panels proved less than ideal for the client's goals and budget, we pivoted to a tubular structure approach, leveraging our team's familiarity with tube cutting and welding. This offered greater design freedom and the potential for a more radical transformation. Using <strong>Fusion 360</strong>, I dedicated <strong>over 100 hours</strong> to developing three distinct initial versions of the Cybertruck, exploring different levels of exoskeleton integration. This extensive CAD work formed the foundation for the detailed component designs that followed. All custom steel components were standardized to be sandblasted and then powder-coated in textured black for durability and a cohesive aesthetic.
           </p>
-          <article id="initial-concepts" class="mb-6 scroll-mt-20">
-            <h3 class="text-2xl font-semibold mb-3">3.1 Initial Concepts & Ideation</h3>
-            <p class="text-lg leading-relaxed">
-              The initial brainstorming sessions were broad, with ideas ranging from the audacious (nearly mounting a longhorn skull to the hood) to more conventional modifications. We first proposed redesigning body panels using laser-cut and bent stainless steel sheets to alter the truck's bodylines. However, this approach was deemed not cost-effective and didn't offer a significant enough departure from the OEM design language to meet the client's desire for a truly unique vehicle.
-            </p>
-          </article>
-          <article id="cad-modeling" class="mb-6 scroll-mt-20">
-            <h3 class="text-2xl font-semibold mb-3">3.2 CAD Modeling & Iteration</h3>
-            <p class="text-lg leading-relaxed">
-              Given our team's familiarity with tube cutting and welding, we pivoted to the concept of a tubular exoskeleton. This offered greater design freedom and the potential for a more radical transformation. Using <strong>Fusion 360</strong>, I dedicated <strong>over 100 hours</strong> to developing three distinct versions of the Cybertruck, exploring different levels of exoskeleton integration and aesthetic styles. One early concept is shown in the "Initial Exoskeleton Sketch." The "Final Proposal CAD" image reflects the design presented to the client. These designs were presented to the client, and through several collaborative meetings, we refined the vision. Ultimately, a full exoskeleton was deemed too complex, leading us to a hybrid approach. We selectively incorporated key elements from the exoskeleton concepts, such as the roof rack and support structures, to achieve the desired visual impact and functionality. The front bumper design was validated for strength using FEA, as seen in the "Front Bumper Static Test (Bodyweight)" image.
-            </p>
-            <div class="my-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <img src="../../assets/images/Cybertruck Initial Exoskeleton Sketch.jpg" alt="Cybertruck Initial Exoskeleton Sketch" class="rounded-lg shadow-md w-full object-contain">
-              <img src="../../assets/images/Cybertruck Final Proposal CAD.png" alt="Cybertruck Final Proposal CAD" class="rounded-lg shadow-md w-full object-contain">
-              <img src="../../assets/images/Cybertruck Front Bumper Static Test (Bodyweight).jpg" alt="Cybertruck Front Bumper Static Test FEA" class="rounded-lg shadow-md w-full object-contain">
-              <img src="../../assets/images/Cybertruck Roof Rack + Rear Bumper Alignment.jpg" alt="CAD render of Roof Rack and Rear Bumper Alignment" class="rounded-lg shadow-md w-full object-contain">
+
+          <article id="front-bumper-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.1 Front Bumper Design & Fabrication</h3>
+            <p class="text-lg leading-relaxed">The front bumper was designed to be winch-ready and provide a more aggressive stance, while also serving as a mounting point for auxiliary offroad lighting. Constructed from <strong>2-inch Outer Diameter (OD), 1/8 inch wall mild steel tubing</strong> for strength, the design was kept relatively simple for ease of fabrication. FEA was performed using bodyweight loading to ensure its structural integrity. After fabrication, it was sandblasted and powder-coated.</p>
+            <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="../../assets/images/Cybertruck Front Bumper Static Test (Bodyweight).jpg" alt="Front Bumper FEA/Static Test" class="rounded-lg shadow-md object-contain max-h-80">
+              <img src="../../assets/images/Cybertruck Front Beauty Shot.jpg" alt="Finished Front Bumper" class="rounded-lg shadow-md object-contain max-h-80">
             </div>
           </article>
-          <article id="material-selection" class="mb-6 scroll-mt-20">
-            <h3 class="text-2xl font-semibold mb-3">3.3 Material Selection & Finishing</h3>
-            <p class="text-lg leading-relaxed">
-              The primary material chosen for the custom additions was <strong>mild steel tubing</strong> (1/8 inch wall thickness). Specifically, <strong>2-inch Outer Diameter (OD)</strong> tubing was used for the front and rear bumpers due to strength requirements, while <strong>1-inch OD</strong> tubing was selected for the roof rack and ladder for a balance of strength and weight. All custom steel components underwent a thorough finishing process: they were <strong>sandblasted</strong> to prepare the surface and then <strong>powder-coated</strong> for durability and a high-quality aesthetic before final installation. The molle panels were custom fiber-lasered.
-            </p>
+
+          <article id="rear-bumper-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.2 Rear Bumper Design & Fabrication</h3>
+            <p class="text-lg leading-relaxed">The rear bumper, or "bash bar," was envisioned with a rugged "Mad-Max" aesthetic, providing robust protection. It was built from <strong>2-inch OD, 1/8 inch wall mild steel tubing</strong> and designed to mount securely to the vehicle's frame and tow hitch points. A custom jig was essential for achieving the precise alignment and repeatable fabrication of its complex angles before it was sandblasted and powder-coated.</p>
+            <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="../../assets/images/Cybertruck Rear Bumper Jig.jpg" alt="Rear Bumper Fabrication Jig" class="rounded-lg shadow-md object-contain max-h-80">
+              <img src="../../assets/images/Cybertruck Rear Bumper Isometric Night.jpg" alt="Finished Rear Bumper - Night Shot" class="rounded-lg shadow-md object-contain max-h-80">
+            </div>
           </article>
+
+          <article id="roof-rack-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.3 Roof Rack Design & Fabrication</h3>
+            <p class="text-lg leading-relaxed">A critical element for altering the Cybertruck's controversial tapering side profile, the roof rack was designed to be both functional and visually impactful. Fabricated from lighter <strong>1-inch OD, 1/8 inch wall mild steel tubing</strong>, it included integrated support struts connecting to the tailgate area, enhancing the exoskeleton look. The design process involved careful CAD modeling to match vehicle contours, followed by meticulous cutting, bending, and test-fitting during fabrication, before the final sandblasting and powder-coating.</p>
+            <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="../../assets/images/Cybertruck Roof Rack Unfinished Passenger Side View.jpg" alt="Roof Rack during fabrication" class="rounded-lg shadow-md object-contain max-h-80">
+              <img src="../../assets/images/Cybertruck Roof Rack Test Fit Panels.jpg" alt="Roof Rack test fitting panels" class="rounded-lg shadow-md object-contain max-h-80">
+            </div>
+          </article>
+
+          <article id="ladder-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.4 Side Access Ladder Design & Fabrication</h3>
+            <p class="text-lg leading-relaxed">To improve accessibility to the roof rack and enhance the rugged utility look, a side access ladder was designed. This was also fabricated from <strong>1-inch OD, 1/8 inch wall mild steel tubing</strong> for a balance of strength and weight. It was engineered in CAD to mount securely from the roof rack structure down to the vehicle's side steps/rocker panel area, then fabricated, sandblasted, and powder-coated.</p>
+            <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="../../assets/images/Cybertruck Unfinished Ladder.jpeg" alt="Unfinished Ladder fabrication" class="rounded-lg shadow-md object-contain max-h-80">
+              <img src="../../assets/images/Cybertruck Molle Panel + Ladder Mockup.jpg" alt="Ladder shown with Molle Panel mockup" class="rounded-lg shadow-md object-contain max-h-80">
+            </div>
+          </article>
+
+          <article id="molle-panels-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.5 Molle Panels Design & Fabrication</h3>
+            <p class="text-lg leading-relaxed">Custom Molle (Modular Lightweight Load-carrying Equipment) panels were designed in Fusion 360 to integrate seamlessly with the support struts of the roof rack. These panels were then custom <strong>fiber-lasered from steel sheets</strong>, providing versatile mounting points for various tools and gear. Like other steel components, they were sandblasted and powder-coated.</p>
+             <div class="mt-3">
+              <img src="../../assets/images/Cybertruck Molle Panel + Ladder Mockup.jpg" alt="Molle Panel detail with Ladder" class="rounded-lg shadow-md object-contain max-h-96 mx-auto">
+            </div>
+          </article>
+
+          <article id="lighting-integration-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.6 Offroad Lighting Design & Integration</h3>
+            <p class="text-lg leading-relaxed">Significant auxiliary lighting was a key client request. The design process involved selecting appropriate high-power LED light bars and pods, then designing robust mounting solutions for them on the front bumper and roof rack within Fusion 360. Careful planning of the wiring harness, including routing and protection, was crucial for a clean, reliable, and professional installation.</p>
+            <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="../../assets/images/Cybertruck Front Light Harness.jpg" alt="Front Light Wiring Harness detail" class="rounded-lg shadow-md object-contain max-h-80">
+              <img src="../../assets/images/Cybertruck Isometric With Lights.jpg" alt="Cybertruck with all offroad lights illuminated" class="rounded-lg shadow-md object-contain max-h-80">
+            </div>
+          </article>
+
           <article id="wheel-tire-selection" class="mb-6 scroll-mt-20">
-            <h3 class="text-2xl font-semibold mb-3">3.4 Wheel & Tire Selection</h3>
+            <h3 class="text-2xl font-semibold mb-3">3.7 Wheel & Tire Selection</h3>
             <p class="text-lg leading-relaxed">
               Achieving the perfect stance and off-road capability required careful consideration of wheel and tire fitment. A significant amount of research and calculation went into selecting options that would complement the Cybertruck's modified aesthetics and performance goals. We analyzed how different wheel sizes and offsets would affect the "poke" – how far the wheels extend from the fenders – compared to the stock setup (55.8mm stock poke).
             </p>
