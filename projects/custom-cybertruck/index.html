@@ -3,16 +3,193 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Custom Cybertruck | Alex Grusin</title>
+    <title>Custom Cybertruck Project | Alex Grusin</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Optional: Smooth scrolling for TOC links */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Style for active TOC link - can be enhanced with JS */
+      .toc-link.active {
+        font-weight: bold;
+        color: #2563eb; /* Tailwind blue-600 */
+      }
+    </style>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
-    <nav class="bg-white shadow p-4">
+    <nav class="bg-white shadow p-4 sticky top-0 z-50">
       <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
     </nav>
-    <main class="max-w-4xl mx-auto px-6 py-12">
-      <h1 class="text-3xl font-bold mb-4">Custom Cybertruck</h1>
-      <p class="text-lg">Placeholder content for the Custom Cybertruck project.</p>
-    </main>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
+      <!-- Table of Contents (Sticky on larger screens) -->
+      <aside class="w-full lg:w-1/4 lg:sticky lg:top-20 self-start mb-8 lg:mb-0 lg:mr-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-xl font-semibold mb-4">Contents</h2>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#introduction" class="toc-link text-gray-700 hover:text-blue-600">1. Introduction</a></li>
+            <li><a href="#project-goals" class="toc-link text-gray-700 hover:text-blue-600">2. Project Goals & Motivation</a></li>
+            <li>
+              <a href="#design-process" class="toc-link text-gray-700 hover:text-blue-600">3. Design Process</a>
+              <ul class="ml-4 mt-1 space-y-1">
+                <li><a href="#initial-concepts" class="toc-link text-gray-600 hover:text-blue-500">3.1 Initial Concepts</a></li>
+                <li><a href="#cad-modeling" class="toc-link text-gray-600 hover:text-blue-500">3.2 CAD Modeling</a></li>
+                <li><a href="#material-selection" class="toc-link text-gray-600 hover:text-blue-500">3.3 Material Selection</a></li>
+              </ul>
+            </li>
+            <li><a href="#key-features" class="toc-link text-gray-700 hover:text-blue-600">4. Key Features & Innovations</a></li>
+            <li><a href="#challenges" class="toc-link text-gray-700 hover:text-blue-600">5. Challenges & Solutions</a></li>
+            <li><a href="#gallery" class="toc-link text-gray-700 hover:text-blue-600">6. Gallery</a></li>
+            <li><a href="#outcome" class="toc-link text-gray-700 hover:text-blue-600">7. Outcome & Learnings</a></li>
+            <!-- Add more sections as needed -->
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
+        <h1 class="text-4xl font-bold mb-2 text-center">Custom Cybertruck Project</h1>
+        <p class="text-center text-gray-600 mb-8">A deep dive into the design and development of a unique Cybertruck concept.</p>
+
+        <section id="introduction" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction</h2>
+          <p class="text-lg leading-relaxed">
+            Provide a brief overview of the project here. What is it? Why did you undertake this project?
+            This section should give the reader a high-level understanding and entice them to read more.
+            For example: "This project documents the conceptualization, design, and virtual prototyping of a modified Tesla Cybertruck, focusing on [specific aspect, e.g., enhanced off-road capabilities, a unique utility feature, or a stylistic reinterpretation]."
+          </p>
+        </section>
+
+        <section id="project-goals" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. Project Goals & Motivation</h2>
+          <p class="text-lg leading-relaxed mb-3">
+            What were the specific objectives for this project? What problem were you trying to solve or what idea were you exploring?
+          </p>
+          <ul class="list-disc list-inside text-lg space-y-2">
+            <li>Goal 1: [e.g., To design a Cybertruck variant with improved aerodynamics.]</li>
+            <li>Goal 2: [e.g., To explore the integration of modular components.]</li>
+            <li>Goal 3: [e.g., To gain experience in advanced surfacing techniques in CAD software.]</li>
+          </ul>
+        </section>
+
+        <section id="design-process" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. Design Process</h2>
+          <p class="text-lg leading-relaxed mb-6">
+            Describe the overall design journey. What methodologies did you follow?
+          </p>
+          <article id="initial-concepts" class="mb-6 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.1 Initial Concepts & Sketching</h3>
+            <p class="text-lg leading-relaxed">
+              Discuss your initial ideas, brainstorming, and any preliminary sketches or mood boards.
+              <!-- You can add images here: <img src="../../assets/images/cybertruck-sketch.jpg" alt="Initial Sketch" class="rounded-lg shadow-md my-4 w-full max-w-md mx-auto"> -->
+            </p>
+          </article>
+          <article id="cad-modeling" class="mb-6 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.2 CAD Modeling</h3>
+            <p class="text-lg leading-relaxed">
+              Detail the CAD software used (e.g., SolidWorks, Fusion 360, Blender) and your modeling approach.
+              Mention any specific techniques or complex parts. This is where you'll eventually embed your CAD viewer.
+            </p>
+            <div class="my-4 p-4 bg-gray-200 rounded-md text-center">
+              <p class="text-gray-700">[Placeholder for Embedded CAD Viewer or Key CAD Screenshots]</p>
+            </div>
+          </article>
+          <article id="material-selection" class="mb-6 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.3 Material Selection (Conceptual)</h3>
+            <p class="text-lg leading-relaxed">
+              If applicable, discuss the materials you envisioned for your custom Cybertruck and why.
+              (e.g., "The design incorporates lightweight carbon fiber panels for the [part name] to reduce overall mass while maintaining structural integrity.")
+            </p>
+          </article>
+        </section>
+
+        <section id="key-features" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">4. Key Features & Innovations</h2>
+          <p class="text-lg leading-relaxed mb-3">
+            Highlight the unique aspects or innovative solutions in your design.
+          </p>
+          <ul class="list-disc list-inside text-lg space-y-2">
+            <li>Feature 1: [Describe a standout feature and its benefits.]</li>
+            <li>Feature 2: [Describe another significant modification or design element.]</li>
+            <li>Feature 3: [e.g., Integrated solar paneling on the tonneau cover for auxiliary power.]</li>
+          </ul>
+        </section>
+
+        <section id="challenges" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">5. Challenges & Solutions</h2>
+          <p class="text-lg leading-relaxed">
+            Discuss any significant hurdles encountered during the project (e.g., complex geometries, software limitations, design constraints) and how you addressed them.
+            For example: "One major challenge was [describe challenge]. This was overcome by [describe solution]."
+          </p>
+        </section>
+
+        <section id="gallery" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">6. Gallery</h2>
+          <p class="text-lg leading-relaxed mb-4">
+            Showcase your project with high-quality renders, diagrams, or photos.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Example Image: Replace with your actual images -->
+            <div class="bg-gray-300 h-64 rounded-lg flex items-center justify-center">
+              <img src="../../assets/images/cybertruck-render-1.jpg" alt="Cybertruck Render 1" class="object-cover h-full w-full rounded-lg shadow-md">
+              <!-- <p class="text-gray-500">Image 1 Placeholder</p> -->
+            </div>
+            <div class="bg-gray-300 h-64 rounded-lg flex items-center justify-center">
+               <p class="text-gray-500">Image 2 Placeholder</p>
+            </div>
+            <div class="bg-gray-300 h-64 rounded-lg flex items-center justify-center">
+               <p class="text-gray-500">Image 3 Placeholder</p>
+            </div>
+          </div>
+           <p class="text-sm text-gray-600 mt-2 text-center">Captions can be added below each image or as a general description.</p>
+        </section>
+
+        <section id="outcome" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">7. Outcome & Learnings</h2>
+          <p class="text-lg leading-relaxed">
+            What was the final result of your project? What key skills or knowledge did you gain?
+            Any reflections on the process or potential future improvements?
+          </p>
+        </section>
+
+        <!-- You can add more sections like "Technical Specifications", "References", etc. -->
+
+      </main>
+    </div>
+
+    <footer class="text-center py-8 mt-12 border-t border-gray-300">
+      <p>&copy; 2025 Alex Grusin. All rights reserved.</p>
+    </footer>
+
+    <!-- Optional: Simple JS for active TOC link highlighting (can be expanded) -->
+    <script>
+      const sections = document.querySelectorAll('main section[id]');
+      const tocLinks = document.querySelectorAll('.toc-link');
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('id');
+          const tocLink = document.querySelector(`.toc-link[href="#${id}"]`);
+          
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            tocLinks.forEach(link => link.classList.remove('active'));
+            if (tocLink) {
+              tocLink.classList.add('active');
+              // Optional: If nested, also activate parent
+              const parentUl = tocLink.closest('ul');
+              if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.matches('a.toc-link')) {
+                parentUl.previousElementSibling.classList.add('active');
+              }
+            }
+          }
+        });
+      }, { threshold: 0.5, rootMargin: "0px 0px -50% 0px" }); // Adjust rootMargin to change when link becomes active
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    </script>
+
   </body>
 </html>
