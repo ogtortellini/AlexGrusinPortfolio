@@ -125,7 +125,7 @@
         </div>
         
         <!-- Machined Hammer Project Card -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300" data-hidden="true">
           <img src="assets/images/machined-hammer.jpg" alt="Machined Hammer Project" class="w-full h-48 object-cover" />
           <div class="p-6">
             <h4 class="text-xl font-semibold mb-2">Machined Hammer</h4>
@@ -208,44 +208,66 @@
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         // --- Configuration for Slideshow ---
-        const slideshowItems = [
-          { 
-            id: 'custom-cybertruck', 
-            title: 'Custom Cybertruck Design', 
-            description: `Redesigned and prototyped custom features for Tesla\\\'s Cybertruck, focusing on aerodynamics and utility enhancements.`,
-            imgSrc: 'projects/custom-cybertruck/images/Isometric With Lights.jpg', 
-            altText: 'Custom Cybertruck Project', 
-            link: 'projects/custom-cybertruck/index.html', 
-            type: 'project' 
-          },
-          { 
-            id: 'hybrid-racecar', 
-            title: 'Hybrid Racecar', 
-            description: 'Designed and built a hybrid racecar with optimized performance and fuel efficiency.', 
-            imgSrc: 'projects/hybrid-racecar/images/Entire Racecar team posing with the finished testbench version of the racecar (cover photo).jpeg', 
-            altText: 'Hybrid Racecar Project', 
-            link: 'projects/hybrid-racecar/index.html', 
-            type: 'project' 
-          },
-          { 
-            id: 'restomod-3000gt', 
-            title: 'Restomod 3000GT VR4', 
-            description: 'Full restoration and modernization of a classic Mitsubishi 3000GT VR4.', 
-            imgSrc: 'projects/restomod-3000gt-vr4/images/3000gt cover photo.jpg', 
-            altText: 'Restomod 3000GT VR4 Project', 
-            link: 'projects/restomod-3000gt-vr4/index.html', 
-            type: 'project' 
-          },
-          { 
-            id: 'starforge', 
-            title: 'Starforge Makerspace', 
-            description: 'Student-run makerspace involvement, contributing to various engineering projects and fostering a collaborative environment.', 
-            imgSrc: 'experience/starforge/images/starforge laser cut skatboard rack.JPG', 
-            altText: 'Starforge Experience', 
-            link: 'experience/starforge/index.html', 
-            type: 'experience' 
+        // const slideshowItems = [ ... ]; // This will be replaced
+
+        const slideshowItems = []; // Initialize an empty array
+
+        // Function to generate a URL-friendly ID from text
+        function generateId(text) {
+          return text.toLowerCase()
+            .replace(/\s+/g, '-')     // Replace spaces with hyphens
+            .replace(/[^\w-]+/g, ''); // Remove all non-word chars except hyphens
+        }
+
+        // Populate slideshowItems from Project cards
+        const projectCards = document.querySelectorAll('#projects .bg-white.rounded-xl.shadow-md');
+        projectCards.forEach(card => {
+          if (card.dataset.hidden === 'true') {
+            card.style.display = 'none'; // Hide card from the page
+            return; // Skip adding to slideshow
           }
-        ];
+          const titleElement = card.querySelector('h4');
+          const descriptionElement = card.querySelector('p');
+          const imgElement = card.querySelector('img');
+          const linkElement = card.querySelector('a'); // The main link for the project
+
+          if (titleElement && descriptionElement && imgElement && linkElement) {
+            slideshowItems.push({
+              id: generateId(titleElement.textContent.trim()),
+              title: titleElement.textContent.trim(),
+              description: descriptionElement.textContent.trim(),
+              imgSrc: imgElement.getAttribute('src'),
+              altText: imgElement.getAttribute('alt'),
+              link: linkElement.getAttribute('href'),
+              type: 'project'
+            });
+          }
+        });
+
+        // Populate slideshowItems from Experience cards
+        const experienceCards = document.querySelectorAll('#experience .bg-white.rounded-xl.shadow-md');
+        experienceCards.forEach(card => {
+          if (card.dataset.hidden === 'true') {
+            card.style.display = 'none'; // Hide card from the page
+            return; // Skip adding to slideshow
+          }
+          const titleElement = card.querySelector('h4');
+          const descriptionElement = card.querySelector('p');
+          const imgElement = card.querySelector('img');
+          const linkElement = card.querySelector('a'); // The main link for the experience
+
+          if (titleElement && descriptionElement && imgElement && linkElement) {
+            slideshowItems.push({
+              id: generateId(titleElement.textContent.trim()),
+              title: titleElement.textContent.trim(),
+              description: descriptionElement.textContent.trim(),
+              imgSrc: imgElement.getAttribute('src'),
+              altText: imgElement.getAttribute('alt'),
+              link: linkElement.getAttribute('href'),
+              type: 'experience'
+            });
+          }
+        });
         // --- End Configuration ---
 
         const slideshowContainer = document.getElementById('slideshow-container');
