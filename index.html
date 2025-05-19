@@ -8,9 +8,23 @@
     <style>
       .slide {
         display: none;
+        /* Tailwind classes for transition - ensure your Tailwind setup supports these if not using a plugin */
+        transition-property: opacity;
+        transition-timing-function: ease-in-out;
+        transition-duration: 700ms;
       }
       .slide.active {
         display: block;
+      }
+      /* Basic fade-in for active slide if transitions are not fully configured via JS */
+      .slide.active {
+        opacity: 1;
+      }
+      .slide {
+        opacity: 0;
+        position: absolute; /* Needed for proper layering and transition */
+        width: 100%;
+        height: 100%;
       }
     </style>
   </head>
@@ -28,47 +42,9 @@
     </nav>
 
     <!-- Featured Projects Slideshow -->
-    <section id="featured-projects" class="relative w-full mx-auto overflow-hidden" data-carousel="slide">
-      <div class="relative h-96 md:h-[32rem] xl:h-[36rem]">
-        <!-- Slide 1: Custom Cybertruck -->
-        <div class="slide active duration-700 ease-in-out">
-          <img src="projects/custom-cybertruck/images/Isometric With Lights.jpg" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Custom Cybertruck Project">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-4">
-            <h3 class="text-3xl font-bold text-white mb-2">Custom Cybertruck Design</h3>
-            <p class="text-md text-gray-200 mb-4 max-w-lg">
-              Redesigned and prototyped custom features for Tesla's Cybertruck, focusing on aerodynamics and utility enhancements.
-            </p>
-            <a href="projects/custom-cybertruck/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Project
-            </a>
-          </div>
-        </div>
-        <!-- Slide 2: Hybrid Racecar -->
-        <div class="slide duration-700 ease-in-out">
-          <img src="projects/hybrid-racecar/images/Entire Racecar team posing with the finished testbench version of the racecar (cover photo).jpeg" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Hybrid Racecar Project">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-4">
-            <h3 class="text-3xl font-bold text-white mb-2">Hybrid Racecar</h3>
-            <p class="text-md text-gray-200 mb-4 max-w-lg">
-              Designed and built a hybrid racecar with optimized performance and fuel efficiency.
-            </p>
-            <a href="projects/hybrid-racecar/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Project
-            </a>
-          </div>
-        </div>
-        <!-- Slide 3: Restomod 3000GT VR4 -->
-        <div class="slide duration-700 ease-in-out">
-          <img src="projects/restomod-3000gt-vr4/images/3000gt cover photo.jpg" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Restomod 3000GT VR4 Project">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-4">
-            <h3 class="text-3xl font-bold text-white mb-2">Restomod 3000GT VR4</h3>
-            <p class="text-md text-gray-200 mb-4 max-w-lg">
-              Full restoration and modernization of a classic Mitsubishi 3000GT VR4.
-            </p>
-            <a href="projects/restomod-3000gt-vr4/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Project
-            </a>
-          </div>
-        </div>
+    <section id="featured-projects" class="relative w-full mx-auto overflow-hidden">
+      <div class="relative h-96 md:h-[32rem] xl:h-[36rem]" id="slideshow-container">
+        <!-- Slides will be dynamically injected here by JavaScript -->
       </div>
       <!-- Slider indicators -->
       <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2" id="carousel-indicators">
@@ -97,6 +73,48 @@
     <section id="projects" class="px-6 py-12">
       <h3 class="text-2xl font-bold mb-6 text-center">Projects</h3>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Custom Cybertruck Project Card -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+          <img src="projects/custom-cybertruck/images/Isometric With Lights.jpg" alt="Custom Cybertruck Project with Lights" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h4 class="text-xl font-semibold mb-2">Custom Cybertruck Design</h4>
+            <p class="text-sm text-gray-700 mb-4">
+              Redesigned and prototyped custom features for Tesla's Cybertruck, focusing on aerodynamics and utility enhancements.
+            </p>
+            <a href="projects/custom-cybertruck/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
+              View Project
+            </a>
+          </div>
+        </div>
+
+        <!-- Hybrid Racecar Project Card -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+          <img src="projects/hybrid-racecar/images/Entire Racecar team posing with the finished testbench version of the racecar (cover photo).jpeg" alt="Hybrid Racecar Project" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h4 class="text-xl font-semibold mb-2">Hybrid Racecar</h4>
+            <p class="text-sm text-gray-700 mb-4">
+              Designed and built a hybrid racecar with optimized performance and fuel efficiency.
+            </p>
+            <a href="projects/hybrid-racecar/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
+              View Project
+            </a>
+          </div>
+        </div>
+
+        <!-- Restomod 3000GT VR4 Project Card -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+          <img src="projects/restomod-3000gt-vr4/images/3000gt cover photo.jpg" alt="Restomod 3000GT VR4 Project" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h4 class="text-xl font-semibold mb-2">Restomod 3000GT VR4</h4>
+            <p class="text-sm text-gray-700 mb-4">
+              Full restoration and modernization of a classic Mitsubishi 3000GT VR4.
+            </p>
+            <a href="projects/restomod-3000gt-vr4/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
+              View Project
+            </a>
+          </div>
+        </div>
 
         <!-- Mars EDL Project Card -->
         <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
@@ -195,14 +213,96 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        const slides = document.querySelectorAll('#featured-projects .slide');
+        // --- Configuration for Slideshow ---
+        // Add or remove items from this array to change the slideshow content and order.
+        // 'type' can be 'project' or 'experience'.
+        const slideshowItems = [
+          { 
+            id: 'custom-cybertruck', 
+            title: 'Custom Cybertruck Design', 
+            description: `Redesigned and prototyped custom features for Tesla\'s Cybertruck, focusing on aerodynamics and utility enhancements.`,
+            imgSrc: 'projects/custom-cybertruck/images/Isometric With Lights.jpg', 
+            altText: 'Custom Cybertruck Project', 
+            link: 'projects/custom-cybertruck/index.html', 
+            type: 'project' 
+          },
+          { 
+            id: 'hybrid-racecar', 
+            title: 'Hybrid Racecar', 
+            description: 'Designed and built a hybrid racecar with optimized performance and fuel efficiency.', 
+            imgSrc: 'projects/hybrid-racecar/images/Entire Racecar team posing with the finished testbench version of the racecar (cover photo).jpeg', 
+            altText: 'Hybrid Racecar Project', 
+            link: 'projects/hybrid-racecar/index.html', 
+            type: 'project' 
+          },
+          { 
+            id: 'restomod-3000gt', 
+            title: 'Restomod 3000GT VR4', 
+            description: 'Full restoration and modernization of a classic Mitsubishi 3000GT VR4.', 
+            imgSrc: 'projects/restomod-3000gt-vr4/images/3000gt cover photo.jpg', 
+            altText: 'Restomod 3000GT VR4 Project', 
+            link: 'projects/restomod-3000gt-vr4/index.html', 
+            type: 'project' 
+          },
+          { 
+            id: 'starforge', 
+            title: 'Starforge Makerspace', 
+            description: 'Student-run makerspace involvement, contributing to various engineering projects and fostering a collaborative environment.', 
+            imgSrc: 'experience/starforge/images/starforge laser cut skatboard rack.JPG', 
+            altText: 'Starforge Experience', 
+            link: 'experience/starforge/index.html', 
+            type: 'experience' 
+          }
+          // Example for adding another item:
+          // { 
+          //   id: 'uncle-daves', 
+          //   title: `Uncle Dave\'s Auto Repair`, 
+          //   description: 'Hands-on automotive repair and maintenance experience, diagnosing and resolving mechanical issues.', 
+          //   imgSrc: 'experience/uncle-daves/images/placeholder.jpg', 
+          //   altText: `Uncle Dave\'s Auto Repair Experience`, 
+          //   link: 'experience/uncle-daves/index.html', 
+          //   type: 'experience' 
+          // }
+        ];
+        // --- End Configuration ---
+
+        const slideshowContainer = document.getElementById('slideshow-container');
         const prevButton = document.getElementById('prev-slide');
         const nextButton = document.getElementById('next-slide');
         const indicatorsContainer = document.getElementById('carousel-indicators');
+        
+        let slides = []; // Will hold the dynamically created slide elements
         let currentSlide = 0;
         let slideInterval;
 
+        function buildSlides() {
+          slideshowContainer.innerHTML = ''; // Clear any existing content
+          slides = []; // Reset slides array
+
+          slideshowItems.forEach(item => {
+            const slideDiv = document.createElement('div');
+            // Tailwind classes for transition are in the <style> block
+            // 'slide' class initially keeps it hidden and absolutely positioned
+            slideDiv.className = 'slide ease-in-out'; 
+            slideDiv.setAttribute('data-id', item.id);
+
+            slideDiv.innerHTML = `
+              <img src="${item.imgSrc}" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="${item.altText}">
+              <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-4">
+                <h3 class="text-3xl font-bold text-white mb-2">${item.title}</h3>
+                <p class="text-md text-gray-200 mb-4 max-w-lg">${item.description}</p>
+                <a href="${item.link}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
+                  View ${item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+                </a>
+              </div>
+            `;
+            slideshowContainer.appendChild(slideDiv);
+            slides.push(slideDiv);
+          });
+        }
+
         function updateIndicators() {
+          if (!indicatorsContainer) return;
           indicatorsContainer.innerHTML = ''; // Clear existing indicators
           slides.forEach((slide, index) => {
             const button = document.createElement('button');
@@ -211,15 +311,18 @@
             button.setAttribute('aria-current', index === currentSlide ? 'true' : 'false');
             button.setAttribute('aria-label', 'Slide ' + (index + 1));
             button.setAttribute('data-carousel-slide-to', index);
-            button.style.backgroundColor = index === currentSlide ? '#3B82F6' : '#D1D5DB'; // blue-600 and gray-300
+            button.style.backgroundColor = index === currentSlide ? '#3B82F6' : '#D1D5DB'; // Tailwind blue-600 and gray-300
             button.addEventListener('click', () => goToSlide(index));
             indicatorsContainer.appendChild(button);
           });
         }
 
         function showSlide(index) {
+          if (slides.length === 0) return;
           slides.forEach((slide, i) => {
             slide.classList.remove('active');
+            // Force reflow for transition restart if needed, though Tailwind handles opacity well
+            // void slide.offsetWidth; 
             if (i === index) {
               slide.classList.add('active');
             }
@@ -228,46 +331,60 @@
           updateIndicators();
         }
 
-        function nextSlide() {
+        function nextSlideFn() {
+          if (slides.length === 0) return;
           currentSlide = (currentSlide + 1) % slides.length;
           showSlide(currentSlide);
         }
 
-        function prevSlide() {
+        function prevSlideFn() {
+          if (slides.length === 0) return;
           currentSlide = (currentSlide - 1 + slides.length) % slides.length;
           showSlide(currentSlide);
         }
         
         function goToSlide(index) {
+          if (slides.length === 0) return;
           showSlide(index);
           resetInterval();
         }
 
         function startInterval() {
-          slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+          if (slides.length === 0) return;
+          clearInterval(slideInterval); // Clear existing interval before starting a new one
+          slideInterval = setInterval(nextSlideFn, 5000); // Change slide every 5 seconds
         }
 
         function resetInterval() {
+          if (slides.length === 0) return;
           clearInterval(slideInterval);
           startInterval();
         }
+        
+        // Initialization
+        buildSlides(); // Create slides from configuration
 
-        if (prevButton && nextButton && slides.length > 0) {
-          prevButton.addEventListener('click', () => {
-            prevSlide();
-            resetInterval();
-          });
-          nextButton.addEventListener('click', () => {
-            nextSlide();
-            resetInterval();
-          });
+        if (slides.length > 0) {
           showSlide(0); // Show the first slide initially
           startInterval(); // Start automatic slideshow
-        } else {
-          if (slides.length > 0) { // If no buttons, but slides exist, still try to make it work
-             showSlide(0);
-             startInterval();
+
+          if (prevButton) {
+            prevButton.addEventListener('click', () => {
+              prevSlideFn();
+              resetInterval();
+            });
           }
+          if (nextButton) {
+            nextButton.addEventListener('click', () => {
+              nextSlideFn();
+              resetInterval();
+            });
+          }
+        } else {
+          // Handle case with no slides (e.g., hide controls or show a message)
+          if(indicatorsContainer) indicatorsContainer.innerHTML = '';
+          if(prevButton) prevButton.style.display = 'none';
+          if(nextButton) nextButton.style.display = 'none';
         }
       });
     </script>
