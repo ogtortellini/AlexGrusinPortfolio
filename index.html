@@ -310,9 +310,13 @@
           const oldSlide = slides[oldIndex];
           const newSlide = slides[currentSlide];
 
+          // Stage newSlide to the right without animation
+          newSlide.style.transition = 'none';
           newSlide.style.transform = 'translateX(100%)';
-          void newSlide.offsetWidth; // Force reflow
+          void newSlide.offsetWidth; // Force reflow to apply staging position
+          newSlide.style.transition = ''; // Re-enable transitions for animation
 
+          // Animate oldSlide out and newSlide in
           oldSlide.style.transform = 'translateX(-100%)';
           newSlide.style.transform = 'translateX(0%)';
           
@@ -327,9 +331,13 @@
           const oldSlide = slides[oldIndex];
           const newSlide = slides[currentSlide];
 
+          // Stage newSlide to the left without animation
+          newSlide.style.transition = 'none';
           newSlide.style.transform = 'translateX(-100%)';
-          void newSlide.offsetWidth; // Force reflow
+          void newSlide.offsetWidth; // Force reflow to apply staging position
+          newSlide.style.transition = ''; // Re-enable transitions for animation
 
+          // Animate oldSlide out and newSlide in
           oldSlide.style.transform = 'translateX(100%)';
           newSlide.style.transform = 'translateX(0%)';
 
@@ -347,19 +355,25 @@
 
           let directionIsForward = newIndex > oldIndex;
           // Handle wrap-around cases for determining direction
-          if (slides.length > 1) { // only check wrap if more than 1 slide
+          if (slides.length > 1) { 
             if (oldIndex === slides.length - 1 && newIndex === 0) directionIsForward = true; 
             if (oldIndex === 0 && newIndex === slides.length - 1) directionIsForward = false;
           }
 
-
+          // Stage newSlide without animation
+          newSlide.style.transition = 'none';
           if (directionIsForward) {
             newSlide.style.transform = 'translateX(100%)'; 
-            void newSlide.offsetWidth; 
-            oldSlide.style.transform = 'translateX(-100%)'; 
           } else {
             newSlide.style.transform = 'translateX(-100%)'; 
-            void newSlide.offsetWidth; 
+          }
+          void newSlide.offsetWidth; // Force reflow to apply staging position
+          newSlide.style.transition = ''; // Re-enable transitions for animation
+          
+          // Animate oldSlide out and newSlide in
+          if (directionIsForward) {
+            oldSlide.style.transform = 'translateX(-100%)'; 
+          } else {
             oldSlide.style.transform = 'translateX(100%)'; 
           }
           newSlide.style.transform = 'translateX(0%)'; 
