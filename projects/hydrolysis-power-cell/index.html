@@ -61,7 +61,10 @@
         <section id="intro-problem" class="mb-10 scroll-mt-20">
           <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction & Problem</h2>
           <p class="text-lg leading-relaxed mb-4">This project focuses on the design, development, and testing of a novel hydrolysis power cell. The goal is to create a sustainable and portable energy source capable of generating hydrogen gas through water electrolysis, which can then be used to power various applications. The increasing demand for clean and portable energy solutions necessitates alternatives to traditional fossil fuels and battery technologies. Current solutions often suffer from limitations such as environmental impact, low energy density, or intermittent supply. This project addresses the need for a reliable, on-demand hydrogen generation system that is compact, efficient, and utilizes readily available resources (water).</p>
-          <div class="my-4 image-placeholder h-80"><p>Placeholder for an introductory image or diagram of the system concept.</p></div>
+          <div class="my-4">
+            <img src="images/hydrogen generator beauty shot.JPG" alt="Hydrogen Generator System Concept" class="w-full max-w-lg mx-auto rounded-lg shadow-md">
+            <p class="text-center text-sm text-gray-600 mt-2">Initial concept of the portable hydrogen generation system.</p>
+          </div>
         </section>
 
         <section id="project-goals" class="mb-10 scroll-mt-20">
@@ -84,8 +87,17 @@
             <h3 class="text-2xl font-semibold mb-3">3.1 Overall Design Approach</h3>
             <p class="text-lg leading-relaxed mb-4">The system employs a [e.g., PEM (Proton Exchange Membrane) or alkaline] electrolyzer design. Key components include the electrode assembly, membrane/separator, electrolyte management system, power input, and gas output/collection. The design prioritizes modularity for ease of assembly and maintenance.</p>
             <p class="text-lg leading-relaxed mb-4">Materials selection focused on [e.g., corrosion resistance, electrical conductivity, cost]. Stainless steel [e.g., 316L] was chosen for the electrodes, and [Specify material] for the housing.</p>
-            <div class="my-4 image-placeholder h-96"><p>Placeholder for a CAD rendering or schematic of the overall design.</p></div>
-            <div class="my-4 video-placeholder h-96"><p>Placeholder for a video explaining the design or a CAD animation.</p></div>
+            <div class="my-4">
+                <img src="images/hydrogen generator beauty shot.JPG" alt="Hydrogen Generator CAD Rendering" class="w-full rounded-lg shadow-md mb-4">
+                <p class="text-center text-sm text-gray-600 mt-1">CAD rendering of the hydrogen generator.</p>
+            </div>
+            <div class="my-4">
+                <video class="w-full rounded-lg shadow-md" controls poster="images/hydrogen generator beauty shot.JPG">
+                    <source src="images/Assembly of hydrogen generator in CAD.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="text-center text-sm text-gray-600 mt-1">CAD assembly animation.</p>
+            </div>
           </article>
 
           <article id="timeline-phase-1" class="mb-8 scroll-mt-20">
@@ -95,19 +107,33 @@
             <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900"><strong>Learnings:</strong> Understanding the trade-offs between different electrolyzer types (PEM, alkaline, SOEC). Importance of material compatibility with electrolytes.</div>
           </article>
           <article id="timeline-phase-2" class="mb-8 scroll-mt-20">
-            <h3 class="text-2xl font-semibold mb-3">3.3 Phase 2: Detailed Design & Prototyping (e.g., Week 5-10)</h3>
+            <h3 class="text-2xl font-semibold mb-3">3.3 Phase 2: Detailed Design & Prototyping</h3>
             <p class="text-lg leading-relaxed mb-4">CAD models of all components were created using [Specify CAD Software]. Finite Element Analysis (FEA) was used for [e.g., structural integrity of the housing, flow analysis if applicable]. Early prototypes of critical components, such as the electrode stack and sealing mechanisms, were 3D printed or machined for fit and function tests.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
               <div class="image-placeholder h-64"><p>Placeholder for CAD screenshots or early prototype photos.</p></div>
-              <div class="image-placeholder h-64"><p>Placeholder for another image related to design or prototyping.</p></div>
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="images/stacking the prototype hydrogen generator gaskets.jpg" alt="Stacking prototype hydrogen generator gaskets" class="w-full h-64 object-cover">
+                <p class="text-center p-2 text-sm text-gray-700">Stacking prototype gaskets</p>
+              </div>
             </div>
             <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900"><strong>Learnings:</strong> Challenges in achieving reliable sealing. Iterative design improvements based on prototype testing. Sourcing appropriate materials and components.</div>
           </article>
           <article id="timeline-phase-3" class="mb-8 scroll-mt-20">
-            <h3 class="text-2xl font-semibold mb-3">3.4 Phase 3: Manufacturing & Assembly (e.g., Week 11-14)</h3>
+            <h3 class="text-2xl font-semibold mb-3">3.4 Phase 3: Manufacturing & Assembly</h3>
             <p class="text-lg leading-relaxed mb-4">Components were manufactured using [e.g., CNC machining, laser cutting, 3D printing]. The electrode plates were prepared by [e.g., surface treatment, coating]. The assembly process involved careful stacking of electrodes, membranes, and gaskets, followed by integration into the main housing and connection of plumbing and electrical systems.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-                <div class="image-placeholder h-64"><p>Placeholder for photos of the manufacturing process (e.g., machining parts, laser cutting gaskets).</p></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="images/laser cutting custom rubber gaskets for the hydrogen generator.jpg" alt="Laser cutting custom rubber gaskets" class="w-full h-auto object-cover">
+                    <p class="text-center p-2 text-sm text-gray-700">Laser cutting custom gaskets</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="images/prepping the stainless electrode plates in HCL.JPG" alt="Prepping stainless electrode plates" class="w-full h-auto object-cover">
+                    <p class="text-center p-2 text-sm text-gray-700">Prepping electrode plates in HCl</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="images/bonding the gas seperation membrane between two gaskets.JPG" alt="Bonding gas separation membrane" class="w-full h-auto object-cover">
+                    <p class="text-center p-2 text-sm text-gray-700">Bonding gas separation membrane</p>
+                </div>
                 <div class="image-placeholder h-64"><p>Placeholder for photos of the assembly process.</p></div>
             </div>
             <div class="my-4 video-placeholder h-80"><p>Placeholder for a time-lapse video of the assembly.</p></div>
@@ -237,7 +263,10 @@
             <li>[Team Member 3 Name] - Role/Contribution (if applicable)</li>
           </ul>
           <p class="text-lg leading-relaxed mt-4">Special thanks to [Professor Name(s)], [TA Name(s)], and the [Department/Lab Name] for their guidance and support throughout this project.</p>
-          <div class="my-4 image-placeholder h-80"><p>Placeholder for a team photo or a photo of you with the project.</p></div>
+          <div class="my-4">
+            <img src="images/1st semester team photo.JPG" alt="1st Semester Team Photo" class="w-full max-w-md mx-auto rounded-lg shadow-md">
+            <p class="text-center text-sm text-gray-600 mt-2">The team during the first semester of the project.</p>
+          </div>
         </section>
         
         <section id="presentation-pdf" class="mb-10 scroll-mt-20">
