@@ -11,7 +11,7 @@
         /* Tailwind classes for transition - ensure your Tailwind setup supports these if not using a plugin */
         transition-property: opacity;
         transition-timing-function: ease-in-out;
-        transition-duration: 700ms;
+        transition-duration: 1000ms; /* Changed from 700ms to 1000ms for smoother transition */
       }
       .slide.active {
         display: block;
@@ -32,7 +32,7 @@
 
     <!-- Navbar -->
     <nav class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-50">
-      <h1 class="text-xl font-bold">Alex Grusin</h1>
+      <h1 class="text-xl font-bold">Alex Grusin's Engineering Portfolio</h1>
       <ul class="flex gap-6 text-sm font-medium">
         <li><a href="#projects" class="hover:text-blue-600">Projects</a></li>
         <li><a href="#experience" class="hover:text-blue-600">Experience</a></li>
@@ -352,7 +352,7 @@
         function startInterval() {
           if (slides.length === 0) return;
           clearInterval(slideInterval); // Clear existing interval before starting a new one
-          slideInterval = setInterval(nextSlideFn, 5000); // Change slide every 5 seconds
+          slideInterval = setInterval(nextSlideFn, 2000); // Changed from 5000ms to 3000ms for 3-second interval
         }
 
         function resetInterval() {
