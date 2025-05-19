@@ -6,26 +6,20 @@
     <title>Alex Grusin | Engineering Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      .slide {
-        display: none;
-        /* Tailwind classes for transition - ensure your Tailwind setup supports these if not using a plugin */
-        transition-property: opacity;
-        transition-timing-function: ease-in-out;
-        transition-duration: 1000ms; /* Changed from 700ms to 1000ms for smoother transition */
-      }
-      .slide.active {
-        display: block;
-      }
-      /* Basic fade-in for active slide if transitions are not fully configured via JS */
-      .slide.active {
-        opacity: 1;
+      #slideshow-container { /* Added */
+        position: relative;
+        overflow: hidden; /* Crucial for slide transition */
       }
       .slide {
-        opacity: 0;
-        position: absolute; /* Needed for proper layering and transition */
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
+        transition: transform 1000ms ease-in-out;
+        /* display: block; is default for div, or ensure it if using other elements */
       }
+      /* .slide.active class is no longer needed for controlling animation visibility */
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
@@ -214,13 +208,11 @@
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         // --- Configuration for Slideshow ---
-        // Add or remove items from this array to change the slideshow content and order.
-        // 'type' can be 'project' or 'experience'.
         const slideshowItems = [
           { 
             id: 'custom-cybertruck', 
             title: 'Custom Cybertruck Design', 
-            description: `Redesigned and prototyped custom features for Tesla\'s Cybertruck, focusing on aerodynamics and utility enhancements.`,
+            description: `Redesigned and prototyped custom features for Tesla\\\'s Cybertruck, focusing on aerodynamics and utility enhancements.`,
             imgSrc: 'projects/custom-cybertruck/images/Isometric With Lights.jpg', 
             altText: 'Custom Cybertruck Project', 
             link: 'projects/custom-cybertruck/index.html', 
@@ -253,16 +245,6 @@
             link: 'experience/starforge/index.html', 
             type: 'experience' 
           }
-          // Example for adding another item:
-          // { 
-          //   id: 'uncle-daves', 
-          //   title: `Uncle Dave\'s Auto Repair`, 
-          //   description: 'Hands-on automotive repair and maintenance experience, diagnosing and resolving mechanical issues.', 
-          //   imgSrc: 'experience/uncle-daves/images/placeholder.jpg', 
-          //   altText: `Uncle Dave\'s Auto Repair Experience`, 
-          //   link: 'experience/uncle-daves/index.html', 
-          //   type: 'experience' 
-          // }
         ];
         // --- End Configuration ---
 
@@ -271,19 +253,17 @@
         const nextButton = document.getElementById('next-slide');
         const indicatorsContainer = document.getElementById('carousel-indicators');
         
-        let slides = []; // Will hold the dynamically created slide elements
+        let slides = [];
         let currentSlide = 0;
         let slideInterval;
 
         function buildSlides() {
-          slideshowContainer.innerHTML = ''; // Clear any existing content
-          slides = []; // Reset slides array
+          slideshowContainer.innerHTML = ''; 
+          slides = []; 
 
-          slideshowItems.forEach(item => {
+          slideshowItems.forEach((item, idx) => {
             const slideDiv = document.createElement('div');
-            // Tailwind classes for transition are in the <style> block
-            // 'slide' class initially keeps it hidden and absolutely positioned
-            slideDiv.className = 'slide ease-in-out'; 
+            slideDiv.className = 'slide'; 
             slideDiv.setAttribute('data-id', item.id);
 
             slideDiv.innerHTML = `
@@ -296,6 +276,11 @@
                 </a>
               </div>
             `;
+            if (idx === 0) {
+              slideDiv.style.transform = 'translateX(0%)';
+            } else {
+              slideDiv.style.transform = 'translateX(100%)'; // Position to the right
+            }
             slideshowContainer.appendChild(slideDiv);
             slides.push(slideDiv);
           });
@@ -303,7 +288,7 @@
 
         function updateIndicators() {
           if (!indicatorsContainer) return;
-          indicatorsContainer.innerHTML = ''; // Clear existing indicators
+          indicatorsContainer.innerHTML = ''; 
           slides.forEach((slide, index) => {
             const button = document.createElement('button');
             button.type = 'button';
@@ -311,62 +296,97 @@
             button.setAttribute('aria-current', index === currentSlide ? 'true' : 'false');
             button.setAttribute('aria-label', 'Slide ' + (index + 1));
             button.setAttribute('data-carousel-slide-to', index);
-            button.style.backgroundColor = index === currentSlide ? '#3B82F6' : '#D1D5DB'; // Tailwind blue-600 and gray-300
+            button.style.backgroundColor = index === currentSlide ? '#3B82F6' : '#D1D5DB';
             button.addEventListener('click', () => goToSlide(index));
             indicatorsContainer.appendChild(button);
           });
         }
 
-        function showSlide(index) {
-          if (slides.length === 0) return;
-          slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            // Force reflow for transition restart if needed, though Tailwind handles opacity well
-            // void slide.offsetWidth; 
-            if (i === index) {
-              slide.classList.add('active');
-            }
-          });
-          currentSlide = index;
+        function nextSlideFn() {
+          if (slides.length <= 1) return;
+          const oldIndex = currentSlide;
+          currentSlide = (oldIndex + 1) % slides.length;
+
+          const oldSlide = slides[oldIndex];
+          const newSlide = slides[currentSlide];
+
+          newSlide.style.transform = 'translateX(100%)';
+          void newSlide.offsetWidth; // Force reflow
+
+          oldSlide.style.transform = 'translateX(-100%)';
+          newSlide.style.transform = 'translateX(0%)';
+          
           updateIndicators();
         }
 
-        function nextSlideFn() {
-          if (slides.length === 0) return;
-          currentSlide = (currentSlide + 1) % slides.length;
-          showSlide(currentSlide);
-        }
-
         function prevSlideFn() {
-          if (slides.length === 0) return;
-          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-          showSlide(currentSlide);
+          if (slides.length <= 1) return;
+          const oldIndex = currentSlide;
+          currentSlide = (oldIndex - 1 + slides.length) % slides.length;
+          
+          const oldSlide = slides[oldIndex];
+          const newSlide = slides[currentSlide];
+
+          newSlide.style.transform = 'translateX(-100%)';
+          void newSlide.offsetWidth; // Force reflow
+
+          oldSlide.style.transform = 'translateX(100%)';
+          newSlide.style.transform = 'translateX(0%)';
+
+          updateIndicators();
         }
         
         function goToSlide(index) {
-          if (slides.length === 0) return;
-          showSlide(index);
+          if (slides.length <= 1 || index === currentSlide) return;
+          
+          const oldIndex = currentSlide;
+          const newIndex = index;
+
+          const oldSlide = slides[oldIndex];
+          const newSlide = slides[newIndex];
+
+          let directionIsForward = newIndex > oldIndex;
+          // Handle wrap-around cases for determining direction
+          if (slides.length > 1) { // only check wrap if more than 1 slide
+            if (oldIndex === slides.length - 1 && newIndex === 0) directionIsForward = true; 
+            if (oldIndex === 0 && newIndex === slides.length - 1) directionIsForward = false;
+          }
+
+
+          if (directionIsForward) {
+            newSlide.style.transform = 'translateX(100%)'; 
+            void newSlide.offsetWidth; 
+            oldSlide.style.transform = 'translateX(-100%)'; 
+          } else {
+            newSlide.style.transform = 'translateX(-100%)'; 
+            void newSlide.offsetWidth; 
+            oldSlide.style.transform = 'translateX(100%)'; 
+          }
+          newSlide.style.transform = 'translateX(0%)'; 
+          
+          currentSlide = newIndex;
+          updateIndicators();
           resetInterval();
         }
 
         function startInterval() {
-          if (slides.length === 0) return;
-          clearInterval(slideInterval); // Clear existing interval before starting a new one
-          slideInterval = setInterval(nextSlideFn, 2000); // Changed from 5000ms to 3000ms for 3-second interval
+          if (slides.length <= 1) return; // Don't start interval if 1 or no slides
+          clearInterval(slideInterval); 
+          slideInterval = setInterval(nextSlideFn, 2000); 
         }
 
         function resetInterval() {
-          if (slides.length === 0) return;
+          if (slides.length <= 1) return;
           clearInterval(slideInterval);
           startInterval();
         }
         
         // Initialization
-        buildSlides(); // Create slides from configuration
+        buildSlides(); 
 
         if (slides.length > 0) {
-          showSlide(0); // Show the first slide initially
-          startInterval(); // Start automatic slideshow
+          updateIndicators(); // Update indicators for the initial slide
+          startInterval(); 
 
           if (prevButton) {
             prevButton.addEventListener('click', () => {
@@ -381,7 +401,6 @@
             });
           }
         } else {
-          // Handle case with no slides (e.g., hide controls or show a message)
           if(indicatorsContainer) indicatorsContainer.innerHTML = '';
           if(prevButton) prevButton.style.display = 'none';
           if(nextButton) nextButton.style.display = 'none';
