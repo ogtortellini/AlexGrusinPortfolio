@@ -78,26 +78,6 @@
     <footer class="text-center py-8 mt-12 border-t border-gray-300">
       <p>&copy; 2025 Alex Grusin. All rights reserved.</p>
     </footer>
-    <script>
-      const sections = document.querySelectorAll('main section[id]');
-      const tocLinks = document.querySelectorAll('.toc-link');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          const id = entry.target.getAttribute('id');
-          const tocLink = document.querySelector(`.toc-link[href=\"#${id}\"]`);
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            tocLinks.forEach(link => link.classList.remove('active'));
-            if (tocLink) {
-              tocLink.classList.add('active');
-              const parentUl = tocLink.closest('ul');
-              if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.matches('a.toc-link')) {
-                parentUl.previousElementSibling.classList.add('active');
-              }
-            }
-          }
-        });
-      }, { threshold: 0.5, rootMargin: "0px 0px -50% 0px" });
-      sections.forEach(section => { observer.observe(section); });
-    </script>
+    <script src="../../assets/js/toc-scroller.js"></script>
   </body>
 </html>
