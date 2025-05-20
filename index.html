@@ -26,8 +26,15 @@
 
     <!-- Navbar -->
     <nav class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-50">
-      <h1 class="text-xl font-bold">Alex Grusin's Engineering Portfolio</h1>
-      <ul class="flex gap-6 text-sm font-medium">
+      <a href="#" class="text-xl font-bold md:text-left text-center flex-grow md:flex-grow-0">Alex Grusin's Engineering Portfolio</a>
+      <div class="md:hidden">
+        <button id="menu-btn" class="text-gray-900 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+      <ul id="menu-links" class="hidden md:flex gap-6 text-sm font-medium">
         <li><a href="#projects" class="hover:text-blue-600">Projects</a></li>
         <li><a href="#experience" class="hover:text-blue-600">Experience</a></li>
         <li><a href="about.html" class="hover:text-blue-600">About</a></li>
@@ -206,6 +213,7 @@
     </section>
 
     <script src="assets/js/slideshow.js"></script>
+    <script src="assets/js/menu.js"></script>
 
   </body>
 </html>
