@@ -1,49 +1,59 @@
 document.addEventListener('DOMContentLoaded', function () {
   const tocToggleButton = document.getElementById('tocToggleButton');
-  const tableOfContentsAside = document.getElementById('tableOfContentsAside');
-  const mainContent = document.querySelector('main');
+  const tocDropdownMenu = document.getElementById('tocDropdownMenu');
+  // const tableOfContentsAside = document.getElementById('tableOfContentsAside'); // Keep for desktop, not directly managed by this button anymore
+  // const mainContent = document.querySelector('main'); // Not needed for dropdown logic
 
-  if (tocToggleButton && tableOfContentsAside) {
+  if (tocToggleButton && tocDropdownMenu) {
     tocToggleButton.addEventListener('click', function (event) {
-      event.stopPropagation(); // Prevent click from bubbling up, just in case
-      tableOfContentsAside.classList.toggle('translate-x-full');
+      event.stopPropagation(); // Prevent click from bubbling up
+      tocDropdownMenu.classList.toggle('hidden');
+    });
 
-      const isTocOpen = !tableOfContentsAside.classList.contains('translate-x-full');
+    // Close dropdown when a link inside it is clicked
+    const tocLinksDropdown = tocDropdownMenu.querySelectorAll('a.toc-link-dropdown');
+    tocLinksDropdown.forEach(link => {
+      link.addEventListener('click', function() {
+        tocDropdownMenu.classList.add('hidden');
+      });
+    });
 
-      if (mainContent) {
-        if (isTocOpen) {
-          mainContent.classList.add('opacity-50', 'pointer-events-none');
-        } else {
-          mainContent.classList.remove('opacity-50', 'pointer-events-none');
-        }
+    // Close dropdown if clicked outside
+    document.addEventListener('click', function(event) {
+      if (!tocDropdownMenu.classList.contains('hidden') && !tocToggleButton.contains(event.target) && !tocDropdownMenu.contains(event.target)) {
+        tocDropdownMenu.classList.add('hidden');
       }
     });
 
-    if (mainContent) {
-      mainContent.addEventListener('click', function() {
-        // If TOC is open and user clicks on main content, close TOC
-        if (!tableOfContentsAside.classList.contains('translate-x-full')) {
-          tableOfContentsAside.classList.add('translate-x-full'); // Close TOC
-          mainContent.classList.remove('opacity-50', 'pointer-events-none'); // Undim main content
-        }
-      });
-    }
+  } else {
+    console.error('TOC toggle button or dropdown menu element not found.');
+  }
 
-    // Close TOC on mobile when a TOC link is clicked
-    const tocLinks = tableOfContentsAside.querySelectorAll('a.toc-link');
-    tocLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // Check if on mobile view (mimicking Tailwind's lg breakpoint) and TOC is open
-        if (window.innerWidth < 1024 && !tableOfContentsAside.classList.contains('translate-x-full')) {
-          tableOfContentsAside.classList.add('translate-x-full'); // Close TOC
-          if (mainContent) {
-            mainContent.classList.remove('opacity-50', 'pointer-events-none'); // Undim main content
-          }
-        }
-      });
+  // Desktop TOC scrollspy (existing functionality, can be kept separate or integrated if preferred)
+  const sections = document.querySelectorAll('main section[id]');
+  const tocLinksDesktop = document.querySelectorAll('#tableOfContentsAside a.toc-link');
+
+  function activateTocLink() {
+    let currentSectionId = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      // Check if section is in viewport, considering a small offset for the sticky nav
+      if (pageYOffset >= (sectionTop - sectionHeight / 3 - 70)) { // Adjusted offset for nav
+        currentSectionId = section.getAttribute('id');
+      }
     });
 
-  } else {
-    console.error('TOC toggle button or aside element not found.');
+    tocLinksDesktop.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${currentSectionId}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  if (sections.length && tocLinksDesktop.length) {
+    window.addEventListener('scroll', activateTocLink);
+    activateTocLink(); // Initial call to set active link on page load
   }
 });

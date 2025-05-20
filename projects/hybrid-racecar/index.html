@@ -11,16 +11,31 @@
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
-    <nav class="bg-white shadow p-4 sticky top-0 z-50 flex justify-between items-center">
+    <nav class="bg-white shadow p-4 sticky top-0 z-50 flex justify-between items-center relative"> <!-- Added relative class -->
       <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
-      <button id="tocToggleButton" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none focus:text-blue-600">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
-      </button>
+      <div class="relative"> <!-- Wrapper for button and new dropdown -->
+        <button id="tocToggleButton" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none focus:text-blue-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+        <!-- New Dropdown Menu -->
+        <div id="tocDropdownMenu" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-md shadow-lg z-[60] py-2 lg:hidden"> <!-- Increased z-index -->
+          <h2 class="text-lg font-semibold mb-2 px-4 pt-2">Contents</h2>
+          <ul class="space-y-1">
+            <li><a href="#introduction" class="toc-link-dropdown block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">1. Introduction</a></li>
+            <li><a href="#meet-the-team" class="toc-link-dropdown block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">2. Meet the Team</a></li>
+            <li><a href="#ice-powerplant" class="toc-link-dropdown block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">3. ICE Powerplant</a></li>
+            <li><a href="#fwd-electric-drivetrain" class="toc-link-dropdown block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">4. FWD Electric Drivetrain</a></li>
+            <li><a href="#integration" class="toc-link-dropdown block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">5. Integration</a></li>
+            <li><a href="#challenges" class="toc-link-dropdown block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">6. Challenges & Learnings</a></li>
+            <li><a href="#outcome" class="toc-link-dropdown block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">7. Outcome & Reflections</a></li>
+          </ul>
+        </div>
+      </div>
     </nav>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
-      <aside id="tableOfContentsAside" class="fixed top-0 right-0 h-full w-2/3 max-w-xs bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out translate-x-full overflow-y-auto lg:block lg:relative lg:w-1/4 lg:h-auto lg:max-h-[calc(100vh-5rem)] lg:bg-transparent lg:shadow-none lg:sticky lg:top-20 lg:translate-x-0 lg:z-40 lg:self-start lg:mr-8">
+      <aside id="tableOfContentsAside" class="hidden lg:block lg:w-1/4 lg:bg-transparent lg:shadow-none lg:sticky lg:top-20 lg:h-auto lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto lg:self-start lg:mr-8">
         <div class="bg-white p-6 rounded-lg shadow lg:shadow-none">
           <h2 class="text-xl font-semibold mb-4">Contents</h2>
           <ul class="space-y-2 text-sm">
