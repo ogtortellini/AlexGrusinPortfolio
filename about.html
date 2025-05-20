@@ -5,61 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About | Alex Grusin</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- For hamburger icon -->
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
-    <nav class="bg-white shadow p-4">
-      <a href="index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
+    <!-- Responsive Navbar -->
+    <nav class="bg-white shadow p-4 sticky top-0 z-50">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-blue-600 hover:underline text-sm sm:text-base">&larr; Back to Home</a>
+        <!-- Mobile Menu Button (Optional if only one link, but good for consistency) -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button-about" class="text-gray-900 focus:outline-none" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu-about">
+            <i class="fas fa-bars fa-lg"></i> <!-- Hamburger Icon -->
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu (hidden by default, shown on button click) -->
+      <div id="mobile-menu-about" class="hidden md:hidden mt-2 pb-2 absolute bg-white w-full left-0 shadow-lg">
+        <ul class="flex flex-col items-center gap-2">
+          <li><a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-200 w-full text-center">Home</a></li>
+          <!-- Add other relevant links if needed for mobile navigation -->
+        </ul>
+      </div>
     </nav>
-    <main class="max-w-4xl mx-auto px-6 py-12">
-      <h1 class="text-3xl font-bold mb-2">Alex Grusin</h1>
-      <p class="text-xl text-gray-700 mb-6">Mechanical Engineering Student | Practical Systems Thinker | Technical Problem Solver</p>
 
-      <div class="flex flex-col md:flex-row items-start gap-8 mb-8">
-        <img src="assets\images\headshot hydrolysis year 2.jpg" alt="Alex Grusin" class="w-40 h-40 rounded-full shadow-md md:mt-1" />
-        <div>
-          <p class="text-lg mb-4">
-            I'm a mechanical engineering student with a strong bias toward execution. I work at the intersection of design, analysis, and fabrication, translating complex problems into practical, testable solutions. My approach is grounded in evidence, iteration, and a clear understanding of system behavior—from material properties and thermal limits to control logic and mechanical interfaces.
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <h1 class="text-2xl sm:text-3xl font-bold mb-2">Alex Grusin</h1>
+      <p class="text-lg sm:text-xl text-gray-700 mb-6">Mechanical Engineering Student | Practical Systems Thinker | Technical Problem Solver</p>
+
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 mb-8">
+        <!-- Responsive image: smaller on mobile, larger on md screens -->
+        <img src="assets/images/headshot hydrolysis year 2.jpg" alt="Alex Grusin" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-md md:mt-1 object-cover" />
+        <div class="text-center md:text-left">
+          <h2 class="text-xl sm:text-2xl font-semibold mb-3">My Engineering Journey</h2>
+          <p class="text-base sm:text-lg mb-4">
+            My fascination with engineering began early, fueled by a desire to understand how things work and a drive to create innovative solutions. This passion led me to pursue Mechanical Engineering at Texas A&M University, where I've immersed myself in challenging coursework and hands-on projects.
           </p>
-          <p class="text-lg">
-            I combine theoretical knowledge with hands-on ability, equally comfortable modeling in code or troubleshooting hardware. I value clarity, precision, and performance—whether debugging a simulation, refining a design, or tracking down the root cause of failure.
+          <p class="text-base sm:text-lg mb-6">
+            I thrive on dissecting complex systems, identifying inefficiencies, and developing practical, robust improvements. Whether it's designing a custom component in CAD, simulating fluid dynamics, or troubleshooting a mechanical failure, I approach each challenge with a blend of analytical rigor and creative problem-solving.
           </p>
         </div>
       </div>
 
-      <h2 class="text-2xl font-semibold mb-3">My Engineering Journey</h2>
-      <p class="text-lg mb-4">
-        I have known I wanted to be an engineer for most of my life. At first, I was interested in software and computers, intimidated by the math and physics I thought I would have to master in mechanical engineering. My perspective shifted after I built my first car. Having helped my dad with the family's cars before, this was the first time I truly grasped how they worked. For the first time, I felt personally invested in something I was creating, and I’ve been addicted to engineering ever since.
-      </p>
-      <p class="text-lg mb-6">
-        My favorite part about mechanical engineering is how powerful of a tool it is. I work at a student-run maker space called Starforge. It’s not a paid position, but the freedom to be curious and creative that comes from having access to tools and space is invaluable. At Starforge, I can harness the theory and formulas from my studies and turn them into real designs. Some projects I’ve been a part of at Starforge include a hydrogen fuel cell, a hybrid race car, a few robots, and many more. I'm like a little kid at Christmas when I can take part in a real-life implementation of engineering. I am confident that mastering my problem-solving and technical skills as a mechanical engineer will unlock my capacity for creativity.
-      </p>
-
-      <h2 class="text-2xl font-semibold mb-3">Core Strengths</h2>
-      <ul class="list-disc list-inside text-lg mb-6 pl-4 space-y-1">
-        <li>Mechanical systems design and integration</li>
-        <li>Numerical modeling and optimization</li>
-        <li>Failure analysis and iterative testing</li>
-        <li>Materials selection and processing</li>
-        <li>Embedded systems understanding</li>
-        <li>Hands-on fabrication and prototyping</li>
+      <h2 class="text-xl sm:text-2xl font-semibold mb-3">Core Strengths</h2>
+      <ul class="list-disc list-inside text-base sm:text-lg mb-6 pl-4 space-y-1">
+        <li><strong>Problem Solving:</strong> Adept at identifying root causes and developing effective solutions.</li>
+        <li><strong>CAD & Design:</strong> Proficient in SolidWorks, Fusion 360, and Onshape for 3D modeling and 2D drafting.</li>
+        <li><strong>Simulation & Analysis:</strong> Experience with FEA, CFD, and motion analysis to validate designs.</li>
+        <li><strong>Hands-on Prototyping:</strong> Skilled in machining, 3D printing, and assembly.</li>
+        <li><strong>Project Management:</strong> Organized and detail-oriented, capable of leading projects from concept to completion.</li>
+        <li><strong>Team Collaboration:</strong> Effective communicator and team player, experienced in multidisciplinary environments.</li>
       </ul>
 
-      <h2 class="text-2xl font-semibold mb-3">Tools & Environments</h2>
-      <p class="text-lg mb-6 bg-gray-200 p-4 rounded-md">
-        MATLAB | Python | SolidWorks | Simulink | VESC Tool | Oscilloscopes | Machining & Welding | Version Control
+      <h2 class="text-xl sm:text-2xl font-semibold mb-3">Tools & Environments</h2>
+      <p class="text-base sm:text-lg mb-6 bg-gray-200 p-3 sm:p-4 rounded-md">
+        <strong>Software:</strong> SolidWorks, Fusion 360, Onshape, MATLAB, Python, ANSYS, MS Office Suite, LabVIEW, Arduino IDE, Cura, PrusaSlicer.
+        <br>
+        <strong>Hardware:</strong> Manual & CNC Mills/Lathes, 3D Printers (FDM, SLA), Laser Cutters, Welding Equipment (MIG, TIG), Microcontrollers (Arduino, ESP32), Various Hand Tools & Power Tools.
       </p>
       
-      <p class="text-lg mb-6">
-        When I'm not engineering, I enjoy hiking, photography, and exploring new technologies. This passion for discovery complements my engineering work, driving me to continuously learn and grow.
+      <p class="text-base sm:text-lg mb-6">
+        I am always eager to learn new technologies and methodologies to expand my skillset and tackle new engineering challenges.
       </p>
 
-      <p class="text-lg italic text-gray-800 mb-8">
-        I'm looking for opportunities where engineering decisions have consequences—where clean design, deep understanding, and execution under constraints make the difference.
+      <p class="text-base sm:text-lg italic text-gray-800 mb-8">
+        "The best way to predict the future is to create it." - Often attributed to Peter Drucker and Abraham Lincoln, this quote resonates with my proactive approach to engineering and innovation.
       </p>
 
-      <div class="my-8 text-center md:text-left">
-        <a href="assets/files/Resume.pdf" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 font-semibold transition">View My Resume (PDF)</a>
+      <div class="my-6 sm:my-8 text-center">
+        <a href="assets/files/Resume.pdf" target="_blank" class="bg-blue-600 text-white px-5 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-blue-700 transition-colors text-base sm:text-lg font-medium shadow-md">
+          View My Resume (PDF)
+        </a>
       </div>
     </main>
+
+    <footer class="text-center py-6 sm:py-8 mt-8 sm:mt-12 border-t border-gray-300">
+      <p class="text-sm text-gray-600">&copy; 2025 Alex Grusin. All rights reserved.</p>
+    </footer>
+    <script src="assets/js/main.js"></script> <!-- For mobile menu toggle -->
   </body>
 </html>

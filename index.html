@@ -5,452 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alex Grusin | Engineering Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- For hamburger icon -->
     <style>
-      #slideshow-container { /* Added */
-        position: relative;
-        overflow: hidden; /* Crucial for slide transition */
-      }
+      /* ...existing styles... */
       .slide {
-        position: absolute;
-        top: 0;
-        left: 0;
+        /* Ensure slides fill the container and images within them are responsive */
+        display: none; /* Initially hidden, JS will show active */
         width: 100%;
         height: 100%;
-        transition: transform 800ms ease-in-out;
-        /* display: block; is default for div, or ensure it if using other elements */
+        position: absolute;
+        transition: opacity 0.7s ease-in-out;
       }
-      /* .slide.active class is no longer needed for controlling animation visibility */
+      .slide.active {
+        display: block;
+        opacity: 1;
+      }
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Or 'contain' depending on desired effect */
+      }
+      /* Ensure text overlays are readable and scale */
+      .slide-caption {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 1rem; /* Base size, adjust with responsive classes if needed */
+      }
+      @media (min-width: 768px) { /* md breakpoint */
+        .slide-caption {
+          font-size: 1.25rem; /* Larger text on larger screens */
+          bottom: 40px;
+          left: 40px;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
 
     <!-- Navbar -->
-    <nav class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-50">
-      <h1 class="text-xl font-bold">Alex Grusin's Engineering Portfolio</h1>
-      <ul class="flex gap-6 text-sm font-medium">
-        <li><a href="#projects" class="hover:text-blue-600">Projects</a></li>
-        <li><a href="#experience" class="hover:text-blue-600">Experience</a></li>
-        <li><a href="about.html" class="hover:text-blue-600">About</a></li>
-        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
-      </ul>
+    <nav class="bg-white shadow p-4 sticky top-0 z-50">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-lg sm:text-xl font-bold whitespace-nowrap">Alex Grusin's Portfolio</h1>
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex gap-4 sm:gap-6 text-sm font-medium">
+          <li><a href="#featured-projects" class="hover:text-blue-600">Featured</a></li>
+          <li><a href="#projects" class="hover:text-blue-600">Projects</a></li>
+          <li><a href="#experience" class="hover:text-blue-600">Experience</a></li>
+          <li><a href="about.html" class="hover:text-blue-600">About</a></li>
+          <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+        </ul>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-900 focus:outline-none" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu (hidden by default) -->
+      <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2 absolute bg-white w-full left-0 shadow-lg">
+        <ul class="flex flex-col items-center gap-2">
+          <li><a href="#featured-projects" class="block py-2 px-4 text-sm hover:bg-gray-200 w-full text-center">Featured</a></li>
+          <li><a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-200 w-full text-center">Projects</a></li>
+          <li><a href="#experience" class="block py-2 px-4 text-sm hover:bg-gray-200 w-full text-center">Experience</a></li>
+          <li><a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-200 w-full text-center">About</a></li>
+          <li><a href="contact.html" class="block py-2 px-4 text-sm hover:bg-gray-200 w-full text-center">Contact</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Featured Projects Slideshow -->
     <section id="featured-projects" class="relative w-full mx-auto overflow-hidden">
-      <div class="relative h-96 md:h-[32rem] xl:h-[36rem]" id="slideshow-container">
-        <!-- Slides will be dynamically injected here by JavaScript -->
+      <!-- Slideshow container needs to allow images to scale -->
+      <div class="relative h-64 sm:h-80 md:h-96 lg:h-[32rem] xl:h-[36rem]" id="slideshow-container">
+        <!-- Slides will be dynamically added here by script.js -->
+        <!-- Example slide structure (ensure images are responsive) -->
+        <!--
+        <div class="slide active">
+          <img src="path/to/image.jpg" alt="Project 1" class="w-full h-full object-cover">
+          <div class="slide-caption">Project 1 Title</div>
+        </div>
+        -->
       </div>
       <!-- Slider indicators -->
       <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2" id="carousel-indicators">
-        <!-- Indicators will be added by JS -->
+        <!-- Indicators will be dynamically added here -->
       </div>
       <!-- Slider controls -->
-      <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" id="prev-slide">
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-          <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+      <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-2 sm:px-4 cursor-pointer group focus:outline-none" id="prev-slide" aria-label="Previous slide">
+        <span class="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+          <svg class="w-3 h-3 sm:w-4 sm:h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
           </svg>
-          <span class="sr-only">Previous</span>
         </span>
       </button>
-      <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" id="next-slide">
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-          <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+      <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-2 sm:px-4 cursor-pointer group focus:outline-none" id="next-slide" aria-label="Next slide">
+        <span class="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+          <svg class="w-3 h-3 sm:w-4 sm:h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
           </svg>
-          <span class="sr-only">Next</span>
         </span>
       </button>
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="px-6 py-12">
-      <h3 class="text-2xl font-bold mb-6 text-center">Projects</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Custom Cybertruck Project Card -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300" data-slideshow-include="true">
-          <img src="projects/custom-cybertruck/images/Isometric With Lights.jpg" alt="Custom Cybertruck Project with Lights" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">Custom Cybertruck Design</h4>
-            <p class="text-sm text-gray-700 mb-4">
-              Redesigned and prototyped custom features for Tesla's Cybertruck, focusing on aerodynamics and utility enhancements.
-            </p>
-            <a href="projects/custom-cybertruck/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Project
-            </a>
+    <section id="projects" class="px-4 sm:px-6 py-8 sm:py-12">
+      <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">Projects</h3>
+      <!-- Grid will adjust columns based on screen size -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <!-- Project cards will be dynamically added here by script.js -->
+        <!-- Example project card structure: -->
+        <!--
+        <a href="projects/project-detail.html" class="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden">
+          <img src="path/to/project-image.jpg" alt="Project Name" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h4 class="font-semibold text-lg mb-1">Project Name</h4>
+            <p class="text-sm text-gray-600">Brief project description...</p>
           </div>
-        </div>
-
-        <!-- Hybrid Racecar Project Card -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300" data-slideshow-include="true">
-          <img src="projects/hybrid-racecar/images/Entire Racecar team posing with the finished testbench version of the racecar (cover photo).jpeg" alt="Hybrid Racecar Project" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">Hybrid Racecar</h4>
-            <p class="text-sm text-gray-700 mb-4">
-              Designed and built a hybrid racecar with optimized performance and fuel efficiency.
-            </p>
-            <a href="projects/hybrid-racecar/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Project
-            </a>
-          </div>
-        </div>
-
-        <!-- Restomod 3000GT VR4 Project Card -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300" data-slideshow-include="true">
-          <img src="projects/restomod-3000gt-vr4/images/3000gt cover photo.jpg" alt="Restomod 3000GT VR4 Project" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">Restomod 3000GT VR4</h4>
-            <p class="text-sm text-gray-700 mb-4">
-              Full restoration and modernization of a classic Mitsubishi 3000GT VR4.
-            </p>
-            <a href="projects/restomod-3000gt-vr4/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Project
-            </a>
-          </div>
-        </div>
-
-        <!-- Mars EDL Project Card -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300" data-slideshow-include="false">
-          <img src="projects/mars-edl/images/Sim Results.jpg" alt="Mars EDL Simulation" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">Mars EDL Simulation</h4>
-            <p class="text-sm text-gray-700 mb-4">
-              Simulated entry, descent, and landing dynamics of a Mars rover using Python and numerical methods.
-            </p>
-            <a href="projects/mars-edl/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Project
-            </a>
-          </div>
-        </div>
-        
-        <!-- Machined Hammer Project Card -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300" data-hidden="true" data-slideshow-include="false">
-          <img src="assets/images/machined-hammer.jpg" alt="Machined Hammer Project" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">Machined Hammer</h4>
-            <p class="text-sm text-gray-700 mb-4">
-              Designed and machined a custom hammer with ergonomic features and durable materials.
-            </p>
-            <a href="projects/machined-hammer/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Project
-            </a>
-          </div>
-        </div>
-
-        <!-- Hydrolysis Power Cell Project Card -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300" data-slideshow-include="false">
-          <img src="projects/hydrolysis-power-cell/images/hydrogen generator beauty shot.JPG" alt="Hydrolysis Power Cell Project" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">Hydrolysis Power Cell</h4>
-            <p class="text-sm text-gray-700 mb-4">
-              Developed a hydrolysis-based power cell for efficient energy conversion and storage.
-            </p>
-            <a href="projects/hydrolysis-power-cell/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Project
-            </a>
-          </div>
-        </div>
-
-        <!-- Custom Electric Skateboard Project Card -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300" data-slideshow-include="false">
-          <img src="projects/custom-electric-skateboard/images/posing with the painted deck.JPG" alt="Custom Electric Skateboard Project" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">Custom Electric Skateboard</h4>
-            <p class="text-sm text-gray-700 mb-4">
-              Built a custom electric skateboard with advanced motor control and long-range battery.
-            </p>
-            <a href="projects/custom-electric-skateboard/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Project
-            </a>
-          </div>
-        </div>
-
+        </a>
+        -->
       </div>
     </section>
 
     <!-- Experience -->
-    <section id="experience" class="px-6 py-12">
-      <h3 class="text-2xl font-bold mb-6 text-center">Experience</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Starforge Experience Card -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300" data-slideshow-include="false">
-          <img src="experience/starforge/images/starforge laser cut skatboard rack.JPG" alt="Starforge Experience" class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">Starforge</h4>
-            <p class="text-sm text-gray-700 mb-4">
-              Student-run makerspace involvement, contributing to various engineering projects and fostering a collaborative environment.
-            </p>
-            <a href="experience/starforge/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Experience
-            </a>
+    <section id="experience" class="px-4 sm:px-6 py-8 sm:py-12 bg-gray-50"> <!-- Added a light background for differentiation -->
+      <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">Experience</h3>
+      <div class="max-w-4xl mx-auto space-y-6">
+          <!-- Experience items will be dynamically added here by script.js -->
+          <!-- Example experience item structure: -->
+          <!--
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h4 class="text-lg font-semibold text-blue-700">Job Title - Company Name</h4>
+            <p class="text-sm text-gray-500 mb-2">Date Range (e.g., Jan 2022 - Present)</p>
+            <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+              <li>Responsibility or achievement 1.</li>
+              <li>Responsibility or achievement 2.</li>
+            </ul>
+            <a href="experience/experience-detail.html" class="text-sm text-blue-600 hover:underline mt-2 inline-block">Learn More &rarr;</a>
           </div>
-        </div>
-
-        <!-- Uncle Dave's Auto Repair Experience Card -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300" data-slideshow-include="false">
-          <img src="experience/uncle-daves/images/placeholder.jpg" alt="Uncle Dave's Auto Repair Experience" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">Uncle Dave's Auto Repair</h4>
-            <p class="text-sm text-gray-700 mb-4">
-              Hands-on automotive repair and maintenance experience, diagnosing and resolving mechanical issues.
-            </p>
-            <a href="experience/uncle-daves/index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-              View Experience
-            </a>
-          </div>
-        </div>
-
+          -->
       </div>
     </section>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        // --- Configuration for Slideshow ---
-        // const slideshowItems = [ ... ]; // This will be replaced
+    <footer class="text-center py-6 sm:py-8 mt-8 sm:mt-12 border-t border-gray-300">
+      <p class="text-sm text-gray-600">&copy; 2025 Alex Grusin. All rights reserved.</p>
+    </footer>
 
-        const slideshowItems = []; // Initialize an empty array
-
-        // Function to generate a URL-friendly ID from text
-        function generateId(text) {
-          return text.toLowerCase()
-            .replace(/\s+/g, '-')     // Replace spaces with hyphens
-            .replace(/[^\w-]+/g, ''); // Remove all non-word chars except hyphens
-        }
-
-        // Populate slideshowItems from Project cards
-        const projectCards = document.querySelectorAll('#projects .bg-white.rounded-xl.shadow-md');
-        projectCards.forEach(card => {
-          if (card.dataset.hidden === 'true') {
-            card.style.display = 'none'; // Hide card from the page
-            return; // Skip adding to slideshow
-          }
-          // New check for slideshow inclusion
-          if (card.dataset.slideshowInclude === 'false') {
-            return; // Skip adding to slideshow but keep visible on page
-          }
-          const titleElement = card.querySelector('h4');
-          const descriptionElement = card.querySelector('p');
-          const imgElement = card.querySelector('img');
-          const linkElement = card.querySelector('a'); // The main link for the project
-
-          if (titleElement && descriptionElement && imgElement && linkElement) {
-            slideshowItems.push({
-              id: generateId(titleElement.textContent.trim()),
-              title: titleElement.textContent.trim(),
-              description: descriptionElement.textContent.trim(),
-              imgSrc: imgElement.getAttribute('src'),
-              altText: imgElement.getAttribute('alt'),
-              link: linkElement.getAttribute('href'),
-              type: 'project'
-            });
-          }
-        });
-
-        // Populate slideshowItems from Experience cards
-        const experienceCards = document.querySelectorAll('#experience .bg-white.rounded-xl.shadow-md');
-        experienceCards.forEach(card => {
-          if (card.dataset.hidden === 'true') {
-            card.style.display = 'none'; // Hide card from the page
-            return; // Skip adding to slideshow
-          }
-          // New check for slideshow inclusion
-          if (card.dataset.slideshowInclude === 'false') {
-            return; // Skip adding to slideshow but keep visible on page
-          }
-          const titleElement = card.querySelector('h4');
-          const descriptionElement = card.querySelector('p');
-          const imgElement = card.querySelector('img');
-          const linkElement = card.querySelector('a'); // The main link for the experience
-
-          if (titleElement && descriptionElement && imgElement && linkElement) {
-            slideshowItems.push({
-              id: generateId(titleElement.textContent.trim()),
-              title: titleElement.textContent.trim(),
-              description: descriptionElement.textContent.trim(),
-              imgSrc: imgElement.getAttribute('src'),
-              altText: imgElement.getAttribute('alt'),
-              link: linkElement.getAttribute('href'),
-              type: 'experience'
-            });
-          }
-        });
-        // --- End Configuration ---
-
-        const slideshowContainer = document.getElementById('slideshow-container');
-        const prevButton = document.getElementById('prev-slide');
-        const nextButton = document.getElementById('next-slide');
-        const indicatorsContainer = document.getElementById('carousel-indicators');
-        
-        let slides = [];
-        let currentSlide = 0;
-        let slideInterval;
-
-        function buildSlides() {
-          slideshowContainer.innerHTML = ''; 
-          slides = []; 
-
-          slideshowItems.forEach((item, idx) => {
-            const slideDiv = document.createElement('div');
-            slideDiv.className = 'slide'; 
-            slideDiv.setAttribute('data-id', item.id);
-
-            slideDiv.innerHTML = `
-              <img src="${item.imgSrc}" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="${item.altText}">
-              <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-end text-center p-4 pb-12">
-                <h3 class="text-3xl font-bold text-white mb-2">${item.title}</h3>
-                <p class="text-md text-gray-200 mb-4 max-w-lg">${item.description}</p>
-                <a href="${item.link}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
-                  View ${item.type.charAt(0).toUpperCase() + item.type.slice(1)}
-                </a>
-              </div>
-            `;
-            if (idx === 0) {
-              slideDiv.style.transform = 'translateX(0%)';
-            } else {
-              slideDiv.style.transform = 'translateX(100%)'; // Position to the right
-            }
-            slideshowContainer.appendChild(slideDiv);
-            slides.push(slideDiv);
-          });
-        }
-
-        function updateIndicators() {
-          if (!indicatorsContainer) return;
-          indicatorsContainer.innerHTML = ''; 
-          slides.forEach((slide, index) => {
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.classList.add('w-3', 'h-3', 'rounded-full');
-            button.setAttribute('aria-current', index === currentSlide ? 'true' : 'false');
-            button.setAttribute('aria-label', 'Slide ' + (index + 1));
-            button.setAttribute('data-carousel-slide-to', index);
-            button.style.backgroundColor = index === currentSlide ? '#3B82F6' : '#D1D5DB';
-            button.addEventListener('click', () => goToSlide(index));
-            indicatorsContainer.appendChild(button);
-          });
-        }
-
-        function nextSlideFn() {
-          if (slides.length <= 1) return;
-          const oldIndex = currentSlide;
-          currentSlide = (oldIndex + 1) % slides.length;
-
-          const oldSlide = slides[oldIndex];
-          const newSlide = slides[currentSlide];
-
-          // Stage newSlide to the right without animation
-          newSlide.style.transition = 'none';
-          newSlide.style.transform = 'translateX(100%)';
-          void newSlide.offsetWidth; // Force reflow to apply staging position
-          newSlide.style.transition = ''; // Re-enable transitions for animation
-
-          // Animate oldSlide out and newSlide in
-          oldSlide.style.transform = 'translateX(-100%)';
-          newSlide.style.transform = 'translateX(0%)';
-          
-          updateIndicators();
-        }
-
-        function prevSlideFn() {
-          if (slides.length <= 1) return;
-          const oldIndex = currentSlide;
-          currentSlide = (oldIndex - 1 + slides.length) % slides.length;
-          
-          const oldSlide = slides[oldIndex];
-          const newSlide = slides[currentSlide];
-
-          // Stage newSlide to the left without animation
-          newSlide.style.transition = 'none';
-          newSlide.style.transform = 'translateX(-100%)';
-          void newSlide.offsetWidth; // Force reflow to apply staging position
-          newSlide.style.transition = ''; // Re-enable transitions for animation
-
-          // Animate oldSlide out and newSlide in
-          oldSlide.style.transform = 'translateX(100%)';
-          newSlide.style.transform = 'translateX(0%)';
-
-          updateIndicators();
-        }
-        
-        function goToSlide(index) {
-          if (slides.length <= 1 || index === currentSlide) return;
-          
-          const oldIndex = currentSlide;
-          const newIndex = index;
-
-          const oldSlide = slides[oldIndex];
-          const newSlide = slides[newIndex];
-
-          let directionIsForward = newIndex > oldIndex;
-          // Handle wrap-around cases for determining direction
-          if (slides.length > 1) { 
-            if (oldIndex === slides.length - 1 && newIndex === 0) directionIsForward = true; 
-            if (oldIndex === 0 && newIndex === slides.length - 1) directionIsForward = false;
-          }
-
-          // Stage newSlide without animation
-          newSlide.style.transition = 'none';
-          if (directionIsForward) {
-            newSlide.style.transform = 'translateX(100%)'; 
-          } else {
-            newSlide.style.transform = 'translateX(-100%)'; 
-          }
-          void newSlide.offsetWidth; // Force reflow to apply staging position
-          newSlide.style.transition = ''; // Re-enable transitions for animation
-          
-          // Animate oldSlide out and newSlide in
-          if (directionIsForward) {
-            oldSlide.style.transform = 'translateX(-100%)'; 
-          } else {
-            oldSlide.style.transform = 'translateX(100%)'; 
-          }
-          newSlide.style.transform = 'translateX(0%)'; 
-          
-          currentSlide = newIndex;
-          updateIndicators();
-          resetInterval();
-        }
-
-        function startInterval() {
-          if (slides.length <= 1) return; // Don't start interval if 1 or no slides
-          clearInterval(slideInterval); 
-          slideInterval = setInterval(nextSlideFn, 4000); 
-        }
-
-        function resetInterval() {
-          if (slides.length <= 1) return;
-          clearInterval(slideInterval);
-          startInterval();
-        }
-        
-        // Initialization
-        buildSlides(); 
-
-        if (slides.length > 0) {
-          updateIndicators(); // Update indicators for the initial slide
-          startInterval(); 
-
-          if (prevButton) {
-            prevButton.addEventListener('click', () => {
-              prevSlideFn();
-              resetInterval();
-            });
-          }
-          if (nextButton) {
-            nextButton.addEventListener('click', () => {
-              nextSlideFn();
-              resetInterval();
-            });
-          }
-        } else {
-          if(indicatorsContainer) indicatorsContainer.innerHTML = '';
-          if(prevButton) prevButton.style.display = 'none';
-          if(nextButton) nextButton.style.display = 'none';
-        }
-      });
-    </script>
-
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/script.js"></script> <!-- Assuming your dynamic content script is named script.js -->
   </body>
 </html>

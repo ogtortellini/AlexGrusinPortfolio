@@ -5,226 +5,216 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hybrid Racecar Project | Alex Grusin</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
       html { scroll-behavior: smooth; }
-      .toc-link.active { font-weight: bold; color: #2563eb; }
+      .toc-link.active { font-weight: bold; color: #2563eb; /* Tailwind blue-600 */ }
+      .gallery-image {
+        width: 100%;
+        height: auto;
+        max-height: 400px; /* Constrain image height if they are too tall */
+        object-fit: cover;
+        border-radius: 0.5rem; /* Tailwind rounded-lg */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind shadow-md */
+      }
+      /* Style for embedded GIFs */
+      .embedded-gif {
+        width: 100%;
+        max-width: 500px; /* Adjust as needed */
+        height: auto;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        margin: 1rem auto; /* Center the GIF */
+      }
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
+    <!-- Responsive Navbar -->
     <nav class="bg-white shadow p-4 sticky top-0 z-50">
-      <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="../../index.html" class="text-blue-600 hover:underline text-sm sm:text-base">&larr; Back to Home</a>
+        <!-- Mobile Menu Button for TOC -->
+        <div class="lg:hidden">
+          <button id="toc-menu-button" class="text-gray-900 focus:outline-none" aria-label="Open Table of Contents" aria-expanded="false" aria-controls="toc-mobile-menu">
+            <i class="fas fa-bars fa-lg"></i> <!-- Hamburger Icon for TOC -->
+          </button>
+        </div>
+      </div>
     </nav>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
-      <aside class="w-full lg:w-1/4 lg:sticky lg:top-20 self-start mb-8 lg:mb-0 lg:mr-8">
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h2 class="text-xl font-semibold mb-4">Contents</h2>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#introduction" class="toc-link text-gray-700 hover:text-blue-600">1. Introduction</a></li>
-            <li><a href="#meet-the-team" class="toc-link text-gray-700 hover:text-blue-600">2. Meet the Team</a></li>
-            <li><a href="#ice-powerplant" class="toc-link text-gray-700 hover:text-blue-600">3. ICE Powerplant</a></li>
-            <li><a href="#fwd-electric-drivetrain" class="toc-link text-gray-700 hover:text-blue-600">4. FWD Electric Drivetrain</a></li>
-            <li><a href="#integration" class="toc-link text-gray-700 hover:text-blue-600">5. Integration</a></li>
-            <li><a href="#challenges" class="toc-link text-gray-700 hover:text-blue-600">6. Challenges & Learnings</a></li>
-            <li><a href="#outcome" class="toc-link text-gray-700 hover:text-blue-600">7. Outcome & Reflections</a></li>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex flex-col lg:flex-row">
+      <!-- Table of Contents (Sticky on larger screens, Collapsible on mobile) -->
+      <aside class="w-full lg:w-1/4 lg:sticky lg:top-24 self-start mb-8 lg:mb-0 lg:mr-8 z-40">
+        <!-- Mobile TOC Menu (hidden by default) -->
+        <div id="toc-mobile-menu" class="hidden lg:hidden bg-white p-6 rounded-lg shadow mb-4">
+          <h3 class="text-lg font-semibold mb-3 text-gray-800">Table of Contents</h3>
+          <ul class="space-y-2 toc-links-container">
+            <li><a href="#introduction" class="toc-link block text-gray-700 hover:text-blue-600">Introduction</a></li>
+            <li><a href="#team-role" class="toc-link block text-gray-700 hover:text-blue-600">Team & My Role</a></li>
+            <li><a href="#powertrain-overview" class="toc-link block text-gray-700 hover:text-blue-600">Powertrain Overview</a></li>
+            <li><a href="#ice-powerplant" class="toc-link block text-gray-700 hover:text-blue-600">ICE Powerplant</a></li>
+            <li><a href="#electric-drivetrain" class="toc-link block text-gray-700 hover:text-blue-600">Electric Drivetrain</a></li>
+            <li><a href="#challenges" class="toc-link block text-gray-700 hover:text-blue-600">Challenges & Innovations</a></li>
+            <li><a href="#gallery" class="toc-link block text-gray-700 hover:text-blue-600">Gallery</a></li>
+            <li><a href="#outcome" class="toc-link block text-gray-700 hover:text-blue-600">Outcome</a></li>
+          </ul>
+        </div>
+        <!-- Desktop TOC (always visible on lg screens) -->
+        <div class="hidden lg:block bg-white p-6 rounded-lg shadow">
+          <h3 class="text-lg font-semibold mb-3 text-gray-800">Table of Contents</h3>
+          <ul class="space-y-2 toc-links-container">
+            <li><a href="#introduction" class="toc-link block text-gray-700 hover:text-blue-600">Introduction</a></li>
+            <li><a href="#team-role" class="toc-link block text-gray-700 hover:text-blue-600">Team & My Role</a></li>
+            <li><a href="#powertrain-overview" class="toc-link block text-gray-700 hover:text-blue-600">Powertrain Overview</a></li>
+            <li><a href="#ice-powerplant" class="toc-link block text-gray-700 hover:text-blue-600">ICE Powerplant</a></li>
+            <li><a href="#electric-drivetrain" class="toc-link block text-gray-700 hover:text-blue-600">Electric Drivetrain</a></li>
+            <li><a href="#challenges" class="toc-link block text-gray-700 hover:text-blue-600">Challenges & Innovations</a></li>
+            <li><a href="#gallery" class="toc-link block text-gray-700 hover:text-blue-600">Gallery</a></li>
+            <li><a href="#outcome" class="toc-link block text-gray-700 hover:text-blue-600">Outcome</a></li>
           </ul>
         </div>
       </aside>
-      <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
-        <h1 class="text-4xl font-bold mb-2 text-center">Hybrid Racecar Project</h1>
-        <p class="text-center text-gray-600 mb-8">[Project subtitle/summary marker]</p>
+
+      <main class="w-full lg:w-3/4 bg-white p-6 sm:p-8 rounded-lg shadow">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-center">Formula Hybrid Racecar Project</h1>
+        <p class="text-center text-gray-600 mb-8 text-sm sm:text-base">Designing and building a high-performance hybrid-electric racecar for the Formula Hybrid Competition.</p>
+        
         <section id="introduction" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction</h2>
-          <p class="text-lg leading-relaxed">[Intro marker]</p>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/Entire Racecar team posing with the finished testbench version of the racecar (cover photo).jpeg" alt="Entire Racecar team with finished testbench" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Team with the testbench racecar</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/Racecar with gold and black livery iso view.jpg" alt="Racecar with livery - ISO view" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Racecar with livery - ISO</figcaption>
-            </figure>
-          </div>
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Introduction</h2>
+          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
+            The Formula Hybrid Competition challenges university teams to design, build, and compete with a hybrid or all-electric, formula-style racecar. This project represents a significant engineering undertaking, involving aerodynamics, chassis design, powertrain development (both internal combustion and electric), and complex control systems.
+          </p>
         </section>
-        <section id="meet-the-team" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. Meet the Team</h2>
-          <p class="text-lg leading-relaxed">[Team introduction, roles, and dynamics placeholder. You can talk about the collaborative nature of the project here.]</p>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/Mechanical team posing with a water table.JPG" alt="Mechanical team with water table" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Mechanical team and water table</figcaption>
-            </figure>
-          </div>
-          <p class="text-lg leading-relaxed mt-4">[Incorporate learnings about teamwork, communication, and project management here.]</p>
+
+        <section id="team-role" class="mb-10 scroll-mt-20" id="meet-the-team">
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Team & My Role</h2>
+          <p class="text-gray-700 leading-relaxed text-base sm:text-lg mb-3">
+            As a key member of the powertrain sub-team, my responsibilities focused on the design, integration, and testing of both the Internal Combustion Engine (ICE) and the electric drivetrain components. This included CAD modeling, component sourcing, hands-on assembly, and troubleshooting.
+          </p>
+          <!-- Placeholder for team image or more details -->
         </section>
+
+        <section id="powertrain-overview" class="mb-10 scroll-mt-20">
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Hybrid Powertrain Overview</h2>
+          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
+            Our car features a parallel hybrid architecture. A KTM 390 Duke motorcycle engine powers the rear wheels, while a front-wheel-drive electric system provides supplemental torque, regenerative braking, and allows for electric-only driving modes. This setup aims to balance performance, efficiency, and complexity.
+          </p>
+        </section>
+
         <section id="ice-powerplant" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. ICE Powerplant</h2>
-          <p class="text-lg leading-relaxed">[Detailed description of the Internal Combustion Engine selection, modification, and integration. Cover concept, planning, design, and fabrication aspects related to the ICE.]</p>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/Before of the engine bay for the SRF gen 3 (how it came originally).jpg" alt="Original engine bay" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Original SRF Gen 3 engine bay</figcaption>
-            </figure>
-          </div>
-          <p class="text-lg leading-relaxed mt-4">[Incorporate learnings from the ICE concept and planning phase here.]</p>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/Mechanical team posing with the sadev sequential.jpg" alt="Mechanical team with Sadev sequential" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Mechanical team and Sadev sequential</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/BellhouseAdaptor mounted to engine with clutch and flywheel assembly.jpg" alt="Bellhouse adaptor mounted" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Bellhouse adaptor with clutch/flywheel</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/Bellhouseadaptor on table with clutch and flywheel inside close up.jpg" alt="Bellhouse adaptor close up" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Bellhouse adaptor detail</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/flywheel recessed bolts.jpg" alt="Flywheel recessed bolts" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Flywheel bolt detail</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/Assembly of the clutch + flywheel into the bellhouse adaptor.GIF" alt="Clutch and flywheel assembly GIF" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Clutch/flywheel assembly (GIF)</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <video controls class="w-full h-auto object-contain rounded-t-lg">
-                <source src="images/BellhousingAdaptor 360 render.MP4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              <figcaption class="text-center p-2 text-sm text-gray-700">Bellhousing Adaptor Render (MP4)</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/cross-section view of the engine+transmission used to verify flywheel and clutch clearance with new bellhouse adaptor.png" alt="Engine/transmission cross-section" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Clearance verification CAD</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/test fit bellhousing adaptor using laser cut sheets of wood.jpg" alt="Test fitting bellhousing adaptor with wood mockups" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Bellhousing adaptor wood mockup</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/3d printed throttle body manifold.jpg" alt="3D printed throttle body manifold" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">3D Printed Throttle Body Manifold</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/accessory belt assembly.jpg" alt="Accessory belt assembly" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Accessory Belt Assembly</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/side radiator placement without air channels side view.jpg" alt="Side radiator placement - side view" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Radiator Placement - Side</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/side radiator placement without air channels top view.jpg" alt="Side radiator placement - top view" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Radiator Placement - Top</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/screengrab of CFD testing for the new cooling duct.jpg" alt="CFD testing for cooling duct" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Cooling Duct CFD</figcaption>
-            </figure>
-          </div>
-          <p class="text-lg leading-relaxed mt-4">[Incorporate learnings from the ICE design and fabrication phase here.]</p>
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Internal Combustion Engine (ICE) Powerplant</h2>
+          <p class="text-gray-700 leading-relaxed text-base sm:text-lg mb-3">
+            The core of our ICE system is a modified KTM 390 Duke engine, chosen for its power-to-weight ratio and reliability. Modifications included a custom intake manifold (3D printed), exhaust system, and integration with the hybrid control system. I was heavily involved in the design of the bellhouse adaptor to mate the engine with our chosen transmission solution, as well as the accessory belt assembly for engine ancillaries.
+          </p>
+          <figure class="my-4">
+            <img src="images/3d printed throttle body manifold.jpg" alt="3D Printed Throttle Body Manifold" class="gallery-image mx-auto">
+            <figcaption class="text-sm text-gray-600 mt-2 text-center">Custom 3D printed throttle body manifold for the KTM engine.</figcaption>
+          </figure>
+          <figure class="my-4">
+            <img src="images/accessory belt assembly.jpg" alt="Accessory Belt Assembly" class="gallery-image mx-auto">
+            <figcaption class="text-sm text-gray-600 mt-2 text-center">Accessory belt assembly for the ICE.</figcaption>
+          </figure>
         </section>
-        <section id="fwd-electric-drivetrain" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">4. FWD Electric Drivetrain</h2>
-          <p class="text-lg leading-relaxed">[Detailed description of the FWD electric drivetrain, including motor selection, battery system, chassis modifications, and control systems. Cover design, fabrication, and initial testing.]</p>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/modified front chassis to support added drivetrain weight and clearance the axles.jpg" alt="Modified front chassis" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Modified front chassis</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <video controls class="w-full h-auto object-contain rounded-t-lg">
-                <source src="images/bench testing the electric drivetrain with reinforced front diff mounts.MOV" type="video/mp4"> <!-- Assuming MOV can be played, or convert to MP4 -->
-                Your browser does not support the video tag.
-              </video>
-              <figcaption class="text-center p-2 text-sm text-gray-700">Electric Drivetrain Test (MOV)</figcaption>
-            </figure>
-          </div>
-          <p class="text-lg leading-relaxed mt-4">[Incorporate learnings from the electric drivetrain design, fabrication, and testing phase here.]</p>
+
+        <section id="electric-drivetrain" class="mb-10 scroll-mt-20" id="fwd-electric-drivetrain">
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">FWD Electric Drivetrain</h2>
+          <p class="text-gray-700 leading-relaxed text-base sm:text-lg mb-3">
+            The front axle is driven by a high-torque electric motor, powered by a custom lithium-ion battery pack. This system enables regenerative braking to recapture energy and provides instant torque for improved acceleration. My contributions included component selection, packaging design for the motor and controller, and assisting with the battery management system (BMS) integration.
+          </p>
+          <!-- Placeholder for electric drivetrain images -->
         </section>
-        <section id="integration" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">5. Integration</h2>
-          <p class="text-lg leading-relaxed">[Details about how the ICE and electric drivetrains were integrated. Discuss challenges and solutions related to packaging, control strategy, and overall vehicle dynamics. Include information on full system testing and iteration.]</p>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/cybertruck towing the racecar to the racetrack in Dallas.jpg" alt="Cybertruck towing racecar" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Transporting to the racetrack for testing</figcaption>
-            </figure>
-          </div>
-          <p class="text-lg leading-relaxed mt-4">[Incorporate learnings from the system integration and testing phase here.]</p>
-        </section>
+
         <section id="challenges" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">6. Challenges & Learnings</h2>
-          <p class="text-lg leading-relaxed">[Overall project challenges and key learnings that span across multiple areas or are more general to the project execution. Specific technical learnings should be in their respective sections.]</p>
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Challenges & Innovations</h2>
+          <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2 text-base sm:text-lg">
+            <li><strong>Powertrain Integration:</strong> Ensuring seamless cooperation between the ICE and electric motor was a major controls and mechanical challenge.</li>
+            <li><strong>Bellhouse Adaptor Design:</strong> Designing and fabricating a custom bellhouse adaptor to connect the KTM engine to the gearbox required precise CAD work and machining. The animated GIF below shows the clutch and flywheel assembly.</li>
+            <li><strong>Weight Management:</strong> Balancing performance with the added weight of the hybrid system was a constant consideration throughout the design process.</li>
+            <li><strong>Custom Components:</strong> Extensive use of 3D printing for parts like the intake manifold and various brackets allowed for rapid prototyping and optimized designs.</li>
+          </ul>
+          <figure class="my-4">
+            <img src="images/Assembly of the clutch + flywheel into the bellhouse adaptor.GIF" alt="Clutch and Flywheel Assembly Animation" class="embedded-gif">
+            <figcaption class="text-sm text-gray-600 mt-2 text-center">Animation: Assembly of the clutch and flywheel into the custom bellhouse adaptor.</figcaption>
+          </figure>
         </section>
+
+        <section id="gallery" class="mb-10 scroll-mt-20">
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Project Gallery</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <!-- Add more relevant images from the hybrid-racecar/images folder -->
+            <img src="images/engine on dyno.JPG" alt="Engine on Dyno" class="gallery-image">
+            <img src="images/engine with custom intake and exhaust.JPG" alt="Engine with custom intake and exhaust" class="gallery-image">
+            <img src="images/finished bellhouse adaptor.JPG" alt="Finished Bellhouse Adaptor" class="gallery-image">
+            <img src="images/frame with engine mounted.JPG" alt="Frame with engine mounted" class="gallery-image">
+            <!-- Consider adding captions if needed -->
+          </div>
+        </section>
+
         <section id="outcome" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">7. Outcome & Reflections</h2> <!-- Renumbering from 5 to 4 -->
-          <p class="text-lg leading-relaxed">[Outcome marker]</p>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/Racecar team posed with spot robot dog in front of racecar with livery.JPG" alt="Team with Spot robot dog" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Team with Spot robot</figcaption>
-            </figure>
-          </div>
-          <div class="my-4">
-            <figure class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src="images/Racecar with gold and black livery top view.jpg" alt="Racecar with livery - Top view" class="w-full h-auto object-contain rounded-t-lg">
-              <figcaption class="text-center p-2 text-sm text-gray-700">Racecar with livery - Top</figcaption>
-            </figure>
-          </div>
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Outcome & Learnings</h2>
+          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
+            This ongoing project has been an incredible learning experience, pushing the boundaries of my engineering knowledge in powertrain design, systems integration, and advanced manufacturing techniques. The development of the hybrid system, particularly the custom bellhouse adaptor and intake components, showcases practical application of engineering principles. The car is currently in the advanced stages of assembly and testing, with sights set on a strong performance at the upcoming Formula Hybrid Competition.
+          </p>
         </section>
       </main>
     </div>
-    <footer class="text-center py-8 mt-12 border-t border-gray-300">
-      <p>&copy; 2025 Alex Grusin. All rights reserved.</p>
+
+    <footer class="text-center py-6 sm:py-8 mt-8 sm:mt-12 border-t border-gray-300">
+      <p class="text-sm text-gray-600">&copy; 2025 Alex Grusin. All rights reserved.</p>
     </footer>
+
     <script>
       const sections = document.querySelectorAll('main section[id]');
       const tocLinks = document.querySelectorAll('.toc-link');
+      const tocMenuButton = document.getElementById('toc-menu-button');
+      const tocMobileMenu = document.getElementById('toc-mobile-menu');
+
+      // Toggle mobile TOC menu
+      if (tocMenuButton && tocMobileMenu) {
+        tocMenuButton.addEventListener('click', () => {
+          tocMobileMenu.classList.toggle('hidden');
+          const isExpanded = tocMenuButton.getAttribute('aria-expanded') === 'true' || false;
+          tocMenuButton.setAttribute('aria-expanded', !isExpanded);
+        });
+      }
+
+      // Intersection Observer for highlighting active TOC link
       const observer = new IntersectionObserver(entries => {
+        let mostVisibleSectionId = null;
+        let maxRatio = 0;
+
         entries.forEach(entry => {
-          const id = entry.target.getAttribute('id');
-          const tocLink = document.querySelector(`.toc-link[href="#${id}"]`);
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            tocLinks.forEach(link => link.classList.remove('active'));
-            if (tocLink) {
-              tocLink.classList.add('active');
-              // Removed the specific timeline-phase logic as it's no longer applicable
-            }
+          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            mostVisibleSectionId = entry.target.getAttribute('id');
           }
         });
-      }, { threshold: 0.5, rootMargin: "0px 0px -50% 0px" });
-      sections.forEach(section => { observer.observe(section); });
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+        if (mostVisibleSectionId) {
+          const activeLink = document.querySelector(`.toc-links-container .toc-link[href="#${mostVisibleSectionId}"]`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
+        }
+      }, { threshold: Array.from(Array(21).keys(), i => i * 0.05), rootMargin: "0px 0px -35% 0px" });
+      // More thresholds for smoother active state change, adjusted rootMargin
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+
+      // Close mobile TOC if a link is clicked
+      if (tocMobileMenu) {
+        tocMobileMenu.querySelectorAll('a.toc-link').forEach(link => {
+          link.addEventListener('click', () => {
+            tocMobileMenu.classList.add('hidden');
+            if (tocMenuButton) {
+              tocMenuButton.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
     </script>
   </body>
 </html>

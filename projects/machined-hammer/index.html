@@ -1,100 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Machined Hammer Project | Alex Grusin</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
       html { scroll-behavior: smooth; }
-      .toc-link.active { font-weight: bold; color: #2563eb; }
+      body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+      .toc-link.active { font-weight: bold; color: #2563eb; /* Tailwind blue-600 */ }
+      .gallery-image {
+        width: 100%;
+        height: auto;
+        max-height: 400px; /* Or adjust as needed */
+        object-fit: cover;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      main section {
+        scroll-margin-top: 80px; /* Adjust based on sticky nav height */
+      }
     </style>
-  </head>
-  <body class="bg-gray-100 text-gray-900 font-sans">
-    <nav class="bg-white shadow p-4 sticky top-0 z-50">
-      <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
-    </nav>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
-      <aside class="w-full lg:w-1/4 lg:sticky lg:top-20 self-start mb-8 lg:mb-0 lg:mr-8">
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h2 class="text-xl font-semibold mb-4">Contents</h2>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#introduction" class="toc-link text-gray-700 hover:text-blue-600">1. Introduction</a></li>
-            <li><a href="#timeline" class="toc-link text-gray-700 hover:text-blue-600">2. Project Timeline</a></li>
-            <li><a href="#challenges" class="toc-link text-gray-700 hover:text-blue-600">3. Challenges & Learnings</a></li>
-            <li><a href="#gallery" class="toc-link text-gray-700 hover:text-blue-600">4. Gallery</a></li>
-            <li><a href="#outcome" class="toc-link text-gray-700 hover:text-blue-600">5. Outcome & Reflections</a></li>
-          </ul>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="../../index.html" class="text-blue-600 hover:text-blue-800 transition-colors duration-300 flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Home
+            </a>
+            <!-- Mobile Menu Button for TOC -->
+            <div class="lg:hidden">
+                <button id="toc-menu-button" class="text-gray-600 hover:text-gray-800 focus:outline-none" aria-label="Open Table of Contents" aria-expanded="false" aria-controls="toc-mobile-menu">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
         </div>
-      </aside>
-      <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
-        <h1 class="text-4xl font-bold mb-2 text-center">Machined Hammer Project</h1>
-        <p class="text-center text-gray-600 mb-8">[Project subtitle/summary marker]</p>
-        <section id="introduction" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction</h2>
-          <p class="text-lg leading-relaxed">[Intro marker]</p>
-        </section>
-        <section id="timeline" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. Project Timeline</h2>
-          <article id="timeline-phase-1" class="mb-8 scroll-mt-20">
-            <h3 class="text-2xl font-semibold mb-3">2.1 Design & Planning</h3>
-            <p class="text-lg leading-relaxed">[Phase 1 marker]</p>
-            <div class="my-4">[Image marker]</div>
-            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900">[What I learned marker]</div>
-          </article>
-          <article id="timeline-phase-2" class="mb-8 scroll-mt-20">
-            <h3 class="text-2xl font-semibold mb-3">2.2 Machining & Fabrication</h3>
-            <p class="text-lg leading-relaxed">[Phase 2 marker]</p>
-            <div class="my-4">[Image marker]</div>
-            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900">[What I learned marker]</div>
-          </article>
-          <article id="timeline-phase-3" class="mb-8 scroll-mt-20">
-            <h3 class="text-2xl font-semibold mb-3">2.3 Finishing & Testing</h3>
-            <p class="text-lg leading-relaxed">[Phase 3 marker]</p>
-            <div class="my-4">[Image marker]</div>
-            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900">[What I learned marker]</div>
-          </article>
-        </section>
-        <section id="challenges" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. Challenges & Learnings</h2>
-          <p class="text-lg leading-relaxed">[Challenges marker]</p>
-        </section>
-        <section id="gallery" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">4. Gallery</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <!-- [Image marker] -->
-          </div>
-          <p class="text-sm text-gray-600 mt-4 text-center">[Gallery caption marker]</p>
-        </section>
-        <section id="outcome" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">5. Outcome & Reflections</h2>
-          <p class="text-lg leading-relaxed">[Outcome marker]</p>
-        </section>
-      </main>
+    </nav>
+
+    <!-- Main Content with TOC -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
+        <!-- Table of Contents -->
+        <aside class="w-full lg:w-1/4 lg:sticky lg:top-24 self-start mb-8 lg:mb-0 lg:mr-8 z-40">
+            <!-- Mobile TOC Menu -->
+            <div id="toc-mobile-menu" class="hidden lg:hidden bg-white p-6 rounded-lg shadow-md mb-4">
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">Contents</h3>
+                <ul class="space-y-2 toc-links-container">
+                    <li><a href="#introduction" class="toc-link block text-gray-700 hover:text-blue-600">Introduction</a></li>
+                    <li><a href="#design" class="toc-link block text-gray-700 hover:text-blue-600">Design</a></li>
+                    <li><a href="#fabrication" class="toc-link block text-gray-700 hover:text-blue-600">Fabrication</a></li>
+                    <li><a href="#gallery" class="toc-link block text-gray-700 hover:text-blue-600">Gallery</a></li>
+                    <li><a href="#outcome" class="toc-link block text-gray-700 hover:text-blue-600">Outcome</a></li>
+                </ul>
+            </div>
+            <!-- Desktop TOC -->
+            <div class="hidden lg:block bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">Contents</h3>
+                <ul class="space-y-2 toc-links-container">
+                    <li><a href="#introduction" class="toc-link block text-gray-700 hover:text-blue-600">Introduction</a></li>
+                    <li><a href="#design" class="toc-link block text-gray-700 hover:text-blue-600">Design</a></li>
+                    <li><a href="#fabrication" class="toc-link block text-gray-700 hover:text-blue-600">Fabrication</a></li>
+                    <li><a href="#gallery" class="toc-link block text-gray-700 hover:text-blue-600">Gallery</a></li>
+                    <li><a href="#outcome" class="toc-link block text-gray-700 hover:text-blue-600">Outcome</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Project Details -->
+        <main class="w-full lg:w-3/4 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+            <header class="text-center mb-10">
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Machined Hammer Project</h1>
+                <p class="text-lg text-gray-600 mt-2">A hands-on machining project creating a functional steel hammer.</p>
+            </header>
+
+            <section id="introduction" class="mb-10">
+                <h2 class="text-2xl font-semibold text-blue-700 mb-3">Introduction</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    This project was part of an introductory machining course, focusing on developing fundamental skills in manual milling and lathing. The objective was to design and fabricate a small, functional hammer from raw steel stock, adhering to specified tolerances and design constraints.
+                </p>
+            </section>
+
+            <section id="design" class="mb-10">
+                <h2 class="text-2xl font-semibold text-blue-700 mb-3">Design Phase</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    The design process involved creating 2D drawings for the hammer head and handle. Considerations included ergonomics, balance, and the intended use of the hammer. The head was designed with a flat striking face and a peen on the opposite side. The handle was designed for a comfortable grip and secure attachment to the head.
+                </p>
+                <!-- Placeholder for CAD drawing or sketch -->
+                <div class="my-4 p-4 border border-dashed border-gray-300 rounded-md text-center text-gray-500">
+                    Image Placeholder: Hammer Design Sketch/CAD
+                </div>
+            </section>
+
+            <section id="fabrication" class="mb-10">
+                <h2 class="text-2xl font-semibold text-blue-700 mb-3">Fabrication Process</h2>
+                <p class="text-gray-700 leading-relaxed mb-2">
+                    The hammer head was machined from a block of mild steel using a manual milling machine for shaping and a lathe for creating the hole for the handle. The handle was turned from a cylindrical steel rod on a manual lathe, including threading for attachment to the head.
+                </p>
+                <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                    <li>Facing and squaring stock material.</li>
+                    <li>Milling contours and angles for the hammer head.</li>
+                    <li>Drilling and boring the eye of the hammer head.</li>
+                    <li>Turning the handle to specified diameters.</li>
+                    <li>Knurling the grip area on the handle.</li>
+                    <li>Single-point threading on the lathe for the handle and tapping the head.</li>
+                    <li>Finishing and deburring all components.</li>
+                </ul>
+            </section>
+
+            <section id="gallery" class="mb-10">
+                <h2 class="text-2xl font-semibold text-blue-700 mb-3">Project Gallery</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <figure>
+                        <img src="images/machined hammer.jpg" alt="Machined Hammer" class="gallery-image">
+                        <figcaption class="text-sm text-gray-600 mt-2 text-center">The completed machined hammer.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/machined hammer parts.jpg" alt="Machined Hammer Parts" class="gallery-image">
+                        <figcaption class="text-sm text-gray-600 mt-2 text-center">Individual components: hammer head and handle.</figcaption>
+                    </figure>
+                    <!-- Add more images if available -->
+                </div>
+            </section>
+
+            <section id="outcome" class="mb-10">
+                <h2 class="text-2xl font-semibold text-blue-700 mb-3">Outcome & Skills Gained</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    The project resulted in a functional, well-crafted hammer that met all design specifications. This hands-on experience was invaluable in developing proficiency with manual machine tools, understanding material properties, and appreciating the importance of precision in manufacturing. Key skills enhanced include blueprint reading, machine setup, various milling and lathing operations, and quality control.
+                </p>
+            </section>
+        </main>
     </div>
-    <footer class="text-center py-8 mt-12 border-t border-gray-300">
-      <p>&copy; 2025 Alex Grusin. All rights reserved.</p>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 mt-12 border-t border-gray-300 bg-white">
+        <p class="text-gray-600">&copy; 2025 Alex Grusin. All rights reserved.</p>
     </footer>
+
+    <script src="../../assets/js/main.js"></script>
     <script>
+      // TOC Functionality (copied and adapted from other project pages)
       const sections = document.querySelectorAll('main section[id]');
       const tocLinks = document.querySelectorAll('.toc-link');
+      const tocMenuButton = document.getElementById('toc-menu-button');
+      const tocMobileMenu = document.getElementById('toc-mobile-menu');
+
+      if (tocMenuButton && tocMobileMenu) {
+        tocMenuButton.addEventListener('click', () => {
+          tocMobileMenu.classList.toggle('hidden');
+          const isExpanded = tocMenuButton.getAttribute('aria-expanded') === 'true' || false;
+          tocMenuButton.setAttribute('aria-expanded', !isExpanded);
+          // Optional: Change icon on toggle
+          // tocMenuButton.querySelector('i').classList.toggle('fa-bars');
+          // tocMenuButton.querySelector('i').classList.toggle('fa-times');
+        });
+      }
+
       const observer = new IntersectionObserver(entries => {
+        let mostVisibleSectionId = null;
+        let maxRatio = 0;
         entries.forEach(entry => {
-          const id = entry.target.getAttribute('id');
-          const tocLink = document.querySelector(`.toc-link[href="#${id}"]`);
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            tocLinks.forEach(link => link.classList.remove('active'));
-            if (tocLink) {
-              tocLink.classList.add('active');
-              const parentUl = tocLink.closest('ul');
-              if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.matches('a.toc-link')) {
-                parentUl.previousElementSibling.classList.add('active');
-              }
-            }
+          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            mostVisibleSectionId = entry.target.getAttribute('id');
           }
         });
-      }, { threshold: 0.5, rootMargin: "0px 0px -50% 0px" });
-      sections.forEach(section => { observer.observe(section); });
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+        if (mostVisibleSectionId) {
+          const activeLinks = document.querySelectorAll(`.toc-links-container .toc-link[href="#${mostVisibleSectionId}"]`);
+          activeLinks.forEach(link => link.classList.add('active'));
+        }
+      }, { threshold: Array.from(Array(21).keys(), i => i * 0.05), rootMargin: "0px 0px -35% 0px" });
+
+      sections.forEach(section => observer.observe(section));
+
+      if (tocMobileMenu) {
+        tocMobileMenu.querySelectorAll('a.toc-link').forEach(link => {
+          link.addEventListener('click', () => {
+            tocMobileMenu.classList.add('hidden');
+            if (tocMenuButton) {
+              tocMenuButton.setAttribute('aria-expanded', 'false');
+              // tocMenuButton.querySelector('i').classList.remove('fa-times');
+              // tocMenuButton.querySelector('i').classList.add('fa-bars');
+            }
+          });
+        });
+      }
     </script>
-  </body>
+</body>
 </html>

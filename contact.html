@@ -5,30 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact | Alex Grusin</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
-    <nav class="bg-white shadow p-4">
-      <a href="index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
+    <!-- Responsive Navbar -->
+    <nav class="bg-white shadow p-4 sticky top-0 z-50">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-blue-600 hover:underline text-sm sm:text-base">&larr; Back to Home</a>
+        <!-- Mobile Menu Button (Optional) -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button-contact" class="text-gray-900 focus:outline-none" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu-contact">
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu (hidden by default) -->
+      <div id="mobile-menu-contact" class="hidden md:hidden mt-2 pb-2 absolute bg-white w-full left-0 shadow-lg">
+        <ul class="flex flex-col items-center gap-2">
+          <li><a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-200 w-full text-center">Home</a></li>
+          <!-- Add other relevant links if needed -->
+        </ul>
+      </div>
     </nav>
-    <main class="max-w-4xl mx-auto px-6 py-12">
-      <h1 class="text-3xl font-bold mb-4">Contact Me</h1>
-      <p class="text-lg mb-4">
-        Feel free to reach out to me for collaborations, questions, or just to say hi!
+
+    <main class="max-w-xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <h1 class="text-2xl sm:text-3xl font-bold mb-4 text-center sm:text-left">Contact Me</h1>
+      <p class="text-base sm:text-lg mb-6 text-center sm:text-left">
+        Feel free to reach out to me for collaborations, questions, or just to say hi! I'll do my best to get back to you as soon as possible.
       </p>
-      <form action="https://formspree.io/f/xnndlkkj" method="POST" class="bg-white p-6 rounded shadow-md">
-        <label for="name" class="block text-sm font-medium mb-2">Name</label>
-        <input type="text" id="name" name="name" class="w-full p-2 border rounded mb-4" required />
+      <form action="https://formspree.io/f/xnndlkkj" method="POST" class="bg-white p-6 sm:p-8 rounded-lg shadow-md space-y-4 sm:space-y-6">
+        <div>
+          <label for="name" class="block text-sm font-medium mb-1 sm:mb-2">Name</label>
+          <input type="text" id="name" name="name" class="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required />
+        </div>
 
-        <label for="email" class="block text-sm font-medium mb-2">Email</label>
-        <input type="email" id="email" name="email" class="w-full p-2 border rounded mb-4" required />
+        <div>
+          <label for="email" class="block text-sm font-medium mb-1 sm:mb-2">Email</label>
+          <input type="email" id="email" name="email" class="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required />
+        </div>
 
-        <label for="message" class="block text-sm font-medium mb-2">Message</label>
-        <textarea id="message" name="message" rows="4" class="w-full p-2 border rounded mb-4" required></textarea>
+        <div>
+          <label for="message" class="block text-sm font-medium mb-1 sm:mb-2">Message</label>
+          <textarea id="message" name="message" rows="4" class="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required></textarea>
+        </div>
 
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-          Send Message
-        </button>
+        <div class="text-center sm:text-right">
+          <button type="submit" class="bg-blue-600 text-white px-5 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-blue-700 transition-colors text-base sm:text-lg font-medium shadow-md w-full sm:w-auto">
+            Send Message
+          </button>
+        </div>
       </form>
     </main>
+
+    <footer class="text-center py-6 sm:py-8 mt-8 sm:mt-12 border-t border-gray-300">
+      <p class="text-sm text-gray-600">&copy; 2025 Alex Grusin. All rights reserved.</p>
+    </footer>
+    <script src="assets/js/main.js"></script> <!-- For mobile menu toggle -->
   </body>
 </html>
