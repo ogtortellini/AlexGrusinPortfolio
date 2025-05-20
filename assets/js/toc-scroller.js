@@ -1,20 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const sections = document.querySelectorAll('main section[id]');
   const tocLinks = document.querySelectorAll('.toc-link');
+  const elementsToObserve = [];
 
-  if (sections.length === 0 || tocLinks.length === 0) {
-    // No TOC elements found, so no need to set up the observer
+  tocLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const id = href.substring(1);
+      const targetElement = document.getElementById(id);
+      // Ensure the target element exists and is within the main content area of the page
+      if (targetElement && targetElement.closest('main')) { 
+        elementsToObserve.push(targetElement);
+      }
+    }
+  });
+
+  // If no TOC links or corresponding elements to observe are found, exit.
+  if (elementsToObserve.length === 0 || tocLinks.length === 0) {
     return;
   }
 
   const observer = new IntersectionObserver(entries => {
     let bestCandidateEntry = null;
 
-    // Find the best candidate from the current batch of entries
     entries.forEach(entry => {
-      // Condition for a section to be considered for active state:
       if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-        if (!bestCandidateEntry || entry.target.offsetTop < bestCandidateEntry.target.offsetTop) {
+        // Determine the best candidate: the one whose top is highest in the viewport.
+        if (!bestCandidateEntry || entry.target.getBoundingClientRect().top < bestCandidateEntry.target.getBoundingClientRect().top) {
           bestCandidateEntry = entry;
         }
       }
@@ -22,25 +33,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (bestCandidateEntry) {
       const id = bestCandidateEntry.target.getAttribute('id');
-      const tocLink = document.querySelector(`.toc-link[href="#${id}"]`);
+      const currentTocLink = document.querySelector(`.toc-link[href="#${id}"]`);
       
-      if (tocLink && !tocLink.classList.contains('active')) { // Only update if not already active
-        tocLinks.forEach(link => link.classList.remove('active'));
-        tocLink.classList.add('active');
+      if (currentTocLink) {
+        let parentTocLink = null;
+        // Find parent TOC link for nested structures
+        const listItem = currentTocLink.closest('li');
+        if (listItem) {
+            const parentUl = listItem.parentElement; // This is the UL/OL containing the current LI
+            if (parentUl) {
+                const parentLi = parentUl.closest('li'); // This is the LI that contains parentUl (if nested)
+                if (parentLi) {
+                    // Find the 'a.toc-link' that is a direct child or main link of parentLi
+                    parentTocLink = parentLi.querySelector('a.toc-link'); 
+                }
+            }
+        }
         
-        // Optional: If nested, also activate parent
-        const parentUl = tocLink.closest('ul');
-        if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.matches('a.toc-link')) {
-          parentUl.previousElementSibling.classList.add('active');
+        // Update active classes
+        tocLinks.forEach(link => link.classList.remove('active')); // Clear all active states
+        
+        currentTocLink.classList.add('active'); // Activate current link
+        if (parentTocLink) {
+          parentTocLink.classList.add('active'); // Activate parent link
         }
       }
     }
-    // If no bestCandidateEntry was found in this batch (e.g., sections became non-intersecting 
-    // or their intersectionRatio dropped below 0.5), the currently active link remains active. 
-    // This prevents flickering.
-  }, { threshold: 0.5, rootMargin: "0px 0px -50% 0px" }); // Original IntersectionObserver options
+    // If no bestCandidateEntry, current active links remain.
+  }, { 
+    threshold: 0.5, // 50% of the element must be visible
+    rootMargin: "0px 0px -50% 0px" // Considers top 50% of the viewport for intersection
+  });
 
-  sections.forEach(section => { 
-    observer.observe(section); 
+  elementsToObserve.forEach(element => { 
+    observer.observe(element); 
   });
 });
