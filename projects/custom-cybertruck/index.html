@@ -5,141 +5,357 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Custom Cybertruck Project | Alex Grusin</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+      /* Optional: Smooth scrolling for TOC links */
       html {
         scroll-behavior: smooth;
       }
+      /* Style for active TOC link - can be enhanced with JS */
       .toc-link.active {
         font-weight: bold;
         color: #2563eb; /* Tailwind blue-600 */
       }
-      /* Additional styles for image gallery if needed */
-      .gallery-image {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 0.5rem; /* Tailwind rounded-lg */
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind shadow-md */
-      }
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
-    <!-- Responsive Navbar -->
     <nav class="bg-white shadow p-4 sticky top-0 z-50">
-      <div class="container mx-auto flex justify-between items-center">
-        <a href="../../index.html" class="text-blue-600 hover:underline text-sm sm:text-base">&larr; Back to Home</a>
-        <!-- Mobile Menu Button for TOC -->
-        <div class="lg:hidden">
-          <button id="toc-menu-button" class="text-gray-900 focus:outline-none" aria-label="Open Table of Contents" aria-expanded="false" aria-controls="toc-mobile-menu">
-            <i class="fas fa-bars fa-lg"></i> <!-- Hamburger Icon for TOC -->
-          </button>
-        </div>
-      </div>
+      <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
     </nav>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex flex-col lg:flex-row">
-      <!-- Table of Contents (Sticky on larger screens, Collapsible on mobile) -->
-      <aside class="w-full lg:w-1/4 lg:sticky lg:top-24 self-start mb-8 lg:mb-0 lg:mr-8 z-40">
-        <!-- Mobile TOC Menu (hidden by default) -->
-        <div id="toc-mobile-menu" class="hidden lg:hidden bg-white p-6 rounded-lg shadow mb-4">
-          <h3 class="text-lg font-semibold mb-3 text-gray-800">Table of Contents</h3>
-          <ul class="space-y-2 toc-links-container">
-            <!-- TOC links will be dynamically populated or manually added here -->
-            <li><a href="#introduction" class="toc-link block text-gray-700 hover:text-blue-600">Introduction</a></li>
-            <li><a href="#design-goals" class="toc-link block text-gray-700 hover:text-blue-600">Design Goals</a></li>
-            <li><a href="#fabrication" class="toc-link block text-gray-700 hover:text-blue-600">Fabrication</a></li>
-            <li><a href="#gallery" class="toc-link block text-gray-700 hover:text-blue-600">Gallery</a></li>
-            <li><a href="#outcome" class="toc-link block text-gray-700 hover:text-blue-600">Outcome & Learnings</a></li>
-          </ul>
-        </div>
-        <!-- Desktop TOC (always visible on lg screens) -->
-        <div class="hidden lg:block bg-white p-6 rounded-lg shadow">
-          <h3 class="text-lg font-semibold mb-3 text-gray-800">Table of Contents</h3>
-          <ul class="space-y-2 toc-links-container">
-            <li><a href="#introduction" class="toc-link block text-gray-700 hover:text-blue-600">Introduction</a></li>
-            <li><a href="#design-goals" class="toc-link block text-gray-700 hover:text-blue-600">Design Goals</a></li>
-            <li><a href="#fabrication" class="toc-link block text-gray-700 hover:text-blue-600">Fabrication</a></li>
-            <li><a href="#gallery" class="toc-link block text-gray-700 hover:text-blue-600">Gallery</a></li>
-            <li><a href="#outcome" class="toc-link block text-gray-700 hover:text-blue-600">Outcome & Learnings</a></li>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
+      <!-- Table of Contents (Sticky on larger screens) -->
+      <aside class="w-full lg:w-1/4 lg:sticky lg:top-20 self-start mb-8 lg:mb-0 lg:mr-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-xl font-semibold mb-4">Contents</h2>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#introduction" class="toc-link text-gray-700 hover:text-blue-600">1. Introduction</a></li>
+            <li><a href="#project-goals" class="toc-link text-gray-700 hover:text-blue-600">2. Project Goals & Motivation</a></li>
+            <li>
+              <a href="#design-process" class="toc-link text-gray-700 hover:text-blue-600">3. Design Process</a>
+              <ul class="ml-4 mt-1 space-y-1">
+                <li><a href="#front-bumper-design" class="toc-link text-gray-600 hover:text-blue-500">3.1 Front Bumper</a></li>
+                <li><a href="#rear-bumper-design" class="toc-link text-gray-600 hover:text-blue-500">3.2 Rear Bumper</a></li>
+                <li><a href="#roof-rack-design" class="toc-link text-gray-600 hover:text-blue-500">3.3 Roof Rack</a></li>
+                <li><a href="#ladder-design" class="toc-link text-gray-600 hover:text-blue-500">3.4 Side Access Ladder</a></li>
+                <li><a href="#molle-panels-design" class="toc-link text-gray-600 hover:text-blue-500">3.5 Molle Panels</a></li>
+                <li><a href="#lighting-integration-design" class="toc-link text-gray-600 hover:text-blue-500">3.6 Offroad Lighting</a></li>
+                <li><a href="#wheel-tire-selection" class="toc-link text-gray-600 hover:text-blue-500">3.7 Wheel & Tire Selection</a></li>
+              </ul>
+            </li>
+            <li><a href="#challenges" class="toc-link text-gray-700 hover:text-blue-600">4. Challenges & Solutions</a></li>
+            <li><a href="#gallery" class="toc-link text-gray-700 hover:text-blue-600">5. Final Product Gallery</a></li>
+            <li><a href="#real-world-use" class="toc-link text-gray-700 hover:text-blue-600">5.5 Real-World Utility & Showcase</a></li>
+            <li><a href="#outcome" class="toc-link text-gray-700 hover:text-blue-600">6. Outcome & Learnings</a></li>
           </ul>
         </div>
       </aside>
 
       <!-- Main Content -->
-      <main class="w-full lg:w-3/4 bg-white p-6 sm:p-8 rounded-lg shadow">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-center">Custom Cybertruck Project</h1>
-        <p class="text-center text-gray-600 mb-8 text-sm sm:text-base">[Project subtitle/summary marker - e.g., Enhancing utility and aesthetics of a Tesla Cybertruck]</p>
+      <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
+        <h1 class="text-4xl font-bold mb-2 text-center">Custom Cybertruck Project</h1>
+        <p class="text-center text-gray-600 mb-8">A deep dive into the design and development of a unique Cybertruck concept aimed at being "as Texas as possible."</p>
 
         <section id="introduction" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Introduction</h2>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
-            This project involved the design, fabrication, and installation of custom accessories for a Tesla Cybertruck. The goal was to enhance its functionality for work and adventure, while also personalizing its unique aesthetic. Key components included a custom roof rack, side ladder, front bumper modifications, and a vinyl wrap.
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction</h2>
+          <p class="text-lg leading-relaxed">
+            This project chronicles the journey of transforming a Tesla Cybertruck into a statement piece, commissioned by a client to advertise their virtual power plant business in Texas. The core request was to make the Cybertruck "as Texas as possible," leading to a unique design exploration that balanced bold aesthetics with practical modifications. Initially exploring custom sheet metal body panels, the project evolved towards a distinctive tubular exoskeleton-inspired design, focusing on altering the truck's proportions and enhancing its utility and visual impact. This page details the design iterations, fabrication choices, and the collaborative process that brought this one-of-a-kind Cybertruck to life.
           </p>
         </section>
 
-        <section id="design-goals" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Design Goals</h2>
-          <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2 text-base sm:text-lg">
-            <li><strong>Increased Utility:</strong> Add a robust roof rack for carrying equipment and a ladder for easy access.</li>
-            <li><strong>Enhanced Durability:</strong> Improve front-end protection with a custom bumper.</li>
-            <li><strong>Personalized Aesthetics:</strong> Apply a unique vinyl wrap and integrate auxiliary lighting.</li>
-            <li><strong>Maintain Vehicle Integrity:</strong> Ensure all modifications are reversible and do not compromise the vehicle's core functions or warranty where possible.</li>
-            <li><strong>Practicality:</strong> Design components that are both functional and relatively easy to manufacture and install.</li>
+        <section id="project-goals" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. Project Goals & Motivation</h2>
+          <p class="text-lg leading-relaxed mb-3">
+            The primary impetus for this project was to realize a client’s vision for a purpose-built Cybertruck that functions as a mobile marketing platform for their virtual power plant services—supporting Texas homeowners through the VPP program and offering complimentary home battery installations—while conveying a distinctive, rugged Texan aesthetic. Key objectives included:
+          </p>
+          <ul class="list-disc list-inside text-lg space-y-2">
+            <li><strong>Client Vision:</strong> To create a Cybertruck that is unmistakably unique and "as Texas as possible."</li>
+            <li><strong>Aesthetic Transformation:</strong> To significantly alter the Cybertruck's stock bodylines and proportions, particularly addressing the controversial tapering side profile.</li>
+            <li><strong>Functional Enhancements:</strong> To incorporate practical elements like a robust roof rack, tool/gear mounting solutions (molle panels), a winch-ready front bumper, and a durable rear bash bar.</li>
+            <li><strong>Design Exploration:</strong> To investigate various customization approaches, from custom sheet metal panels to a full tubular exoskeleton, ultimately refining these ideas into a cohesive and buildable design.</li>
+            <li><strong>Showcasing Makerspace Capabilities:</strong> To leverage the team's expertise in CAD design, metal fabrication (cutting, bending, welding), and custom part creation.</li>
           </ul>
         </section>
 
-        <section id="fabrication" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Fabrication & Installation</h2>
-          <p class="text-gray-700 leading-relaxed mb-4 text-base sm:text-lg">
-            The fabrication process involved CAD modeling (Fusion 360), metal cutting, welding, and finishing. The roof rack and ladder were constructed from steel for strength, while the bumper modifications integrated seamlessly with the Cybertruck's existing structure. The vinyl wrap required meticulous surface preparation and application.
+        <section id="design-process" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. Design Process</h2>
+          <p class="text-lg leading-relaxed mb-6">
+            The design process was highly iterative, involving close collaboration with the client to translate their "Texas as possible" vision into a tangible and striking Cybertruck modification. After initial concepts involving custom sheet metal body panels proved less than ideal for the client's goals and budget, we pivoted to a tubular structure approach, leveraging our team's familiarity with tube cutting and welding. This offered greater design freedom and the potential for a more radical transformation. Using <strong>Fusion 360</strong>, I dedicated <strong>over 100 hours</strong> to developing three distinct initial versions of the Cybertruck, exploring different levels of exoskeleton integration. This extensive CAD work formed the foundation for the detailed component designs that followed. All custom steel components were standardized to be sandblasted and then powder-coated in textured black for durability and a cohesive aesthetic. The strategic placement and design of these powder-coated tubular components successfully create the visual impression of a cohesive exoskeleton, fulfilling the client's "Texas as possible" vision.
           </p>
-          <!-- Add more details about specific parts if available -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <figure>
-              <img src="images/Roof Rack Unfinished Passenger Side View.jpg" alt="Unfinished Roof Rack" class="gallery-image">
-              <figcaption class="text-sm text-gray-600 mt-2 text-center">Initial test fit of the roof rack components.</figcaption>
-            </figure>
-            <figure>
-              <img src="images/Rear Bumper Jig.jpg" alt="Rear Bumper Jig" class="gallery-image">
-              <figcaption class="text-sm text-gray-600 mt-2 text-center">Jig used for precise rear bumper assembly.</figcaption>
-            </figure>
+          <div class="my-4 p-4 bg-gray-100 rounded-md text-center">
+            <img src="images/Initial Exoskeleton Sketch.jpg" alt="Initial Exoskeleton Sketch" class="rounded-lg shadow-md mx-auto max-w-full h-auto object-contain" style="max-height: 400px;">
+            <p class="text-sm text-gray-600 mt-2">Early concept sketch exploring the exoskeleton idea.</p>
+          </div>
+
+          <article id="front-bumper-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.1 Front Bumper</h3>
+            
+            <div>
+              <h4 class="text-xl font-semibold mt-4 mb-2">Design</h4>
+              <p class="text-lg leading-relaxed">The front bumper was designed to be winch-ready, provide a more aggressive stance, and serve as a mounting point for auxiliary offroad lighting. The design was kept relatively simple for ease of fabrication while ensuring robustness. FEA was performed using bodyweight loading to ensure its structural integrity.</p>
+              <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <img src="images/front bumper concept 1.png" alt="Front Bumper Concept Sketch" class="rounded-lg shadow-md object-contain max-h-80">
+                <img src="images/Front Bumper Static Test (Bodyweight).jpg" alt="Front Bumper FEA/Static Test" class="rounded-lg shadow-md object-contain max-h-80">
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <h4 class="text-xl font-semibold mt-4 mb-2">Fabrication</h4>
+              <p class="text-lg leading-relaxed">It was constructed from <strong>2-inch Outer Diameter (OD), 1/8 inch wall mild steel tubing</strong> for strength. After fabrication, it was sandblasted and powder-coated.</p>
+              <div class="mt-3">
+                <img src="images/Front Beauty Shot.jpg" alt="Finished Front Bumper with Winch Area" class="rounded-lg shadow-md object-contain max-h-80 mx-auto">
+              </div>
+            </div>
+          </article>
+
+          <article id="rear-bumper-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.2 Rear Bumper</h3>
+
+            <div>
+              <h4 class="text-xl font-semibold mt-4 mb-2">Design</h4>
+              <p class="text-lg leading-relaxed">The rear bumper, or "bash bar," was envisioned with a rugged "Mad-Max" aesthetic, providing robust protection and an aggressive look. It was designed to mount securely to the vehicle's frame and tow hitch points.</p>
+            </div>
+
+            <div class="mt-6">
+              <h4 class="text-xl font-semibold mt-4 mb-2">Fabrication</h4>
+              <p class="text-lg leading-relaxed">The bash bar was built from <strong>2-inch OD, 1/8 inch wall mild steel tubing</strong>. A custom jig was essential for achieving the precise alignment and repeatable fabrication of its complex angles before it was sandblasted and powder-coated.</p>
+              <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <img src="images/Rear Bumper Jig.jpg" alt="Rear Bumper Fabrication Jig" class="rounded-lg shadow-md object-contain max-h-80">
+                <img src="images/Rear Bumper Isometric Night.jpg" alt="Finished Rear Bash Bar Isometric View at Night" class="rounded-lg shadow-md object-contain max-h-80">
+              </div>
+            </div>
+          </article>
+
+          <article id="roof-rack-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.3 Roof Rack & Support Struts</h3>
+
+            <div>
+              <h4 class="text-xl font-semibold mt-4 mb-2">Design</h4>
+              <p class="text-lg leading-relaxed">A critical element for altering the Cybertruck's controversial tapering side profile, the prominent roof rack was designed to be both functional and visually impactful, drastically shifting up the bodyline. Key design features included integrated robust support struts connecting to the tailgate area, which enhance structural rigidity and contribute to the overall exoskeleton aesthetic. The design process involved careful CAD modeling to match vehicle contours.</p>
+            </div>
+
+            <div class="mt-6">
+              <h4 class="text-xl font-semibold mt-4 mb-2">Fabrication</h4>
+              <p class="text-lg leading-relaxed">The roof rack and support struts were fabricated from lighter <strong>1-inch OD, 1/8 inch wall mild steel tubing</strong>. This process involved meticulous cutting, bending, and test-fitting to realize the CAD designs, followed by sandblasting and powder-coating for the final finish.</p>
+              <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <img src="images/Roof Rack Unfinished Passenger Side View.jpg" alt="Unfinished Roof Rack - Passenger Side View" class="rounded-lg shadow-md object-contain max-h-96">
+                <img src="images/Roof Rack + Rear Bumper Alignment.jpg" alt="Roof Rack and Rear Bumper Alignment Check" class="rounded-lg shadow-md object-contain max-h-96">
+                <img src="images/Side Profile + Lights +Starforge Backdrop.jpg" alt="Finished Cybertruck Side Profile with Roof Rack" class="rounded-lg shadow-md object-contain max-h-96">
+              </div>
+            </div>
+          </article>
+
+          <article id="ladder-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.4 Side Access Ladder</h3>
+
+            <div>
+              <h4 class="text-xl font-semibold mt-4 mb-2">Design</h4>
+              <p class="text-lg leading-relaxed">To improve accessibility to the roof rack and enhance the rugged utility look, a side access ladder was designed. It was engineered in CAD to mount securely from the roof rack structure down to the vehicle's side steps/rocker panel area.</p>
+            </div>
+
+            <div class="mt-6">
+              <h4 class="text-xl font-semibold mt-4 mb-2">Fabrication</h4>
+              <p class="text-lg leading-relaxed">The ladder was fabricated from <strong>1-inch OD, 1/8 inch wall mild steel tubing</strong> for a balance of strength and weight. Following successful test-fitting, it was sandblasted and powder-coated.</p>
+              <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <img src="images/Unfinished Ladder.jpeg" alt="Unfinished Access Ladder during fabrication" class="rounded-lg shadow-md object-contain max-h-96">
+                <img src="images/photo of me climbing the ladder on the cybertruck.jpg" alt="Alex Grusin climbing the custom Cybertruck ladder" class="rounded-lg shadow-md object-contain max-h-96">
+              </div>
+            </div>
+          </article>
+
+          <article id="molle-panels-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.5 Molle Panels</h3>
+
+            <div>
+              <h4 class="text-xl font-semibold mt-4 mb-2">Design</h4>
+              <p class="text-lg leading-relaxed">Custom Molle (Modular Lightweight Load-carrying Equipment) panels were designed in Fusion 360 to integrate seamlessly with the support struts of the roof rack. These panels were intended to offer versatile mounting points for tools, recovery gear, and other accessories, significantly enhancing the truck's utility and contributing to its tactical appearance.</p>
+              <div class="mt-3">
+                <img src="images/Molle Panel + Ladder Mockup.jpg" alt="Molle Panel detail with Ladder mockup" class="rounded-lg shadow-md object-contain max-h-96 mx-auto">
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <h4 class="text-xl font-semibold mt-4 mb-2">Fabrication</h4>
+              <p class="text-lg leading-relaxed">The Molle panels were fabricated by fiber-lasering them from steel. Like other steel components, they were subsequently sandblasted and powder-coated for durability and a consistent finish.</p>
+            </div>
+          </article>
+
+          <article id="lighting-integration-design" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.6 Offroad Lighting</h3>
+
+            <div>
+              <h4 class="text-xl font-semibold mt-4 mb-2">Design</h4>
+              <p class="text-lg leading-relaxed">Significant auxiliary lighting was a key client request to complete the rugged, off-road aesthetic. The design process involved selecting appropriate high-power LED light bars and pods, and then designing robust mounting solutions for them on the front bumper and roof rack using Fusion 360.</p>
+            </div>
+
+            <div class="mt-6">
+              <h4 class="text-xl font-semibold mt-4 mb-2">Integration & Wiring</h4>
+              <p class="text-lg leading-relaxed">Careful planning and execution of the wiring harness, including routing and protection, were crucial for a clean, reliable, and professional installation. This meticulous approach resulted in both high-performance illumination and a visually striking appearance once all lights were active.</p>
+              <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <img src="images/Front Light Harness.jpg" alt="Front Light Wiring Harness detail" class="rounded-lg shadow-md object-contain max-h-80">
+                <img src="images/Isometric With Lights.jpg" alt="Cybertruck with all offroad lights illuminated" class="rounded-lg shadow-md object-contain max-h-80">
+              </div>
+            </div>
+          </article>
+
+          <article id="wheel-tire-selection" class="mb-6 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.7 Wheel & Tire Selection</h3>
+            <p class="text-lg leading-relaxed">
+              Achieving the perfect stance and off-road capability required careful consideration of wheel and tire fitment. A significant amount of research and calculation went into selecting options that would complement the Cybertruck's modified aesthetics and performance goals. We analyzed how different wheel sizes and offsets would affect the "poke" – how far the wheels extend from the fenders – compared to the stock setup (55.8mm stock poke).
+            </p>
+            <p class="text-lg leading-relaxed mt-3">
+              Several options, primarily featuring <strong>Black Rhino Armory wheels</strong>, were presented to the client:
+            </p>
+            <ul class="list-disc list-inside text-lg space-y-2 my-3">
+              <li><strong>Option 1:</strong> 18x9.5 wheels with a -18mm offset, fitted with 35-inch tires. This setup resulted in a poke of 138.65mm (an increase of 82.85mm over stock). The net cost for this package was estimated around $2,295.45 after considering the sale of old wheels.</li>
+              <li><strong>Option 2:</strong> 18x9.5 wheels, also with a -18mm offset, but with larger 37-inch tires. This maintained the same poke as Option 1 but offered increased tire height, with an estimated net cost of $2,575.45.</li>
+              <li><strong>Option 3:</strong> 20x9.5 wheels with a +6mm offset, also fitted with 37-inch tires. This option provided a poke of 114.65mm (an increase of 58.85mm over stock), offering a slightly more tucked-in look compared to the -18mm offset options. The estimated net cost for this premium setup was $3,095.45.</li>
+            </ul>
+            <p class="text-lg leading-relaxed mt-3">
+              These costs included the wheel and tire package, a spare, and associated expenses like lift rods, ceramic coating, lug nuts, and hub rings, offset by the potential resale value of the original wheels and tires. This detailed breakdown allowed the client to make an informed decision based on aesthetics, performance, and budget.
+            </p>
+             <div class="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+              <img src="images/scaled cybertruck model with wheel to validate fitment before purchase.png" alt="Scaled Cybertruck model for wheel fitment validation" class="rounded-lg shadow-md mx-auto max-w-full h-auto object-contain" style="max-height: 300px;">
+              <img src="images/Final Proposal CAD.png" alt="Cybertruck with Custom Wheels - CAD Proposal" class="rounded-lg shadow-md mx-auto max-w-full h-auto object-contain" style="max-height: 400px;">
+            </div>
+          </article>
+        </section>
+
+        <section id="challenges" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">4. Challenges & Solutions</h2>
+          <p class="text-lg leading-relaxed">
+            Translating the client's abstract "as Texas as possible" request into concrete design features while balancing aesthetics, functionality, and a $12,000 budget was an ongoing challenge. The initial pivot from costly sheet metal to more familiar mild steel tubing was a key early solution.
+          </p>
+          
+          <div class="mt-6">
+            <h4 class="text-xl font-semibold">Tube Bending Difficulties</h4>
+            <p class="text-lg leading-relaxed mt-1">
+              A significant hurdle emerged with <strong>tube bending</strong>. Our initial plan to retrofit a high-quality manual bender frame with a hydraulic ram from Harbor Freight hit a snag with the bending dies. Professional dies are expensive, and our attempts to create our own using our plasma cutter and 3D printers were ultimately unsuccessful. The custom dies caused <strong>kinking and marring of the tubes</strong>. This entire endeavor cost us more than a month.
+            </p>
+            <!-- No specific image for "kinking", but can show fabrication involving bent tubes -->
+            <div class="mt-3"> 
+                <img src="images/Roof Rack Test Fit Panels.jpg" alt="Roof Rack fabrication showing bent tubes" class="rounded-lg shadow-md object-contain max-h-96 mx-auto">
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <h4 class="text-xl font-semibold">Fabrication Precision</h4>
+            <p class="text-lg leading-relaxed mt-1">
+              <strong>Fabrication precision</strong> was another critical challenge. For the rear bumper, we built a jig and relied on engineering drawings. The roof rack, being the largest and most complex assembly, demanded the most refinement. This necessitated multiple cycles of cutting, adjusting, and re-welding.
+            </p>
+            <div class="mt-3">
+                <img src="images/Rear Bumper Jig.jpg" alt="Rear Bumper Fabrication Jig for precision" class="rounded-lg shadow-md object-contain max-h-96 mx-auto">
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <h4 class="text-xl font-semibold">Full Vehicle Vinyl Wrap</h4>
+            <p class="text-lg leading-relaxed mt-1">
+              The project also included a <strong>full vehicle vinyl wrap</strong>. Taking a week-long "break" from metal fabrication, two of us (with occasional help) undertook this task. It was my first experience wrapping an entire vehicle, and it proved to be a steep learning curve.
+            </p>
+            <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <img src="images/Wrap Surface Prep.jpg" alt="Surface Preparation for Vinyl Wrap" class="rounded-lg shadow-md object-contain max-h-80">
+                <img src="images/Passenger Side Wrap Install.jpg" alt="Passenger Side Vinyl Wrap Installation" class="rounded-lg shadow-md object-contain max-h-80">
+                <img src="images/Tailgate Wrap Install.jpg" alt="Tailgate Vinyl Wrap Installation" class="rounded-lg shadow-md object-contain max-h-80">
+            </div>
           </div>
         </section>
 
         <section id="gallery" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Project Gallery</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            <img src="images/delivery of finished truck driver rear iso.jpg" alt="Finished Cybertruck Driver Rear ISO" class="gallery-image">
-            <img src="images/Front Beauty Shot.jpg" alt="Cybertruck Front Beauty Shot" class="gallery-image">
-            <img src="images/Isometric With Lights.jpg" alt="Cybertruck Isometric With Lights" class="gallery-image">
-            <img src="images/Hauling RaceCar.jpg" alt="Cybertruck Hauling Racecar" class="gallery-image">
-            <img src="images/photo of me climbing the ladder on the cybertruck.jpg" alt="Climbing Cybertruck Ladder" class="gallery-image">
-            <img src="images/Side Profile + Lights +Starforge Backdrop.jpg" alt="Cybertruck Side Profile with Lights" class="gallery-image">
-            <img src="images/using the cybertruck as a work truck to build new metal fabrication room.jpg" alt="Cybertruck as Work Truck" class="gallery-image">
-            <img src="images/Wrap Surface Prep.jpg" alt="Cybertruck Wrap Surface Prep" class="gallery-image">
-            <img src="images/Front Light Harness.jpg" alt="Cybertruck Front Light Harness" class="gallery-image">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">5. Final Product Gallery</h2>
+          <p class="text-lg leading-relaxed mb-4">
+            Visual documentation of the finished Cybertruck.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/Front Beauty Shot.jpg" alt="Finished Cybertruck - Front Beauty Shot" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">Finished Truck - Front View</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+               <img src="images/Side Profile + Lights +Starforge Backdrop.jpg" alt="Finished Cybertruck - Side Profile with Lights" class="w-full h-64 object-cover">
+               <p class="text-center p-2 text-sm text-gray-700">Finished Truck - Side Profile</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+               <img src="images/Rear Bumper Isometric Night.jpg" alt="Rear Bash Bar Isometric View at Night" class="w-full h-64 object-cover">
+               <p class="text-center p-2 text-sm text-gray-700">Rear Bash Bar - Isometric Night</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+               <img src="images/Isometric With Lights.jpg" alt="Cybertruck Isometric View with Lights On" class="w-full h-64 object-cover">
+               <p class="text-center p-2 text-sm text-gray-700">Isometric View - Lights On</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+               <img src="images/Isometric Beauty Shot.jpg" alt="Cybertruck Isometric Beauty Shot" class="w-full h-64 object-cover">
+               <p class="text-center p-2 text-sm text-gray-700">Isometric Beauty Shot</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="real-world-use" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">5.5 Real-World Utility & Showcase</h2>
+          <p class="text-lg leading-relaxed mb-4">
+            Beyond its striking appearance, the modified Cybertruck was put to work, demonstrating its enhanced utility and fulfilling its role as a mobile advertisement and capable vehicle.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-4 rounded-lg shadow-md">
+              <img src="images/Hauling RaceCar.jpg" alt="Cybertruck hauling a racecar" class="rounded-lg shadow-md object-contain max-h-96 mx-auto mb-2">
+              <p class="text-center text-sm text-gray-700">The Cybertruck hauling a racecar, showcasing its towing capabilities.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+              <img src="images/using the cybertruck as a work truck to build new metal fabrication room.jpg" alt="Cybertruck used as a work truck" class="rounded-lg shadow-md object-contain max-h-96 mx-auto mb-2">
+              <p class="text-center text-sm text-gray-700">Utilized as a work truck during the construction of a new metal fabrication room.</p>
+            </div>
           </div>
         </section>
 
         <section id="outcome" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Outcome & Learnings</h2>
-          <p class="text-gray-700 leading-relaxed mb-3 text-base sm:text-lg">
-            The project successfully transformed the Cybertruck into a more versatile and personalized vehicle. The custom components have proven durable and highly functional, significantly enhancing its capabilities for both work-related tasks and recreational adventures.
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">6. Outcome & Learnings</h2>
+          <p class="text-lg leading-relaxed">
+            <strong>The custom Cybertruck project is now complete, and the vehicle is finished and on the road.</strong> It successfully fulfills the client's vision, serving as a unique promotional vehicle that is fully functional for off-road use and undeniably "turns heads everywhere it goes."
+            The project underscored the importance of iterative design (with over 100 hours in CAD alone), the necessity of clear client communication, and the strategic advantage of leveraging existing team strengths. The transition from complex CAD models to a physically manufactured product, especially with fabrication challenges like tube bending and achieving precision on large welded assemblies like the roof rack, provided invaluable hands-on experience. The first-time experience with a full vehicle vinyl wrap also added a new skillset and appreciation for that craft.
           </p>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
-            Key learnings included advanced fabrication techniques, managing a complex multi-stage project, and the intricacies of working with a unique vehicle platform like the Cybertruck. Problem-solving was crucial, especially when integrating custom parts with the vehicle's existing systems and angular design.
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <img src="images/delivery of finished truck driver rear iso.jpg" alt="Finished Cybertruck - Driver Rear Isometric View" class="rounded-lg shadow-md object-contain max-h-96">
+            <img src="images/delivery of finished truck passenger rear iso.jpg" alt="Finished Cybertruck - Passenger Rear Isometric View" class="rounded-lg shadow-md object-contain max-h-96">
+          </div>
+          <p class="text-lg leading-relaxed mt-4">
+             (Further details on personal learnings and specific takeaways will be added in this section later).
           </p>
         </section>
 
       </main>
     </div>
 
-    <footer class="text-center py-6 sm:py-8 mt-8 sm:mt-12 border-t border-gray-300">
-      <p class="text-sm text-gray-600">&copy; 2025 Alex Grusin. All rights reserved.</p>
+    <footer class="text-center py-8 mt-12 border-t border-gray-300">
+      <p>&copy; 2025 Alex Grusin. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Optional: Simple JS for active TOC link highlighting (can be expanded) -->
+    <script>
+      const sections = document.querySelectorAll('main section[id]');
+      const tocLinks = document.querySelectorAll('.toc-link');
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('id');
+          const tocLink = document.querySelector(`.toc-link[href="#${id}"]`);
+          
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            tocLinks.forEach(link => link.classList.remove('active'));
+            if (tocLink) {
+              tocLink.classList.add('active');
+              // Optional: If nested, also activate parent
+              const parentUl = tocLink.closest('ul');
+              if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.matches('a.toc-link')) {
+                parentUl.previousElementSibling.classList.add('active');
+              }
+            }
+          }
+        });
+      }, { threshold: 0.5, rootMargin: "0px 0px -50% 0px" }); // Adjust rootMargin to change when link becomes active
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    </script>
 
   </body>
 </html>

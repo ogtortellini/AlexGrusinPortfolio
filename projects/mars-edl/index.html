@@ -1,194 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mars EDL Simulation | Alex Grusin</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        html { scroll-behavior: smooth; }
-        .toc-link.active { font-weight: bold; color: #2563eb; /* Tailwind blue-600 */ }
-        /* Styles for TOC toggle button */
-        #toc-toggle svg { transition: transform 0.3s ease; }
-        #toc-toggle[aria-expanded="true"] .rotate-180 { transform: rotate(180deg); }
-        /* Ensure main content area allows for scroll margin */
-        main section[id], main article[id] { /* scroll-margin-top will be set by JS */ }
+      html { scroll-behavior: smooth; }
+      .toc-link.active { font-weight: bold; color: #2563eb; }
     </style>
-</head>
-<body class="bg-gray-100 text-gray-900 font-sans">
-
-    <!-- Navbar -->
-    <nav class="bg-white shadow p-4 sticky top-0 z-50 flex justify-between items-center">
-        <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
-        <!-- Hamburger menu for main navigation (if needed on project pages, typically handled by main.js) -->
-        <!-- For project pages, often just a back link is sufficient. If a full nav is needed, link main.js -->
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-sans">
+    <nav class="bg-white shadow p-4 sticky top-0 z-50">
+      <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
     </nav>
-
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
-        <!-- Table of Contents (Sticky on larger screens) -->
-        <aside class="w-full lg:w-1/4 self-start mb-8 lg:mb-0 lg:mr-8">
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-semibold">Table of Contents</h2>
-                    <button id="toc-toggle" aria-expanded="false" aria-controls="toc-menu" class="lg:hidden p-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <span class="sr-only">Toggle Table of Contents</span>
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                        <svg class="w-6 h-6 hidden rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                    </button>
-                </div>
-                <ul id="toc-menu" class="space-y-2 hidden lg:block">
-                    <li><a href="#introduction" class="toc-link text-gray-700 hover:text-blue-600">Introduction</a></li>
-                    <li><a href="#simulation-design" class="toc-link text-gray-700 hover:text-blue-600">Simulation Design</a></li>
-                    <li><a href="#key-challenges" class="toc-link text-gray-700 hover:text-blue-600">Key Challenges</a></li>
-                    <li><a href="#results-analysis" class="toc-link text-gray-700 hover:text-blue-600">Results & Analysis</a></li>
-                    <li><a href="#future-work" class="toc-link text-gray-700 hover:text-blue-600">Future Work</a></li>
-                </ul>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4 text-center">Mars Entry, Descent, and Landing (EDL) Simulation</h1>
-            <p class="text-center text-gray-600 mb-8">Developing a high-fidelity simulation for Mars EDL mission phases.</p>
-
-            <section id="introduction" class="mb-10">
-                <h2 class="text-2xl font-semibold mb-3">Introduction</h2>
-                <p class="text-lg leading-relaxed mb-4">This project focuses on the critical Entry, Descent, and Landing (EDL) phase of a Mars mission. The goal is to create a robust simulation environment to model and analyze the complex dynamics and control systems involved in safely landing a payload on the Martian surface.</p>
-                <div class="bg-gray-200 p-4 rounded-md my-4">
-                    <p class="font-semibold">Placeholder for an introductory image or diagram of the EDL sequence.</p>
-                </div>
-            </section>
-
-            <section id="simulation-design" class="mb-10">
-                <h2 class="text-2xl font-semibold mb-3">Simulation Design</h2>
-                <p class="text-lg leading-relaxed mb-4">The simulation is built using [mention software/language, e.g., Python with SciPy and Matplotlib, MATLAB/Simulink]. It incorporates models for Martian atmosphere, vehicle aerodynamics, parachute deployment, thruster control, and landing gear dynamics.</p>
-                <ul class="list-disc list-inside text-lg mb-4 pl-4 space-y-1">
-                    <li>Atmospheric Model: Based on Mars Climate Database (MCD).</li>
-                    <li>Aerodynamic Coefficients: Derived from CFD analysis or wind tunnel data.</li>
-                    <li>Guidance, Navigation, and Control (GNC): Algorithms for trajectory optimization and control.</li>
-                </ul>
-            </section>
-
-            <section id="key-challenges" class="mb-10">
-                <h2 class="text-2xl font-semibold mb-3">Key Challenges</h2>
-                <p class="text-lg leading-relaxed mb-4">Several challenges were addressed, including modeling uncertainties, ensuring real-time performance for hardware-in-the-loop testing (if applicable), and validating the simulation against existing mission data or theoretical models.</p>
-            </section>
-
-            <section id="results-analysis" class="mb-10">
-                <h2 class="text-2xl font-semibold mb-3">Results & Analysis</h2>
-                <p class="text-lg leading-relaxed mb-4">The simulation provides detailed telemetry and performance metrics. Analysis of various landing scenarios, failure modes, and parameter sensitivities will be presented here. Graphs and visualizations will illustrate key findings.</p>
-                <div class="bg-gray-200 p-4 rounded-md my-4">
-                    <p class="font-semibold">Placeholder for graphs: e.g., Altitude vs. Velocity, Fuel Consumption, Landing Accuracy.</p>
-                </div>
-            </section>
-
-            <section id="future-work" class="mb-10">
-                <h2 class="text-2xl font-semibold mb-3">Future Work</h2>
-                <p class="text-lg leading-relaxed mb-4">Future enhancements could include more detailed subsystem models, integration with machine learning for trajectory optimization, or development of a user-friendly GUI for scenario setup and analysis.</p>
-            </section>
-        </main>
+      <aside class="w-full lg:w-1/4 lg:sticky lg:top-20 self-start mb-8 lg:mb-0 lg:mr-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-xl font-semibold mb-4">Contents</h2>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#introduction" class="toc-link text-gray-700 hover:text-blue-600">1. Introduction</a></li>
+            <li><a href="#timeline" class="toc-link text-gray-700 hover:text-blue-600">2. Project Timeline</a></li>
+            <li><a href="#challenges" class="toc-link text-gray-700 hover:text-blue-600">3. Challenges & Learnings</a></li>
+            <li><a href="#gallery" class="toc-link text-gray-700 hover:text-blue-600">4. Gallery</a></li>
+            <li><a href="#outcome" class="toc-link text-gray-700 hover:text-blue-600">5. Outcome & Reflections</a></li>
+          </ul>
+        </div>
+      </aside>
+      <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
+        <h1 class="text-4xl font-bold mb-2 text-center">Mars EDL Simulation</h1>
+        <p class="text-center text-gray-600 mb-8">[Project subtitle/summary marker]</p>
+        <section id="introduction" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction</h2>
+          <p class="text-lg leading-relaxed">[Intro marker]</p>
+        </section>
+        <section id="timeline" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. Project Timeline</h2>
+          <article id="timeline-phase-1" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">2.1 Research & Planning</h3>
+            <p class="text-lg leading-relaxed">[Phase 1 marker]</p>
+            <div class="my-4">[Image marker]</div>
+            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900">[What I learned marker]</div>
+          </article>
+          <article id="timeline-phase-2" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">2.2 Coding & Simulation</h3>
+            <p class="text-lg leading-relaxed">[Phase 2 marker]</p>
+            <div class="my-4">[Image marker]</div>
+            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900">[What I learned marker]</div>
+          </article>
+          <article id="timeline-phase-3" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">2.3 Analysis & Results</h3>
+            <p class="text-lg leading-relaxed">[Phase 3 marker]</p>
+            <div class="my-4">[Image marker]</div>
+            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900">[What I learned marker]</div>
+          </article>
+        </section>
+        <section id="challenges" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. Challenges & Learnings</h2>
+          <p class="text-lg leading-relaxed">[Challenges marker]</p>
+        </section>
+        <section id="gallery" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">4. Gallery</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <img src="images/Mars-EDL Sim Results.jpg" alt="Mars EDL" class="rounded-xl shadow mb-6 w-full h-64 object-cover">
+          </div>
+          <p class="text-sm text-gray-600 mt-4 text-center">[Gallery caption marker]</p>
+        </section>
+        <section id="outcome" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">5. Outcome & Reflections</h2>
+          <p class="text-lg leading-relaxed">[Outcome marker]</p>
+          <div class="mt-6">
+            <a href="https://github.com/ogtortellini/MarsEDLSim" class="text-blue-600 hover:underline" target="_blank">View Code on GitHub</a>
+          </div>
+        </section>
+      </main>
     </div>
-
     <footer class="text-center py-8 mt-12 border-t border-gray-300">
-        <p>&copy; 2025 Alex Grusin. All rights reserved.</p>
-        <p><a href="https://www.linkedin.com/in/alexgrusin/" target="_blank" class="text-blue-600 hover:underline">LinkedIn</a> | <a href="https://github.com/alexgrusin" target="_blank" class="text-blue-600 hover:underline">GitHub</a></p>
+      <p>&copy; 2025 Alex Grusin. All rights reserved.</p>
     </footer>
-
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tocToggle = document.getElementById('toc-toggle');
-            const tocMenu = document.getElementById('toc-menu');
-            const tocAside = document.querySelector('aside'); // The container of the TOC
-            const mainNav = document.querySelector('nav.sticky');
-            let mainNavHeight = 60; // Default or fallback nav height
-            if (mainNav) {
-                mainNavHeight = mainNav.offsetHeight;
+      const sections = document.querySelectorAll('main section[id]');
+      const tocLinks = document.querySelectorAll('.toc-link');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('id');
+          const tocLink = document.querySelector(`.toc-link[href=\"#${id}\"]`);
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            tocLinks.forEach(link => link.classList.remove('active'));
+            if (tocLink) {
+              tocLink.classList.add('active');
+              const parentUl = tocLink.closest('ul');
+              if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.matches('a.toc-link')) {
+                parentUl.previousElementSibling.classList.add('active');
+              }
             }
-
-            // TOC Mobile Toggle
-            if (tocToggle && tocMenu) {
-                const openIcon = tocToggle.querySelector('svg:nth-child(1)');
-                const closeIcon = tocToggle.querySelector('svg:nth-child(2)');
-
-                tocToggle.addEventListener('click', () => {
-                    const isExpanded = tocMenu.classList.toggle('hidden');
-                    tocToggle.setAttribute('aria-expanded', !isExpanded);
-                    openIcon.classList.toggle('hidden', !isExpanded);
-                    closeIcon.classList.toggle('hidden', isExpanded);
-                });
-            }
-
-            // Sticky TOC on Desktop
-            // We will make the TOC sticky using Tailwind's sticky class and adjust its top position.
-            // The 'lg:sticky' and 'lg:top-24' (adjust as needed) classes should be on the aside element.
-            // The JS part for this is mainly to adjust 'top' if nav height is dynamic or for complex scenarios.
-            // For this setup, Tailwind handles stickiness well. We ensure 'self-start' on aside for proper layout.
-            // If specific dynamic adjustments are needed:
-            if (tocAside && window.innerWidth >= 1024) { // lg breakpoint
-                 tocAside.style.top = (mainNavHeight + 20) + 'px'; // e.g., nav height + some padding
-            }
-
-
-            // IntersectionObserver for Active TOC Link
-            const sections = document.querySelectorAll('main section[id]');
-            const tocLinks = document.querySelectorAll('.toc-link');
-
-            const observerOptions = {
-                rootMargin: '-' + (mainNavHeight + 24) + 'px 0px -60% 0px', // (nav height + buffer) from top, significant portion from bottom
-                threshold: 0.01 // Small threshold, active when element just enters the adjusted rootMargin
-            };
-
-            const observer = new IntersectionObserver(entries => {
-                let lastVisibleSectionId = null;
-
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        lastVisibleSectionId = entry.target.getAttribute('id');
-                    }
-                });
-                
-                // If multiple are intersecting, the last one in DOM order that is visible will be preferred by this logic
-                // Or, if scrolling up, the first one encountered.
-                // A more robust way might be to find the one with largest intersection ratio or closest to top of viewport.
-                // For now, this highlights the current or last "active" section based on scroll.
-
-                tocLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (lastVisibleSectionId && link.getAttribute('href') === '#' + lastVisibleSectionId) {
-                        link.classList.add('active');
-                    }
-                });
-
-                // Fallback: if no section is actively "intersecting" by the logic (e.g. in gaps, or after last section)
-                // try to keep the last known active link, or clear all.
-                // Current logic: only highlight if a section is deemed intersecting by the observer.
-                // If lastVisibleSectionId is null after loop (no intersections), all links will be inactive.
-
-            }, observerOptions);
-
-            sections.forEach(section => {
-                observer.observe(section);
-                // Set scroll-margin-top for each section to account for the sticky navbar
-                section.style.scrollMarginTop = (mainNavHeight + 20) + 'px'; // nav height + some padding
-            });
-
-            // Close TOC on link click (for mobile)
-            if (tocMenu && tocToggle) { // Ensure tocToggle exists for aria attribute update
-                tocLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        if (window.innerWidth < 1024) { // lg breakpoint
-                            tocMenu.classList.add('hidden');
-                            tocToggle.setAttribute('aria-expanded', 'false');
-                            tocToggle.querySelector('svg:nth-child(1)').classList.remove('hidden'); // Show hamburger
-                            tocToggle.querySelector('svg:nth-child(2)').classList.add('hidden');    // Hide close
-                        }
-                    });
-                });
-            }
+          }
         });
+      }, { threshold: 0.5, rootMargin: "0px 0px -50% 0px" });
+      sections.forEach(section => { observer.observe(section); });
     </script>
-    <!-- Link to main.js if global mobile navigation features are desired on this page -->
-    <!-- <script src="../../assets/js/main.js" defer></script> -->
-</body>
+  </body>
 </html>

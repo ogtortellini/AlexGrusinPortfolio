@@ -5,19 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hydrolysis Power Cell Project | Alex Grusin</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
       html { scroll-behavior: smooth; }
-      .toc-link.active { font-weight: bold; color: #2563eb; /* Tailwind blue-600 */ }
-      .gallery-image, .video-placeholder, .image-placeholder {
-        width: 100%;
-        height: auto;
-        max-height: 450px; /* Adjust as needed */
-        object-fit: cover;
-        border-radius: 0.5rem; /* Tailwind rounded-lg */
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind shadow-md */
-        margin-bottom: 0.5rem; /* Space below image/placeholder */
-      }
+      .toc-link.active { font-weight: bold; color: #2563eb; }
       .video-placeholder, .image-placeholder {
         background-color: #e0e0e0;
         display: flex;
@@ -28,210 +18,344 @@
         border: 2px dashed #ccc;
         min-height: 200px; /* Default height */
       }
-      /* Specific styling for articles if needed */
-      main article {
-        scroll-margin-top: 80px; /* Adjust based on sticky nav height */
-      }
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
-    <!-- Responsive Navbar -->
     <nav class="bg-white shadow p-4 sticky top-0 z-50">
-      <div class="container mx-auto flex justify-between items-center">
-        <a href="../../index.html" class="text-blue-600 hover:underline text-sm sm:text-base">&larr; Back to Home</a>
-        <!-- Mobile Menu Button for TOC -->
-        <div class="lg:hidden">
-          <button id="toc-menu-button" class="text-gray-900 focus:outline-none" aria-label="Open Table of Contents" aria-expanded="false" aria-controls="toc-mobile-menu">
-            <i class="fas fa-bars fa-lg"></i> <!-- Hamburger Icon for TOC -->
-          </button>
-        </div>
-      </div>
+      <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
     </nav>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex flex-col lg:flex-row">
-      <!-- Table of Contents (Sticky on larger screens, Collapsible on mobile) -->
-      <aside class="w-full lg:w-1/4 lg:sticky lg:top-24 self-start mb-8 lg:mb-0 lg:mr-8 z-40">
-        <!-- Mobile TOC Menu (hidden by default) -->
-        <div id="toc-mobile-menu" class="hidden lg:hidden bg-white p-6 rounded-lg shadow mb-4">
-          <h3 class="text-lg font-semibold mb-3 text-gray-800">Table of Contents</h3>
-          <ul class="space-y-2 toc-links-container">
-            <li><a href="#introduction" class="toc-link block text-gray-700 hover:text-blue-600">Introduction</a></li>
-            <li><a href="#problem-statement" class="toc-link block text-gray-700 hover:text-blue-600">Problem Statement</a></li>
-            <li><a href="#design-overview" class="toc-link block text-gray-700 hover:text-blue-600">Design Overview</a></li>
-            <li><a href="#key-systems" class="toc-link block text-gray-700 hover:text-blue-600">Key Systems</a></li>
-            <li><a href="#analysis-simulation" class="toc-link block text-gray-700 hover:text-blue-600">Analysis & Simulation</a></li>
-            <li><a href="#prototype-testing" class="toc-link block text-gray-700 hover:text-blue-600">Prototype & Testing</a></li>
-            <li><a href="#results" class="toc-link block text-gray-700 hover:text-blue-600">Results & Future Work</a></li>
-            <li><a href="#gallery" class="toc-link block text-gray-700 hover:text-blue-600">Gallery</a></li>
-          </ul>
-        </div>
-        <!-- Desktop TOC (always visible on lg screens) -->
-        <div class="hidden lg:block bg-white p-6 rounded-lg shadow">
-          <h3 class="text-lg font-semibold mb-3 text-gray-800">Table of Contents</h3>
-          <ul class="space-y-2 toc-links-container">
-            <li><a href="#introduction" class="toc-link block text-gray-700 hover:text-blue-600">Introduction</a></li>
-            <li><a href="#problem-statement" class="toc-link block text-gray-700 hover:text-blue-600">Problem Statement</a></li>
-            <li><a href="#design-overview" class="toc-link block text-gray-700 hover:text-blue-600">Design Overview</a></li>
-            <li><a href="#key-systems" class="toc-link block text-gray-700 hover:text-blue-600">Key Systems</a></li>
-            <li><a href="#analysis-simulation" class="toc-link block text-gray-700 hover:text-blue-600">Analysis & Simulation</a></li>
-            <li><a href="#prototype-testing" class="toc-link block text-gray-700 hover:text-blue-600">Prototype & Testing</a></li>
-            <li><a href="#results" class="toc-link block text-gray-700 hover:text-blue-600">Results & Future Work</a></li>
-            <li><a href="#gallery" class="toc-link block text-gray-700 hover:text-blue-600">Gallery</a></li>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
+      <aside class="w-full lg:w-1/4 lg:sticky lg:top-20 self-start mb-8 lg:mb-0 lg:mr-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-xl font-semibold mb-4">Contents</h2>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#intro-problem" class="toc-link text-gray-700 hover:text-blue-600">1. Introduction & Problem</a></li>
+            <li><a href="#project-goals" class="toc-link text-gray-700 hover:text-blue-600">2. Project Goals & Objectives</a></li>
+            <li><a href="#design-development-journey" class="toc-link text-gray-700 hover:text-blue-600">3. Design & Development Journey</a>
+              <ul class="ml-4 mt-1 space-y-1">
+                <li><a href="#design-approach" class="toc-link text-gray-600 hover:text-blue-600">3.1 Overall Design Approach</a></li>
+                <li><a href="#timeline-phase-1" class="toc-link text-gray-600 hover:text-blue-600">3.2 Phase 1: Research & Concept</a></li>
+                <li><a href="#timeline-phase-2" class="toc-link text-gray-600 hover:text-blue-600">3.3 Phase 2: Detailed Design & Prototyping</a></li>
+                <li><a href="#timeline-phase-3" class="toc-link text-gray-600 hover:text-blue-600">3.4 Phase 3: Manufacturing & Assembly</a></li>
+                <li><a href="#timeline-phase-4" class="toc-link text-gray-600 hover:text-blue-600">3.5 Phase 4: Testing & Iteration</a></li>
+                <li><a href="#key-features" class="toc-link text-gray-600 hover:text-blue-600">3.6 Key Features Developed</a></li>
+                <li><a href="#results-performance" class="toc-link text-gray-600 hover:text-blue-600">3.7 Performance Results</a></li>
+              </ul>
+            </li>
+            <li><a href="#reflections-future" class="toc-link text-gray-700 hover:text-blue-600">4. Reflections & Future</a>
+              <ul class="ml-4 mt-1 space-y-1">
+                <li><a href="#challenges-learnings" class="toc-link text-gray-600 hover:text-blue-600">4.1 Challenges & Key Learnings</a></li>
+                <li><a href="#conclusion-next-steps" class="toc-link text-gray-600 hover:text-blue-600">4.2 Conclusion & Next Steps</a></li>
+              </ul>
+            </li>
+            <li><a href="#gallery" class="toc-link text-gray-700 hover:text-blue-600">5. Gallery</a></li>
+            <li><a href="#project-context" class="toc-link text-gray-700 hover:text-blue-600">6. Project Context & Acknowledgements</a></li>
+            <li><a href="#presentation-pdf" class="toc-link text-gray-700 hover:text-blue-600">7. Final Presentation PDF</a></li>
           </ul>
         </div>
       </aside>
-
-      <main class="w-full lg:w-3/4 bg-white p-6 sm:p-8 rounded-lg shadow">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-center">Hydrolysis Power Cell for Space Applications</h1>
-        <p class="text-center text-gray-600 mb-8 text-sm sm:text-base">Developing a proof-of-concept system for generating hydrogen and oxygen from water ice for ISRU (In-Situ Resource Utilization) on Mars.</p>
-
-        <article id="introduction" class="mb-10">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Introduction</h2>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
-            This project, undertaken for a senior design course, focused on the conceptualization and partial prototyping of a hydrolysis power cell system. The primary objective was to demonstrate the feasibility of extracting water ice (simulated), melting it, and then electrolyzing the water to produce hydrogen (for fuel) and oxygen (for life support or oxidizer) in a simulated Martian environment. This aligns with NASA's goals for In-Situ Resource Utilization (ISRU) to reduce mission mass and cost.
-          </p>
-        </article>
-
-        <article id="problem-statement" class="mb-10">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Problem Statement</h2>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
-            Future long-duration missions to Mars will require sustainable resources. Transporting all necessary water, fuel, and oxygen from Earth is prohibitively expensive and logistically complex. The presence of water ice on Mars offers an opportunity to produce these vital resources on-site. This project addresses the challenge of designing a compact, efficient system to convert Martian water ice into usable hydrogen and oxygen.
-          </p>
-        </article>
-
-        <article id="design-overview" class="mb-10">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">System Design Overview</h2>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg mb-3">
-            Our proposed system consists of several key stages:
-          </p>
-          <ol class="list-decimal list-inside text-gray-700 leading-relaxed space-y-2 text-base sm:text-lg">
-            <li><strong>Ice Acquisition & Delivery:</strong> (Conceptual) A mechanism to drill/collect ice and deliver it to the processing unit.</li>
-            <li><strong>Melting Chamber:</strong> An insulated chamber to melt the water ice efficiently using minimal power.</li>
-            <li><strong>Water Filtration/Purification:</strong> (Conceptual) A system to remove impurities from the melted water before electrolysis.</li>
-            <li><strong>Electrolysis Cell:</strong> A Proton Exchange Membrane (PEM) electrolyzer to split water into hydrogen and oxygen.</li>
-            <li><strong>Gas Storage & Management:</strong> Separate storage tanks for hydrogen and oxygen, with pressure and temperature monitoring.</li>
-            <li><strong>Power System:</strong> (Conceptual) Solar panels and batteries to power the entire system.</li>
-            <li><strong>Control System:</strong> Microcontroller-based system to manage the process, monitor sensors, and control actuators.</li>
-          </ol>
-          <div class="my-6 video-placeholder h-64 sm:h-80">
-            <p class="text-lg">Video Placeholder: System Animation / CAD Flythrough</p>
+      <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
+        <h1 class="text-4xl font-bold mb-2 text-center">Portable Hydrogen Generation System for Power Applications</h1>
+        <p class="text-center text-gray-600 mb-8">Developing a compact and efficient hydrolysis-based power cell for clean energy on demand.</p>
+        
+        <section id="intro-problem" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction & Problem</h2>
+          <p class="text-lg leading-relaxed mb-4">This project focuses on the design, development, and testing of a novel hydrolysis power cell. The goal is to create a sustainable and portable energy source capable of generating hydrogen gas through water electrolysis, which can then be used to power various applications. The increasing demand for clean and portable energy solutions necessitates alternatives to traditional fossil fuels and battery technologies. Current solutions often suffer from limitations such as environmental impact, low energy density, or intermittent supply. This project addresses the need for a reliable, on-demand hydrogen generation system that is compact, efficient, and utilizes readily available resources (water).</p>
+          <div class="my-4">
+            <img src="images/hydrogen generator beauty shot.JPG" alt="Hydrogen Generator System Concept" class="w-full max-w-lg mx-auto rounded-lg shadow-md">
+            <p class="text-center text-sm text-gray-600 mt-2">Initial concept of the portable hydrogen generation system.</p>
           </div>
-        </article>
+        </section>
 
-        <article id="key-systems" class="mb-10">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Focus on Key Systems: Melting & Electrolysis</h2>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg mb-3">
-            Due to time and resource constraints, our physical prototype focused on the melting chamber and the electrolysis process. We designed and built a small-scale melting unit and integrated it with a commercially available PEM electrolysis cell. My role involved CAD design of the melting chamber, selection of the electrolyzer, and integration of temperature sensors and heating elements.
-          </p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-4">
-            <div class="image-placeholder h-56">
-              <p>Image: CAD model of Melting Chamber</p>
-            </div>
-            <div class="image-placeholder h-56">
-              <p>Image: Electrolysis Cell Setup</p>
-            </div>
-          </div>
-        </article>
-
-        <article id="analysis-simulation" class="mb-10">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Thermal Analysis & Power Estimation</h2>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
-            A significant portion of the project involved theoretical analysis. We performed thermal simulations for the melting chamber to optimize insulation and heating element placement. Power consumption estimates were calculated for each stage of the process to size the conceptual solar array and battery storage.
-          </p>
-          <!-- Placeholder for a chart or graph from analysis -->
-        </article>
-
-        <article id="prototype-testing" class="mb-10">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Prototype Construction & Testing</h2>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
-            The prototype successfully demonstrated the melting of simulated water ice (regular ice mixed with some fine sand to simulate regolith) and subsequent electrolysis to produce measurable amounts of hydrogen and oxygen. Testing was conducted at atmospheric pressure due to limitations in creating a vacuum chamber for a full Martian environment simulation.
-          </p>
-        </article>
-
-        <article id="results" class="mb-10">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Results & Future Work</h2>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg mb-3">
-            The project confirmed the basic viability of the core concept. The prototype produced gases at expected rates for the given electrolyzer specifications. Future work would involve:
-          </p>
-          <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2 text-base sm:text-lg">
-            <li>Scaling up the system for higher production rates.</li>
-            <li>Integrating a water purification stage.</li>
-            <li>Developing a more sophisticated control system with automation.</li>
-            <li>Testing in a vacuum chamber to better simulate Martian atmospheric conditions.</li>
-            <li>Designing and incorporating the ice acquisition and delivery mechanism.</li>
+        <section id="project-goals" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. Project Goals & Objectives</h2>
+          <ul class="list-disc pl-6 text-lg leading-relaxed space-y-2">
+            <li>Design and build a functional hydrolysis power cell prototype.</li>
+            <li>Achieve a target hydrogen production rate of [Specify Target Rate, e.g., X L/min].</li>
+            <li>Optimize for energy efficiency (hydrogen output vs. electrical input).</li>
+            <li>Ensure safe operation and incorporate necessary safety features.</li>
+            <li>Develop a compact and portable design.</li>
+            <li>Utilize cost-effective materials and manufacturing processes where possible.</li>
+            <li>Document the design, build, and testing process thoroughly.</li>
           </ul>
-        </article>
+        </section>
+        
+        <section id="design-development-journey" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. Design & Development Journey</h2>
+          
+          <article id="design-approach" class="mb-10 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.1 Overall Design Approach</h3>
+            <p class="text-lg leading-relaxed mb-4">The system employs a [e.g., PEM (Proton Exchange Membrane) or alkaline] electrolyzer design. Key components include the electrode assembly, membrane/separator, electrolyte management system, power input, and gas output/collection. The design prioritizes modularity for ease of assembly and maintenance.</p>
+            <p class="text-lg leading-relaxed mb-4">Materials selection focused on [e.g., corrosion resistance, electrical conductivity, cost]. Stainless steel [e.g., 316L] was chosen for the electrodes, and [Specify material] for the housing.</p>
+            <div class="my-4">
+                <img src="images/hydrogen generator beauty shot.JPG" alt="Hydrogen Generator CAD Rendering" class="w-full rounded-lg shadow-md mb-4">
+                <p class="text-center text-sm text-gray-600 mt-1">CAD rendering of the hydrogen generator.</p>
+            </div>
+            <div class="my-4">
+                <video class="w-full rounded-lg shadow-md" controls poster="images/hydrogen generator beauty shot.JPG">
+                    <source src="images/Assembly of hydrogen generator in CAD.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="text-center text-sm text-gray-600 mt-1">CAD assembly animation.</p>
+            </div>
+          </article>
 
-        <article id="gallery" class="mb-10">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Project Gallery</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <!-- Replace placeholders with actual images from the project -->
-            <div class="image-placeholder h-56"><p>Image: Assembled Prototype Unit</p></div>
-            <div class="image-placeholder h-56"><p>Image: Close-up of Electrolyzer</p></div>
-            <div class="image-placeholder h-56"><p>Image: Team working on the prototype</p></div>
-            <div class="image-placeholder h-56"><p>Image: Data collection/results screen</p></div>
-            <img src="../../assets/images/headshot hydrolysis year 2.jpg" alt="Alex Grusin with Hydrolysis Project background (conceptual)" class="gallery-image">
-            <figcaption class="text-sm text-gray-600 mt-1 text-center sm:col-span-2">My headshot, taken during the development phase of the Hydrolysis project.</figcaption>
+          <article id="timeline-phase-1" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.2 Phase 1: Research & Concept Development (e.g., Week 1-4)</h3>
+            <p class="text-lg leading-relaxed mb-4">This phase involved a literature review of existing hydrolysis technologies, material properties, and safety considerations. Brainstorming sessions led to the initial concept, focusing on [mention key initial ideas or constraints]. Preliminary calculations for power requirements and hydrogen output were performed.</p>
+            <div class="my-4 image-placeholder h-64"><p>Placeholder for an image of initial sketches, research notes, or mind maps.</p></div>
+            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900"><strong>Learnings:</strong> Understanding the trade-offs between different electrolyzer types (PEM, alkaline, SOEC). Importance of material compatibility with electrolytes.</div>
+          </article>
+          <article id="timeline-phase-2" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.3 Phase 2: Detailed Design & Prototyping</h3>
+            <p class="text-lg leading-relaxed mb-4">CAD models of all components were created using [Specify CAD Software]. Finite Element Analysis (FEA) was used for [e.g., structural integrity of the housing, flow analysis if applicable]. Early prototypes of critical components, such as the electrode stack and sealing mechanisms, were 3D printed or machined for fit and function tests.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+              <div class="image-placeholder h-64"><p>Placeholder for CAD screenshots or early prototype photos.</p></div>
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="images/stacking the prototype hydrogen generator gaskets.jpg" alt="Stacking prototype hydrogen generator gaskets" class="w-full h-64 object-cover">
+                <p class="text-center p-2 text-sm text-gray-700">Stacking prototype gaskets</p>
+              </div>
+            </div>
+            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900"><strong>Learnings:</strong> Challenges in achieving reliable sealing. Iterative design improvements based on prototype testing. Sourcing appropriate materials and components.</div>
+          </article>
+          <article id="timeline-phase-3" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.4 Phase 3: Manufacturing & Assembly</h3>
+            <p class="text-lg leading-relaxed mb-4">Components were manufactured using [e.g., CNC machining, laser cutting, 3D printing]. The electrode plates were prepared by [e.g., surface treatment, coating]. The assembly process involved careful stacking of electrodes, membranes, and gaskets, followed by integration into the main housing and connection of plumbing and electrical systems.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="images/laser cutting custom rubber gaskets for the hydrogen generator.jpg" alt="Laser cutting custom rubber gaskets" class="w-full h-auto object-cover">
+                    <p class="text-center p-2 text-sm text-gray-700">Laser cutting custom gaskets</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="images/prepping the stainless electrode plates in HCL.JPG" alt="Prepping stainless electrode plates" class="w-full h-auto object-cover">
+                    <p class="text-center p-2 text-sm text-gray-700">Prepping electrode plates in HCl</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="images/bonding the gas seperation membrane between two gaskets.JPG" alt="Bonding gas separation membrane" class="w-full h-auto object-cover">
+                    <p class="text-center p-2 text-sm text-gray-700">Bonding gas separation membrane</p>
+                </div>
+                <div class="image-placeholder h-64"><p>Placeholder for photos of the assembly process.</p></div>
+            </div>
+            <div class="my-4 video-placeholder h-80"><p>Placeholder for a time-lapse video of the assembly.</p></div>
+            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900"><strong>Learnings:</strong> Importance of manufacturing tolerances. Techniques for handling delicate components like membranes. Assembly sequence optimization.</div>
+          </article>
+          <article id="timeline-phase-4" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.5 Phase 4: Testing & Iteration (e.g., Week 15-18)</h3>
+            <p class="text-lg leading-relaxed mb-4">The assembled prototype underwent rigorous testing. This included leak tests, electrical continuity checks, and performance tests to measure hydrogen output rate at various power inputs. Data was collected on efficiency, temperature, and stability. Several iterations were made to [e.g., improve sealing, optimize flow, enhance electrical contact].</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                <div class="image-placeholder h-64"><p>Placeholder for photos of the testing setup.</p></div>
+                <div class="image-placeholder h-64"><p>Placeholder for graphs of test results (e.g., H2 production vs. Power).</p></div>
+            </div>
+            <div class="my-4 video-placeholder h-80"><p>Placeholder for a video of the system in operation or a specific test being performed.</p></div>
+            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900"><strong>Learnings:</strong> Identifying and resolving unexpected issues during operation. Importance of systematic testing procedures. Validating theoretical calculations with experimental data.</div>
+          </article>
+
+          <article id="key-features" class="mb-10 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.6 Key Features Developed</h3>
+            <ul class="list-disc pl-6 text-lg leading-relaxed space-y-2">
+              <li><strong>Compact Design:</strong> Achieved a small footprint of [Dimensions] suitable for portable applications.</li>
+              <li><strong>[Unique Feature 1]:</strong> Description of a specific innovative aspect, e.g., "Novel electrode geometry for enhanced surface area."</li>
+              <li><strong>[Unique Feature 2]:</strong> Description of another innovative aspect, e.g., "Integrated thermal management system."</li>
+              <li><strong>Material Selection:</strong> Use of [Specific material] for improved durability/efficiency.</li>
+              <li><strong>Safety Mechanisms:</strong> Incorporated [e.g., pressure relief valve, leak detection - be specific if applicable].</li>
+            </ul>
+            <div class="my-4 image-placeholder h-80"><p>Placeholder for an image highlighting key features on the device.</p></div>
+          </article>
+
+          <article id="results-performance" class="mb-10 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">3.7 Performance Results</h3>
+            <p class="text-lg leading-relaxed mb-4">The final prototype achieved a maximum hydrogen production rate of [Actual Rate] at an input power of [Power Value]. The energy efficiency was calculated to be [Efficiency Percentage]. The system demonstrated stable operation for [Duration] under continuous load.</p>
+            <p class="text-lg leading-relaxed mb-4">Key performance metrics:</p>
+            <ul class="list-disc pl-6 text-lg leading-relaxed space-y-1">
+              <li>Max Hydrogen Output: [Value] L/min</li>
+              <li>Operating Voltage: [Value] V</li>
+              <li>Operating Current: [Value] A</li>
+              <li>Efficiency: [Value]%</li>
+              <li>Temperature Range: [Value] °C</li>
+            </ul>
+            <div class="my-4 image-placeholder h-80"><p>Placeholder for key performance graphs (e.g., Polarization curve, Hydrogen production over time).</p></div>
+          </article>
+        </section>
+        
+        <section id="reflections-future" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">4. Reflections & Future</h2>
+
+          <article id="challenges-learnings" class="mb-10 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">4.1 Challenges & Key Learnings</h3>
+            <p class="text-lg leading-relaxed mb-4">Several challenges were encountered during the project:</p>
+            <ul class="list-disc pl-6 text-lg leading-relaxed space-y-2">
+              <li><strong>Sealing:</strong> Achieving a perfect gas and liquid seal in the electrode stack was a significant hurdle, requiring multiple iterations of gasket design and material selection.</li>
+              <li><strong>Material Compatibility:</strong> Ensuring all wetted components were resistant to the [electrolyte type, e.g., KOH solution] at operating temperatures.</li>
+              <li><strong>Thermal Management:</strong> Managing the heat generated during electrolysis, especially at higher power inputs.</li>
+              <li><strong>[Specific Challenge]:</strong> Describe another specific technical challenge.</li>
+            </ul>
+            <p class="text-lg leading-relaxed mt-4">Key learnings include the importance of meticulous assembly, the iterative nature of engineering design, and the value of robust testing protocols. This project provided significant hands-on experience in [mention specific skills like CAD, FEA, machining, circuit design, chemical handling].</p>
+          </article>
+
+          <article id="conclusion-next-steps" class="mb-10 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">4.2 Conclusion & Next Steps</h3>
+            <p class="text-lg leading-relaxed mb-4">The Hydrolysis Power Cell project successfully demonstrated the feasibility of a compact, portable hydrogen generator. The prototype achieved [mention a key positive result, e.g., "a promising hydrogen production rate"] and provided invaluable insights into the design and construction of such systems. This work lays the foundation for future advancements in decentralized clean energy generation.</p>
+            <p class="text-lg leading-relaxed mb-4">While the current prototype meets many of the initial goals, there are several areas for future development:</p>
+            <ul class="list-disc pl-6 text-lg leading-relaxed space-y-2">
+              <li>Further optimization of electrode catalyst materials to improve efficiency.</li>
+              <li>Integration of a more sophisticated control system for automated operation and safety monitoring.</li>
+              <li>Miniaturization of components for even greater portability.</li>
+              <li>Long-term durability testing.</li>
+              <li>Exploration of direct integration with a fuel cell for a complete power system.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="gallery" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">5. Gallery</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/hydrogen generator beauty shot.JPG" alt="Hydrogen Generator Beauty Shot" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">Hydrogen Generator Beauty Shot</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <video class="w-full h-64 object-cover" controls poster="images/hydrogen_generator_cad_poster.png">
+                <source src="images/Assembly of hydrogen generator in CAD.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="text-center p-2 text-sm text-gray-700">CAD Assembly Animation (MP4)</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/1st semester team photo.JPG" alt="1st Semester Team Photo" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">1st Semester Team Photo</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/laser cutting custom rubber gaskets for the hydrogen generator.jpg" alt="Laser cutting custom rubber gaskets" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">Laser Cutting Gaskets</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/bonding the gas seperation membrane between two gaskets.JPG" alt="Bonding gas separation membrane" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">Bonding Gas Separation Membrane</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/prepping the stainless electrode plates in HCL.JPG" alt="Prepping stainless electrode plates" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">Prepping Electrode Plates</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/stacking the prototype hydrogen generator gaskets.jpg" alt="Stacking prototype hydrogen generator gaskets" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">Stacking Prototype Gaskets</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden image-placeholder">
+                <p class="text-center p-2 text-sm text-gray-700">Placeholder: Image of Final Assembled Unit</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden image-placeholder">
+                <p class="text-center p-2 text-sm text-gray-700">Placeholder: Image of Testing Setup</p>
+            </div>
+             <div class="bg-white rounded-lg shadow-md overflow-hidden video-placeholder">
+                <p class="text-center p-2 text-sm text-gray-700">Placeholder: Short Video of System Operating</p>
+            </div>
           </div>
-        </article>
+          <p class="text-sm text-gray-600 mt-4 text-center">A collection of images and videos documenting the project's lifecycle, from design to final product.</p>
+        </section>
 
+        <section id="project-context" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">6. Project Context & Acknowledgements</h2>
+          <p class="text-lg leading-relaxed mb-4">This project was undertaken as part of [Course Name/Capstone Project] at [University Name].</p>
+          <p class="text-lg leading-relaxed mb-4"><strong>Team Members (if applicable):</strong></p>
+          <ul class="list-disc pl-6 text-lg leading-relaxed space-y-1">
+            <li>[Your Name] - Role/Contribution</li>
+            <li>[Team Member 2 Name] - Role/Contribution (if applicable)</li>
+            <li>[Team Member 3 Name] - Role/Contribution (if applicable)</li>
+          </ul>
+          <p class="text-lg leading-relaxed mt-4">Special thanks to [Professor Name(s)], [TA Name(s)], and the [Department/Lab Name] for their guidance and support throughout this project.</p>
+          <div class="my-4">
+            <img src="images/1st semester team photo.JPG" alt="1st Semester Team Photo" class="w-full max-w-md mx-auto rounded-lg shadow-md">
+            <p class="text-center text-sm text-gray-600 mt-2">The team during the first semester of the project.</p>
+          </div>
+        </section>
+        
+        <section id="presentation-pdf" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">7. Final Presentation PDF</h2>
+          <p class="text-lg leading-relaxed mb-4">For a more detailed overview of the project, including specific data and analysis presented to faculty and peers, you can download the final presentation slides.</p>
+          <div class="text-center">
+            <a href="files/Saratoga Presentation.pdf" target="_blank" class="inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-150">
+              Download Final Presentation (PDF)
+            </a>
+          </div>
+           <div class="my-6 image-placeholder h-96">
+             <p>Placeholder for an embedded view or a preview image of the first slide of "Saratoga Presentation.pdf".</p>
+           </div>
+        </section>
+        
       </main>
     </div>
-
-    <footer class="text-center py-6 sm:py-8 mt-8 sm:mt-12 border-t border-gray-300">
-      <p class="text-sm text-gray-600">&copy; 2025 Alex Grusin. All rights reserved.</p>
+    <footer class="text-center py-8 mt-12 border-t border-gray-300">
+      <p>&copy; 2025 Alex Grusin. All rights reserved.</p>
     </footer>
-
     <script>
-      const sections = document.querySelectorAll('main article[id]'); // Target articles for TOC
+      const sections = document.querySelectorAll('main section[id], main article[id]'); // Include articles for TOC
       const tocLinks = document.querySelectorAll('.toc-link');
-      const tocMenuButton = document.getElementById('toc-menu-button');
-      const tocMobileMenu = document.getElementById('toc-mobile-menu');
-
-      // Toggle mobile TOC menu
-      if (tocMenuButton && tocMobileMenu) {
-        tocMenuButton.addEventListener('click', () => {
-          tocMobileMenu.classList.toggle('hidden');
-          const isExpanded = tocMenuButton.getAttribute('aria-expanded') === 'true' || false;
-          tocMenuButton.setAttribute('aria-expanded', !isExpanded);
-        });
-      }
-
-      // Intersection Observer for highlighting active TOC link
       const observer = new IntersectionObserver(entries => {
-        let mostVisibleSectionId = null;
-        let maxRatio = 0;
+        let activeTocLink = null;
+        let highestVisibleLink = null;
+        let highestVisibility = 0;
 
         entries.forEach(entry => {
-          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-            maxRatio = entry.intersectionRatio;
-            mostVisibleSectionId = entry.target.getAttribute('id');
+          const id = entry.target.getAttribute('id');
+          const tocLink = document.querySelector(`.toc-link[href="#${id}"]`);
+          if (!tocLink) return;
+
+          if (entry.isIntersecting) {
+            if (entry.intersectionRatio >= 0.2) { // Threshold for "active"
+                 // Prioritize sections that are more visible or higher up if multiple meet threshold
+                if (!activeTocLink || entry.intersectionRatio > highestVisibility || (entry.intersectionRatio === highestVisibility && entry.boundingClientRect.top < activeTocLink.getBoundingClientRect().top)) {
+                    activeTocLink = tocLink;
+                    highestVisibility = entry.intersectionRatio;
+                }
+            }
           }
         });
 
         tocLinks.forEach(link => link.classList.remove('active'));
-        if (mostVisibleSectionId) {
-          // Query within both mobile and desktop TOC containers
-          const activeLinks = document.querySelectorAll(`.toc-links-container .toc-link[href="#${mostVisibleSectionId}"]`);
-          activeLinks.forEach(link => link.classList.add('active'));
-        }
-      }, { threshold: Array.from(Array(21).keys(), i => i * 0.05), rootMargin: "0px 0px -35% 0px" });
-
-      sections.forEach(section => {
-        observer.observe(section);
-      });
-
-      // Close mobile TOC if a link is clicked
-      if (tocMobileMenu) {
-        tocMobileMenu.querySelectorAll('a.toc-link').forEach(link => {
-          link.addEventListener('click', () => {
-            tocMobileMenu.classList.add('hidden');
-            if (tocMenuButton) {
-              tocMenuButton.setAttribute('aria-expanded', 'false');
+        
+        if (activeTocLink) {
+            activeTocLink.classList.add('active');
+            let currentLink = activeTocLink;
+            // Activate parent TOC links if a sub-link is active
+            while (currentLink) {
+                const parentUl = currentLink.closest('ul');
+                if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.matches('a.toc-link')) {
+                    parentUl.previousElementSibling.classList.add('active');
+                    currentLink = parentUl.previousElementSibling;
+                } else {
+                    currentLink = null;
+                }
             }
-          });
-        });
-      }
+        } else {
+            // Fallback: if no section is "active" enough, find the first one visible from top
+            for (const section of sections) {
+                const rect = section.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight + 50) { // Check if mostly in viewport or just entered from top
+                    const id = section.getAttribute('id');
+                    const fallbackLink = document.querySelector(`.toc-link[href="#${id}"]`);
+                    if (fallbackLink) {
+                        fallbackLink.classList.add('active');
+                         let currentLink = fallbackLink;
+                        while (currentLink) {
+                            const parentUl = currentLink.closest('ul');
+                            if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.matches('a.toc-link')) {
+                                parentUl.previousElementSibling.classList.add('active');
+                                currentLink = parentUl.previousElementSibling;
+                            } else {
+                                currentLink = null;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+      }, { threshold: [0.05, 0.2, 0.5, 0.8], rootMargin: "0px 0px -35% 0px" }); 
+      // Adjusted rootMargin to better detect sections near top/middle of viewport
+      // Threshold array allows for more nuanced detection
+
+      sections.forEach(section => { observer.observe(section); });
     </script>
   </body>
 </html>

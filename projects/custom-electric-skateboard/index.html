@@ -5,188 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Custom Electric Skateboard | Alex Grusin</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
       html { scroll-behavior: smooth; }
-      .toc-link.active { font-weight: bold; color: #2563eb; /* Tailwind blue-600 */ }
-      .gallery-image {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 0.5rem; /* Tailwind rounded-lg */
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind shadow-md */
-      }
+      .toc-link.active { font-weight: bold; color: #2563eb; }
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
-    <!-- Responsive Navbar -->
     <nav class="bg-white shadow p-4 sticky top-0 z-50">
-      <div class="container mx-auto flex justify-between items-center">
-        <a href="../../index.html" class="text-blue-600 hover:underline text-sm sm:text-base">&larr; Back to Home</a>
-        <!-- Mobile Menu Button for TOC -->
-        <div class="lg:hidden">
-          <button id="toc-menu-button" class="text-gray-900 focus:outline-none" aria-label="Open Table of Contents" aria-expanded="false" aria-controls="toc-mobile-menu">
-            <i class="fas fa-bars fa-lg"></i> <!-- Hamburger Icon for TOC -->
-          </button>
-        </div>
-      </div>
+      <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
     </nav>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex flex-col lg:flex-row">
-      <!-- Table of Contents (Sticky on larger screens, Collapsible on mobile) -->
-      <aside class="w-full lg:w-1/4 lg:sticky lg:top-24 self-start mb-8 lg:mb-0 lg:mr-8 z-40">
-        <!-- Mobile TOC Menu (hidden by default) -->
-        <div id="toc-mobile-menu" class="hidden lg:hidden bg-white p-6 rounded-lg shadow mb-4">
-          <h3 class="text-lg font-semibold mb-3 text-gray-800">Table of Contents</h3>
-          <ul class="space-y-2 toc-links-container">
-            <li><a href="#introduction" class="toc-link block text-gray-700 hover:text-blue-600">Introduction</a></li>
-            <li><a href="#design-fabrication" class="toc-link block text-gray-700 hover:text-blue-600">Design & Fabrication</a></li>
-            <li><a href="#timeline" class="toc-link block text-gray-700 hover:text-blue-600">Timeline</a></li>
-            <li><a href="#challenges" class="toc-link block text-gray-700 hover:text-blue-600">Challenges</a></li>
-            <li><a href="#gallery" class="toc-link block text-gray-700 hover:text-blue-600">Gallery</a></li>
-            <li><a href="#outcome" class="toc-link block text-gray-700 hover:text-blue-600">Outcome</a></li>
-          </ul>
-        </div>
-        <!-- Desktop TOC (always visible on lg screens) -->
-        <div class="hidden lg:block bg-white p-6 rounded-lg shadow">
-          <h3 class="text-lg font-semibold mb-3 text-gray-800">Table of Contents</h3>
-          <ul class="space-y-2 toc-links-container">
-            <li><a href="#introduction" class="toc-link block text-gray-700 hover:text-blue-600">Introduction</a></li>
-            <li><a href="#design-fabrication" class="toc-link block text-gray-700 hover:text-blue-600">Design & Fabrication</a></li>
-            <li><a href="#timeline" class="toc-link block text-gray-700 hover:text-blue-600">Timeline</a></li>
-            <li><a href="#challenges" class="toc-link block text-gray-700 hover:text-blue-600">Challenges</a></li>
-            <li><a href="#gallery" class="toc-link block text-gray-700 hover:text-blue-600">Gallery</a></li>
-            <li><a href="#outcome" class="toc-link block text-gray-700 hover:text-blue-600">Outcome</a></li>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
+      <aside class="w-full lg:w-1/4 lg:sticky lg:top-20 self-start mb-8 lg:mb-0 lg:mr-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-xl font-semibold mb-4">Contents</h2>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#introduction" class="toc-link text-gray-700 hover:text-blue-600">1. Introduction</a></li>
+            <li><a href="#timeline" class="toc-link text-gray-700 hover:text-blue-600">2. Project Timeline</a></li>
+            <li><a href="#challenges" class="toc-link text-gray-700 hover:text-blue-600">3. Challenges & Learnings</a></li>
+            <li><a href="#gallery" class="toc-link text-gray-700 hover:text-blue-600">4. Gallery</a></li>
+            <li><a href="#outcome" class="toc-link text-gray-700 hover:text-blue-600">5. Outcome & Reflections</a></li>
           </ul>
         </div>
       </aside>
-
-      <main class="w-full lg:w-3/4 bg-white p-6 sm:p-8 rounded-lg shadow">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-center">Custom Electric Skateboard</h1>
-        <p class="text-center text-gray-600 mb-8 text-sm sm:text-base">Building a personalized, high-performance electric skateboard from scratch.</p>
-        
+      <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
+        <h1 class="text-4xl font-bold mb-2 text-center">Custom Electric Skateboard Project</h1>
+        <p class="text-center text-gray-600 mb-8">[Project subtitle/summary marker]</p>
         <section id="introduction" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Introduction</h2>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
-            This project was a deep dive into personal electric vehicle (PEV) design and construction. The goal was to build a custom electric skateboard tailored to my specific preferences for performance, range, and aesthetics. It involved component selection, custom enclosure design, electronics integration, and deck customization.
-          </p>
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction</h2>
+          <p class="text-lg leading-relaxed">[Intro marker]</p>
         </section>
-
-        <section id="design-fabrication" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Design & Fabrication</h2>
-          <p class="text-gray-700 leading-relaxed mb-3 text-base sm:text-lg">
-            The design process started with selecting core components: a robust deck, powerful hub motors, a high-capacity battery (10S4P configuration), and a VESC-based motor controller for smooth and programmable power delivery. A custom-designed enclosure was 3D printed to house the electronics securely and provide a clean look.
-          </p>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
-            The deck was hand-painted with a custom design. Wiring was carefully planned and executed to ensure safety and reliability. The Starforge Systems laser cutter was used to create a custom skateboard rack for storage, showcasing an integration of different fabrication tools.
-          </p>
-        </section>
-
         <section id="timeline" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Project Timeline</h2>
-          <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2 text-base sm:text-lg">
-            <li><strong>Phase 1 (Research & Component Sourcing):</strong> Weeks 1-2</li>
-            <li><strong>Phase 2 (Deck Preparation & Painting):</strong> Week 3</li>
-            <li><strong>Phase 3 (Enclosure Design & 3D Printing):</strong> Weeks 4-5</li>
-            <li><strong>Phase 4 (Electronics Assembly & Wiring):</strong> Week 6</li>
-            <li><strong>Phase 5 (Testing & Tuning):</strong> Week 7</li>
-            <li><strong>Phase 6 (Custom Rack Fabrication):</strong> Week 8</li>
-          </ul>
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. Project Timeline</h2>
+          <article id="timeline-phase-1" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">2.1 Initial Research & Planning</h3>
+            <p class="text-lg leading-relaxed">[Phase 1 marker]</p>
+            <div class="my-4">[Image marker]</div>
+            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900">[What I learned marker]</div>
+          </article>
+          <article id="timeline-phase-2" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">2.2 Design & Sourcing Parts</h3>
+            <p class="text-lg leading-relaxed">[Phase 2 marker]</p>
+            <div class="my-4">[Image marker]</div>
+            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900">[What I learned marker]</div>
+          </article>
+          <article id="timeline-phase-3" class="mb-8 scroll-mt-20">
+            <h3 class="text-2xl font-semibold mb-3">2.3 Assembly & Testing</h3>
+            <p class="text-lg leading-relaxed">[Phase 3 marker]</p>
+            <div class="my-4">[Image marker]</div>
+            <div class="my-2 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-900">[What I learned marker]</div>
+          </article>
         </section>
-
         <section id="challenges" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Challenges & Solutions</h2>
-          <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2 text-base sm:text-lg">
-            <li><strong>Battery Enclosure Design:</strong> Ensuring a snug fit for all components while maintaining structural integrity and weather resistance required several iterations of the 3D printed design.</li>
-            <li><strong>Wiring Complexity:</strong> Managing the high-current wiring safely within a compact space was challenging. Careful planning and use of appropriate connectors were key.</li>
-            <li><strong>VESC Configuration:</strong> Learning to program the VESC for optimal motor performance and responsiveness took time and experimentation.</li>
-          </ul>
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. Challenges & Learnings</h2>
+          <p class="text-lg leading-relaxed">[Challenges marker]</p>
         </section>
-
         <section id="gallery" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Gallery</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            <figure>
-              <img src="images/masking the skateboard deck.JPG" alt="Masking the skateboard deck" class="gallery-image">
-              <figcaption class="text-sm text-gray-600 mt-2 text-center">Masking the deck for custom paint job.</figcaption>
-            </figure>
-            <figure>
-              <img src="images/painting the skateboard deck.JPG" alt="Painting the skateboard deck" class="gallery-image">
-              <figcaption class="text-sm text-gray-600 mt-2 text-center">Applying the base coat of paint.</figcaption>
-            </figure>
-            <figure>
-              <img src="images/posing with the painted deck.JPG" alt="Posing with the painted deck" class="gallery-image">
-              <figcaption class="text-sm text-gray-600 mt-2 text-center">The finished custom-painted deck.</figcaption>
-            </figure>
-            <figure>
-              <img src="images/starforge laser cut skatboard rack.JPG" alt="Laser cut skateboard rack" class="gallery-image">
-              <figcaption class="text-sm text-gray-600 mt-2 text-center">Custom skateboard rack made with Starforge laser cutter.</figcaption>
-            </figure>
-            <!-- Add more images if available -->
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">4. Gallery</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            \
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/masking the skateboard deck.JPG" alt="Masking the skateboard deck" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">Masking the deck for painting</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/painting the skateboard deck.JPG" alt="Painting the skateboard deck" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">Painting the custom design</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/posing with the painted deck.JPG" alt="Posing with the painted deck" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">The finished paint job</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="images/starforge laser cut skatboard rack.JPG" alt="Laser cut skateboard rack" class="w-full h-64 object-cover">
+              <p class="text-center p-2 text-sm text-gray-700">Custom laser-cut storage rack</p>
+            </div>
           </div>
+          <p class="text-sm text-gray-600 mt-4 text-center">[Gallery caption marker]</p>
         </section>
-
         <section id="outcome" class="mb-10 scroll-mt-20">
-          <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-blue-700">Outcome</h2>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
-            The result was a fully functional, high-performance electric skateboard that met all initial design goals. It boasts a top speed of over 25 mph and a range of approximately 15-20 miles, depending on riding conditions. The project provided invaluable experience in electronics, battery management systems, 3D printing, and overall PEV design. The custom paint job and integrated components give it a unique and professional finish.
-          </p>
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">5. Outcome & Reflections</h2>
+          <p class="text-lg leading-relaxed">[Outcome marker]</p>
         </section>
       </main>
     </div>
-
-    <footer class="text-center py-6 sm:py-8 mt-8 sm:mt-12 border-t border-gray-300">
-      <p class="text-sm text-gray-600">&copy; 2025 Alex Grusin. All rights reserved.</p>
+    <footer class="text-center py-8 mt-12 border-t border-gray-300">
+      <p>&copy; 2025 Alex Grusin. All rights reserved.</p>
     </footer>
-
     <script>
       const sections = document.querySelectorAll('main section[id]');
       const tocLinks = document.querySelectorAll('.toc-link');
-      const tocMenuButton = document.getElementById('toc-menu-button');
-      const tocMobileMenu = document.getElementById('toc-mobile-menu');
-
-      // Toggle mobile TOC menu
-      if (tocMenuButton && tocMobileMenu) {
-        tocMenuButton.addEventListener('click', () => {
-          tocMobileMenu.classList.toggle('hidden');
-          const isExpanded = tocMenuButton.getAttribute('aria-expanded') === 'true' || false;
-          tocMenuButton.setAttribute('aria-expanded', !isExpanded);
-        });
-      }
-
-      // Intersection Observer for highlighting active TOC link
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           const id = entry.target.getAttribute('id');
-          // Ensure querySelectorAll is used if multiple elements could match, or querySelector for a single one.
-          // For toc-links-container, it might be better to query within that specific container if there are multiple sets of toc-links on a page.
-          const correspondingLinks = document.querySelectorAll(`.toc-links-container .toc-link[href="#${id}"]`);
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.3) { // Adjusted threshold slightly
+          const tocLink = document.querySelector(`.toc-link[href="#${id}"]`);
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
             tocLinks.forEach(link => link.classList.remove('active'));
-            correspondingLinks.forEach(link => link.classList.add('active'));
-          } else {
-            // Optional: remove active class if not intersecting enough, 
-            // but this might cause flickering if multiple sections are in view.
-            // correspondingLinks.forEach(link => link.classList.remove('active'));
+            if (tocLink) {
+              tocLink.classList.add('active');
+              const parentUl = tocLink.closest('ul');
+              if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.matches('a.toc-link')) {
+                parentUl.previousElementSibling.classList.add('active');
+              }
+            }
           }
         });
-      }, { threshold: [0.3, 0.7], rootMargin: "0px 0px -40% 0px" }); // Adjusted rootMargin and threshold
-
-      sections.forEach(section => {
-        observer.observe(section);
-      });
-
-      // Close mobile TOC if a link is clicked
-      if (tocMobileMenu) {
-        tocMobileMenu.querySelectorAll('a.toc-link').forEach(link => {
-          link.addEventListener('click', () => {
-            tocMobileMenu.classList.add('hidden');
-            if (tocMenuButton) {
-              tocMenuButton.setAttribute('aria-expanded', 'false');
-            }
-          });
-        });
-      }
+      }, { threshold: 0.5, rootMargin: "0px 0px -50% 0px" });
+      sections.forEach(section => { observer.observe(section); });
     </script>
   </body>
 </html>
