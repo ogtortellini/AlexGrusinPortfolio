@@ -1,4 +1,4 @@
-\
+
 document.addEventListener('DOMContentLoaded', function () {
   const tocToggleButton = document.getElementById('tocToggleButton');
   const tableOfContentsAside = document.getElementById('tableOfContentsAside');
