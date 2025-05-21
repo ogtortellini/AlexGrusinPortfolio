@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Consider all types of TOC links you might have.
   // If your project pages use different selectors for TOC links (e.g., for a mobile dropdown), add them here.
   // For now, sticking to '.toc-link' as per the current file, but extendable.
-  const allTocLinksQuery = '.toc-link'; // General selector for TOC links
+  const allTocLinksQuery = '.toc-link, .toc-link-dropdown'; // Updated to include mobile dropdown links
   // If you have specific selectors for different TOCs (e.g., main page vs. project page sidebars)
   // you might use: '#tableOfContentsAside .toc-link, #tocDropdownMenu .toc-link-dropdown, .navbar .toc-link'
   // For the current index.html, '.toc-link' targets the main navbar links.
@@ -78,24 +78,28 @@ document.addEventListener('DOMContentLoaded', function () {
       currentActiveLinks.forEach(currentTocLink => {
         currentTocLink.classList.add('active');
 
-        // Activate parent TOC link if nested
-        // This logic assumes a structure like: <li><a class="toc-link">Parent</a><ul><li><a class="toc-link">Child</a></li></ul></li>
-        let parentTocLink = null;
-        const listItem = currentTocLink.closest('li'); // li containing the current link
+        // Activate all parent TOC links iteratively
+        let currentActiveListItem = currentTocLink.closest('li');
+        while (currentActiveListItem) {
+          const parentList = currentActiveListItem.parentElement; // This is a UL or OL
+          // Check if this list is nested within a parent LI
+          if (parentList && parentList.parentElement && parentList.parentElement.tagName === 'LI') {
+            const grandParentListItem = parentList.parentElement; // This is the LI of the parent TOC item
+            
+            // Find the link that is a direct child of grandParentListItem and matches our general TOC link selectors
+            const parentTocLink = Array.from(grandParentListItem.children).find(child => 
+              child.tagName === 'A' && child.matches(allTocLinksQuery)
+            );
 
-        if (listItem && listItem.parentElement) {
-          const parentUlOrOl = listItem.parentElement; // ul/ol containing this li
-          
-          // Check if this ul/ol is a child of another li (the parent TOC item's li)
-          if (parentUlOrOl.parentElement && parentUlOrOl.parentElement.tagName === 'LI') {
-            const parentLi = parentUlOrOl.parentElement; // The li of the parent TOC item
-            // Find the link within this parentLi. It should also have the 'toc-link' class (or your general selector).
-            parentTocLink = parentLi.querySelector(':scope > ' + allTocLinksQuery);
+            if (parentTocLink) {
+              parentTocLink.classList.add('active');
+              currentActiveListItem = grandParentListItem; // Move up to continue the loop from the grandparent's LI
+            } else {
+              currentActiveListItem = null; // No matching parent link found, stop iteration
+            }
+          } else {
+            currentActiveListItem = null; // No more parents in the expected <li><ul><li>... structure, stop iteration
           }
-        }
-        
-        if (parentTocLink) {
-          parentTocLink.classList.add('active');
         }
       });
     } else {
