@@ -31,8 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
     return; // No TOC elements or targets to observe
   }
 
+  let lastActiveId = null; // Variable to store the last active section ID
+
   const observer = new IntersectionObserver(entries => {
-    let activeId = null;
+    let currentBestId = null;
 
     // Filter for entries that are currently intersecting
     const intersectingEntries = entries.filter(entry => entry.isIntersecting);
@@ -42,15 +44,18 @@ document.addEventListener('DOMContentLoaded', function () {
       intersectingEntries.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
       
       // The "best" entry is the one that is highest on the screen.
-      activeId = intersectingEntries[0].target.id;
+      currentBestId = intersectingEntries[0].target.id;
+      lastActiveId = currentBestId; // Update lastActiveId when a new best is found
     }
+
+    const idToHighlight = currentBestId || lastActiveId; // Use current best, or fallback to last active
 
     // Clear all previous active states
     tocLinks.forEach(link => link.classList.remove('active'));
 
-    if (activeId) {
+    if (idToHighlight) {
       // Find all TOC links (could be multiple if you have e.g. desktop and mobile TOCs) that point to this ID
-      const currentActiveLinks = tocLinks.filter(link => link.getAttribute('href') === `#${activeId}`);
+      const currentActiveLinks = tocLinks.filter(link => link.getAttribute('href') === `#${idToHighlight}`);
       
       currentActiveLinks.forEach(currentTocLink => {
         currentTocLink.classList.add('active');
