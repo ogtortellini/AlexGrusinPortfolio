@@ -32,48 +32,25 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   const observer = new IntersectionObserver(entries => {
-    const intersectingEntries = entries.filter(entry => entry.isIntersecting && entry.intersectionRatio >= 0.5);
+    let activeId = null;
 
-    if (intersectingEntries.length === 0) {
-      // No section is prominently visible, clear all active states
-      tocLinks.forEach(link => link.classList.remove('active'));
-      return;
+    // Filter for entries that are currently intersecting
+    const intersectingEntries = entries.filter(entry => entry.isIntersecting);
+
+    if (intersectingEntries.length > 0) {
+      // Sort them by their position on the screen (topmost first)
+      intersectingEntries.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      
+      // The "best" entry is the one that is highest on the screen.
+      activeId = intersectingEntries[0].target.id;
     }
 
-    let bestEntry = null;
+    // Clear all previous active states
+    tocLinks.forEach(link => link.classList.remove('active'));
 
-    if (intersectingEntries.length === 1) {
-      bestEntry = intersectingEntries[0];
-    } else {
-      // Multiple sections are visible, determine the "best" one.
-      const visibleTargets = intersectingEntries.map(e => e.target);
-      
-      // Prioritize "deepest" visible elements that don't contain other visible targets.
-      const deepestVisibleTargets = visibleTargets.filter(target1 => {
-        return !visibleTargets.some(target2 => {
-          return target1 !== target2 && target1.contains(target2);
-        });
-      });
-
-      if (deepestVisibleTargets.length > 0) {
-        // From these deepest elements, pick the one highest on the screen.
-        deepestVisibleTargets.sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
-        bestEntry = intersectingEntries.find(entry => entry.target === deepestVisibleTargets[0]);
-      } else {
-        // Fallback: if no "deepest" found, pick the highest overall visible element.
-        intersectingEntries.sort((a, b) => a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top);
-        bestEntry = intersectingEntries[0];
-      }
-    }
-
-    if (bestEntry) {
-      const id = bestEntry.target.getAttribute('id');
-      
-      // Clear all previous active states from all TOC links
-      tocLinks.forEach(link => link.classList.remove('active'));
-
+    if (activeId) {
       // Find all TOC links (could be multiple if you have e.g. desktop and mobile TOCs) that point to this ID
-      const currentActiveLinks = tocLinks.filter(link => link.getAttribute('href') === `#${id}`);
+      const currentActiveLinks = tocLinks.filter(link => link.getAttribute('href') === `#${activeId}`);
       
       currentActiveLinks.forEach(currentTocLink => {
         currentTocLink.classList.add('active');
@@ -102,13 +79,13 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         }
       });
-    } else {
-      // Fallback if no bestEntry determined, clear all active links.
-      tocLinks.forEach(link => link.classList.remove('active'));
     }
   }, {
-    threshold: 0.5, // 50% of the element must be visible
-    rootMargin: "0px 0px -50% 0px" // Intersection area is the top 50% of the viewport
+    // Sticky nav height is assumed to be around 80px.
+    // rootMargin: top margin for sticky nav, right, bottom, left.
+    // An element is intersecting if it's visible below the sticky nav.
+    rootMargin: "-80px 0px 0px 0px", 
+    threshold: 0.01 // Trigger if at least 1% of the element is visible in the adjusted viewport
   });
 
   elementsToObserve.forEach(element => {
