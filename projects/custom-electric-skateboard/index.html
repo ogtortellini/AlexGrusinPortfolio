@@ -117,51 +117,13 @@
       <p class="text-gray-700 text-sm">Graph: Estimated battery output (voltage) vs. remaining capacity for the 10s2p P45B pack. The curve is typical for lithium-ion cells, showing a gradual voltage drop as the pack discharges.</p>
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <script>
-        let ctx = document.getElementById('batteryGraph').getContext('2d');
-        new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0],
-            datasets: [{
-              label: 'Pack Voltage (V)',
-              data: [42, 41, 40.5, 39.8, 39, 38.5, 37.8, 37, 36.2, 35.5, 33],
-              borderColor: 'rgb(37, 99, 235)',
-              backgroundColor: 'rgba(37, 99, 235, 0.1)',
-              tension: 0.3,
-              fill: true,
-              pointRadius: 2
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: { display: false },
-              title: {
-                display: true,
-                text: 'Battery Output vs. Capacity (10s2p P45B Pack)'
-              }
-            },
-            scales: {
-              x: {
-                title: { display: true, text: 'Remaining Capacity (%)' },
-                reverse: true
-              },
-              y: {
-                title: { display: true, text: 'Voltage (V)' },
-                min: 32, max: 43
-              }
-            }
-          }
-        });
-      </script>
-      <script>
         // Simulated torque (relative units) vs capacity for ER (P45B) and budget (25R) packs
         // P45B: high current, maintains torque at low SOC; 25R: voltage sags, torque drops off
         const torqueLabels = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0];
         const torqueP45B =   [100, 100, 98, 97, 95, 93, 90, 88, 85, 80, 70];
         const torque25R  =   [100, 95, 90, 85, 80, 75, 65, 55, 40, 25, 10];
-        const ctxTorque = document.getElementById('batteryGraph').getContext('2d');
-        new Chart(ctxTorque, {
+        const ctx = document.getElementById('batteryGraph').getContext('2d');
+        new Chart(ctx, {
           type: 'line',
           data: {
             labels: torqueLabels,
