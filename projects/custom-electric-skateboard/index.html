@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Electric Skateboard Project | Alex Grusin Portfolio</title>
+  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+  <nav class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-50">
+    <a href="../../index.html" class="text-base md:text-xl font-bold">Alex Grusin's Engineering Portfolio</a>
+    <ul class="hidden md:flex gap-6 text-sm font-medium">
+      <li><a href="../../index.html#projects" class="hover:text-blue-600">Projects</a></li>
+      <li><a href="../../index.html#experience" class="hover:text-blue-600">Experience</a></li>
+      <li><a href="../../about.html" class="hover:text-blue-600">About</a></li>
+      <li><a href="../../contact.html" class="hover:text-blue-600">Contact</a></li>
+    </ul>
+  </nav>
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-4">Custom Electric Skateboard</h1>
+    <p class="mb-6 text-gray-700 text-lg">Built a custom electric skateboard with advanced motor control and long-range battery.</p>
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Design Considerations</h2>
+      <p class="text-gray-700 mb-4">The main goal in designing my own electric skateboard was to create a long-range board suitable for commuting around campus without the need for frequent recharging. To achieve this, I prioritized a high-capacity battery and efficient power management. Other important design considerations included:</p>
+      <ul class="list-disc list-inside text-gray-700 mb-4">
+        <li><strong>Torquey Motors:</strong> Powerful motors were selected to provide strong takeoff acceleration and effective braking, ensuring safety and control in stop-and-go campus environments.</li>
+        <li><strong>Large Wheels:</strong> Oversized wheels help the board handle rough terrain, cracks, and uneven surfaces commonly found on outdoor paths.</li>
+        <li><strong>Waterproofing:</strong> All electronics and enclosures were sealed to allow safe riding on wet roads and in rainy conditions.</li>
+        <li><strong>Reliability:</strong> Every component was chosen and tested for durability, making the board a dependable daily driver for year-round use.</li>
+        <li><strong>Material Selection:</strong> The deck and enclosure materials were chosen for optimal strength-to-weight ratio, balancing performance and portability.</li>
+        <li><strong>Ergonomics & Comfort:</strong> The deck shape and grip tape were designed for comfortable long rides and secure footing.</li>
+        <li><strong>Visual Appeal:</strong> Custom paint and finish give the board a unique look that stands out on campus.</li>
+      </ul>
+      <p class="text-gray-700">These considerations guided every step of the design and build process, resulting in a board that is not only practical and reliable, but also fun and visually striking.</p>
+    </section>
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Donor Board: Meepo V4S</h2>
+      <p class="text-gray-700 mb-4">To kickstart the build, I sourced key components from a Meepo V4S electric skateboard. Specifically, I reused the wheels, hub motors, and trucks from this board. These parts were chosen because they fit my ergonomic preferences and riding style, providing a familiar and comfortable feel. The Meepo V4S components are known for their reliability and performance, making them an excellent foundation for my custom build.</p>
+    </section>
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Custom Battery Pack: 10s2p P45B Cells</h2>
+      <p class="text-gray-700 mb-4">The first major component I designed for this board was a custom battery pack using a 10s2p configuration with Molicel P45B cells. This setup provides 10 cells in series (for a nominal voltage of 36V) and 2 in parallel, resulting in a total of 20 cells. Each P45B cell has a nominal capacity of 4.5Ah, so the pack delivers a total capacity of 9Ah (324Wh at nominal voltage). This high capacity allows for long-range commuting, minimizing the need for frequent recharging and supporting my goal of reliable campus transportation.</p>
+      <div class="mb-4">
+        <canvas id="batteryGraph" width="400" height="250"></canvas>
+      </div>
+      <p class="text-gray-700 text-sm">Graph: Estimated battery output (voltage) vs. remaining capacity for the 10s2p P45B pack. The curve is typical for lithium-ion cells, showing a gradual voltage drop as the pack discharges.</p>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        const ctx = document.getElementById('batteryGraph').getContext('2d');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0],
+            datasets: [{
+              label: 'Pack Voltage (V)',
+              data: [42, 41, 40.5, 39.8, 39, 38.5, 37.8, 37, 36.2, 35.5, 33],
+              borderColor: 'rgb(37, 99, 235)',
+              backgroundColor: 'rgba(37, 99, 235, 0.1)',
+              tension: 0.3,
+              fill: true,
+              pointRadius: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              title: {
+                display: true,
+                text: 'Battery Output vs. Capacity (10s2p P45B Pack)'
+              }
+            },
+            scales: {
+              x: {
+                title: { display: true, text: 'Remaining Capacity (%)' },
+                reverse: true
+              },
+              y: {
+                title: { display: true, text: 'Voltage (V)' },
+                min: 32, max: 43
+              }
+            }
+          }
+        });
+      </script>
+    </section>
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <img src="images/posing with the painted deck.JPG" alt="Posing with the painted deck" class="rounded-xl shadow-md object-cover w-full h-64">
+      <img src="images/painting the skateboard deck.JPG" alt="Painting the skateboard deck" class="rounded-xl shadow-md object-cover w-full h-64">
+      <img src="images/masking the skateboard deck.JPG" alt="Masking the skateboard deck" class="rounded-xl shadow-md object-cover w-full h-64">
+      <img src="images/starforge laser cut skatboard rack.JPG" alt="Laser cut skateboard rack" class="rounded-xl shadow-md object-cover w-full h-64">
+    </div>
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Project Overview</h2>
+      <p class="text-gray-700 mb-4">This project involved designing and building a custom electric skateboard from the ground up. Key features include a high-efficiency brushless motor, custom battery pack for extended range, and a robust deck with a unique paint job. The project required skills in mechanical design, electronics, and fabrication.</p>
+    </section>
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Technical Highlights</h2>
+      <ul class="list-disc list-inside text-gray-700">
+        <li>Custom deck design and paintwork</li>
+        <li>Brushless DC motor with advanced speed controller</li>
+        <li>High-capacity lithium-ion battery pack</li>
+        <li>Laser-cut skateboard rack for storage and display</li>
+        <li>Hands-on fabrication and assembly</li>
+      </ul>
+    </section>
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Gallery</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="images/posing with the painted deck.JPG" alt="Posing with the painted deck" class="rounded shadow">
+        <img src="images/painting the skateboard deck.JPG" alt="Painting the skateboard deck" class="rounded shadow">
+        <img src="images/masking the skateboard deck.JPG" alt="Masking the skateboard deck" class="rounded shadow">
+        <img src="images/starforge laser cut skatboard rack.JPG" alt="Laser cut skateboard rack" class="rounded shadow">
+      </div>
+    </section>
+  </main>
+</body>
+</html>
