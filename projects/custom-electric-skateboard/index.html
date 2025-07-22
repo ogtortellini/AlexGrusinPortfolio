@@ -45,7 +45,13 @@
         <div class="mb-4">
           <canvas id="batteryGraph" width="400" height="250"></canvas>
         </div>
-        <p class="text-gray-700 text-sm">Graph: Estimated battery output (voltage) vs. remaining capacity for the 10s2p P45B pack. The curve is typical for lithium-ion cells, showing a gradual voltage drop as the pack discharges.</p>
+        <p class="text-gray-700 text-sm mb-2">
+          <strong>Graph:</strong> Estimated available torque vs. remaining battery capacity for the 10s2p P45B "Extended Range" (ER) pack compared to a typical budget eboard battery (10s2p 25R). Higher torque at lower states of charge means more consistent acceleration and hill-climbing, especially as the battery drains.
+        </p>
+        <ul class="text-gray-700 text-sm mb-4">
+          <li><span class="font-bold text-blue-600">Blue:</span> ER 10s2p P45B (your pack)</li>
+          <li><span class="font-bold text-gray-500">Gray:</span> Budget 10s2p 25R (typical entry-level eboard)</li>
+        </ul>
       </section>
 
       <section id="gallery" class="mb-10 scroll-mt-20">
@@ -143,6 +149,61 @@
               y: {
                 title: { display: true, text: 'Voltage (V)' },
                 min: 32, max: 43
+              }
+            }
+          }
+        });
+      </script>
+      <script>
+        // Simulated torque (relative units) vs capacity for ER (P45B) and budget (25R) packs
+        // P45B: high current, maintains torque at low SOC; 25R: voltage sags, torque drops off
+        const torqueLabels = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0];
+        const torqueP45B =   [100, 100, 98, 97, 95, 93, 90, 88, 85, 80, 70];
+        const torque25R  =   [100, 95, 90, 85, 80, 75, 65, 55, 40, 25, 10];
+        const ctxTorque = document.getElementById('batteryGraph').getContext('2d');
+        new Chart(ctxTorque, {
+          type: 'line',
+          data: {
+            labels: torqueLabels,
+            datasets: [
+              {
+                label: 'ER 10s2p P45B (Your Pack)',
+                data: torqueP45B,
+                borderColor: 'rgb(37, 99, 235)',
+                backgroundColor: 'rgba(37, 99, 235, 0.08)',
+                tension: 0.3,
+                fill: true,
+                pointRadius: 2
+              },
+              {
+                label: 'Budget 10s2p 25R',
+                data: torque25R,
+                borderColor: 'rgb(107, 114, 128)',
+                backgroundColor: 'rgba(107, 114, 128, 0.08)',
+                borderDash: [6,4],
+                tension: 0.3,
+                fill: true,
+                pointRadius: 2
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: true },
+              title: {
+                display: true,
+                text: 'Available Torque vs. Battery Capacity'
+              }
+            },
+            scales: {
+              x: {
+                title: { display: true, text: 'Remaining Capacity (%)' },
+                reverse: true
+              },
+              y: {
+                title: { display: true, text: 'Relative Torque (%)' },
+                min: 0, max: 110
               }
             }
           }
