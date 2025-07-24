@@ -1,23 +1,61 @@
-<!-- Gallery TOC link removed -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Custom Electric Skateboard Project | Alex Grusin</title>
-        </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Electric Skateboard Project | Alex Grusin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      .toc-link.active { font-weight: bold; color: #2563eb; }
+      .toc-link-dropdown.active {
+        font-weight: bold;
+        color: #2563eb;
+        background-color: #eff6ff;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-sans">
+    <nav class="bg-white shadow p-4 sticky top-0 z-50 flex justify-between items-center relative">
+      <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
+      <div class="relative">
+        <button id="tocToggleButton" class="lg:hidden text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600" aria-label="Toggle table of contents">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+        <div id="tocDropdownMenu" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-md shadow-lg z-[60] py-2 lg:hidden">
+          <h2 class="text-lg font-semibold px-4 py-2">Contents</h2>
+          <ul class="text-sm">
+            <li><a href="#introduction" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">1. Introduction</a></li>
+            <li><a href="#design-considerations" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">2. Design Considerations</a></li>
+            <li><a href="#donor-board" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">3. Donor Board</a></li>
+            <li><a href="#battery-pack" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">4. Custom Battery Pack</a></li>
+          </ul>
+        </div>
       </div>
-    </aside>
+    </nav>
 
-    <!-- Main Content -->
-    <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
-      <h1 class="text-4xl font-bold mb-2 text-center">Custom Electric Skateboard</h1>
-      <p class="text-center text-gray-600 mb-8">A deep dive into the design and build of a long-range, reliable electric skateboard for daily campus commuting.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
+      <aside id="tableOfContentsAside" class="hidden lg:block w-full lg:w-1/4 bg-transparent lg:shadow-none lg:sticky lg:top-20 lg:h-auto lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto self-start mb-8 lg:mb-0 lg:mr-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-xl font-semibold mb-4">Contents</h2>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#introduction" class="toc-link text-gray-700 hover:text-blue-600">1. Introduction</a></li>
+            <li><a href="#design-considerations" class="toc-link text-gray-700 hover:text-blue-600">2. Design Considerations</a></li>
+            <li><a href="#donor-board" class="toc-link text-gray-700 hover:text-blue-600">3. Donor Board</a></li>
+            <li><a href="#battery-pack" class="toc-link text-gray-700 hover:text-blue-600">4. Custom Battery Pack</a></li>
+          </ul>
+        </div>
+      </aside>
 
-      <section id="introduction" class="mb-10 scroll-mt-20">
-        <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction</h2>
-        <p class="text-lg leading-relaxed">Built a custom electric skateboard with advanced motor control and long-range battery. This project page details the design process, component selection, and technical highlights that make this board a dependable daily driver.</p>
-      </section>
+      <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
+        <h1 class="text-4xl font-bold mb-2 text-center">Custom Electric Skateboard</h1>
+        <p class="text-center text-gray-600 mb-8">A deep dive into the design and build of a long-range, reliable electric skateboard for daily campus commuting.</p>
+        <section id="introduction" class="mb-10 scroll-mt-20">
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction</h2>
+          <p class="text-lg leading-relaxed">Built a custom electric skateboard with advanced motor control and long-range battery. This project page details the design process, component selection, and technical highlights that make this board a dependable daily driver.</p>
+        </section>
 
       <section id="design-considerations" class="mb-10 scroll-mt-20">
         <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. Design Considerations</h2>
@@ -34,7 +72,6 @@
         <p class="text-gray-700">These considerations guided every step of the design and build process, resulting in a board that is not only practical and reliable, but also fun and visually striking.</p>
       </section>
 
-      <!-- Gallery section removed for a cleaner layout -->
       <section id="donor-board" class="mb-10 scroll-mt-20">
         <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. Donor Board: Meepo V4S</h2>
         <p class="text-lg leading-relaxed">To kickstart the build, I sourced key components from a Meepo V4S electric skateboard. Specifically, I reused the wheels, hub motors, and trucks from this board. These parts were chosen because they fit my ergonomic preferences and riding style, providing a familiar and comfortable feel. The Meepo V4S components are known for their reliability and performance, making them an excellent foundation for my custom build.</p>
