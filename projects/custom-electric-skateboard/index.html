@@ -52,6 +52,62 @@
           <li><span class="font-bold text-blue-600">Blue:</span> ER 10s2p P45B (your pack)</li>
           <li><span class="font-bold text-gray-500">Gray:</span> Budget 10s2p 25R (typical entry-level eboard)</li>
         </ul>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+          // Simulated torque (relative units) vs capacity for ER (P45B) and budget (25R) packs
+          // P45B: high current, maintains torque at low SOC; 25R: voltage sags, torque drops off
+          const torqueLabels = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0];
+          const torqueP45B =   [100, 100, 98, 97, 95, 93, 90, 88, 85, 80, 70];
+          const torque25R  =   [100, 95, 90, 85, 80, 75, 65, 55, 40, 25, 10];
+          const ctx = document.getElementById('batteryGraph').getContext('2d');
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: torqueLabels,
+              datasets: [
+                {
+                  label: 'ER 10s2p P45B (Your Pack)',
+                  data: torqueP45B,
+                  borderColor: 'rgb(37, 99, 235)',
+                  backgroundColor: 'rgba(37, 99, 235, 0.08)',
+                  tension: 0.3,
+                  fill: true,
+                  pointRadius: 2
+                },
+                {
+                  label: 'Budget 10s2p 25R',
+                  data: torque25R,
+                  borderColor: 'rgb(107, 114, 128)',
+                  backgroundColor: 'rgba(107, 114, 128, 0.08)',
+                  borderDash: [6,4],
+                  tension: 0.3,
+                  fill: true,
+                  pointRadius: 2
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { display: true },
+                title: {
+                  display: true,
+                  text: 'Available Torque vs. Battery Capacity'
+                }
+              },
+              scales: {
+                x: {
+                  title: { display: true, text: 'Remaining Capacity (%)' },
+                  reverse: true
+                },
+                y: {
+                  title: { display: true, text: 'Relative Torque (%)' },
+                  min: 0, max: 110
+                }
+              }
+            }
+          });
+        </script>
       </section>
 
       <section id="gallery" class="mb-10 scroll-mt-20">
@@ -85,8 +141,5 @@
 <!-- Scripts -->
 <script src="../../assets/js/toc-scroller.js"></script>
 <script src="../../assets/js/toc-toggle.js"></script>
-</body>
-</html>
-  </main>
 </body>
 </html>
