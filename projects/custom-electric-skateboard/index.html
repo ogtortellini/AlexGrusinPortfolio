@@ -51,30 +51,30 @@
 
       <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
         <h1 class="text-4xl font-bold mb-2 text-center">Custom Electric Skateboard</h1>
-        <p class="text-center text-gray-600 mb-8">A deep dive into the design and build of a long-range, reliable electric skateboard for daily campus commuting.</p>
         <section id="introduction" class="mb-10 scroll-mt-20">
           <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction</h2>
-          <p class="text-lg leading-relaxed">Built a custom electric skateboard with advanced motor control and long-range battery. This project page details the design process, component selection, and technical highlights that make this board a dependable daily driver.</p>
+          <p class="text-lg leading-relaxed">I built this custom electric skateboard with advanced motor control and a long-range battery to solve my daily campus commute. Here’s how I approached the project and what I learned along the way.</p>
         </section>
 
       <section id="design-considerations" class="mb-10 scroll-mt-20">
-        <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. Design Considerations</h2>
-        <p class="text-lg leading-relaxed mb-4">The main goal in designing my own electric skateboard was to create a long-range board suitable for commuting around campus without the need for frequent recharging. To achieve this, I prioritized a high-capacity battery and efficient power management. Other important design considerations included:</p>
+        <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. What I Considered Before Building</h2>
+        <p class="text-lg leading-relaxed mb-4">Before I started building, I set a few clear priorities: long range, comfort on rough terrain, and reliability in all weather. Here are the most important factors I considered:</p>
         <ul class="list-disc list-inside text-lg text-gray-700 mb-4">
-          <li><strong>Torquey Motors:</strong> Powerful motors were selected to provide strong takeoff acceleration and effective braking, ensuring safety and control in stop-and-go campus environments.</li>
-          <li><strong>Large Wheels:</strong> Oversized wheels help the board handle rough terrain, cracks, and uneven surfaces commonly found on outdoor paths.</li>
-          <li><strong>Waterproofing:</strong> All electronics and enclosures were sealed to allow safe riding on wet roads and in rainy conditions.</li>
-          <li><strong>Reliability:</strong> Every component was chosen and tested for durability, making the board a dependable daily driver for year-round use.</li>
-          <li><strong>Material Selection:</strong> The deck and enclosure materials were chosen for optimal strength-to-weight ratio, balancing performance and portability.</li>
-          <li><strong>Ergonomics & Comfort:</strong> The deck shape and grip tape were designed for comfortable long rides and secure footing.</li>
-          <li><strong>Visual Appeal:</strong> Custom paint and finish give the board a unique look that stands out on campus.</li>
+          <li><strong>Range:</strong> I knew I needed a high-capacity battery and efficient power management to avoid frequent recharging.</li>
+          <li><strong>Acceleration & Braking:</strong> I wanted motors with enough torque for quick starts and safe, controlled stops in busy campus traffic.</li>
+          <li><strong>Ride Quality:</strong> Large wheels were a must for rolling over cracks and rough terrain without losing comfort.</li>
+          <li><strong>Weather Resistance:</strong> I planned to seal all electronics and enclosures so I could ride in the rain without worry.</li>
+          <li><strong>Durability:</strong> Every part I picked had to be tough enough for year-round, daily use.</li>
+          <li><strong>Weight & Portability:</strong> I balanced strong materials with the need to carry the board between classes.</li>
+          <li><strong>Comfort:</strong> I shaped the deck and chose grip tape for long rides and secure footing.</li>
+          <li><strong>Looks:</strong> I wanted a custom paint job and finish that would make my board stand out on campus.</li>
         </ul>
-        <p class="text-gray-700">These considerations guided every step of the design and build process, resulting in a board that is not only practical and reliable, but also fun and visually striking.</p>
+        <!-- priorities summary removed for clarity -->
       </section>
 
       <section id="donor-board" class="mb-10 scroll-mt-20">
         <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. Donor Board: Meepo V4S</h2>
-        <p class="text-lg leading-relaxed">To kickstart the build, I sourced key components from a Meepo V4S electric skateboard. Specifically, I reused the wheels, hub motors, and trucks from this board. These parts were chosen because they fit my ergonomic preferences and riding style, providing a familiar and comfortable feel. The Meepo V4S components are known for their reliability and performance, making them an excellent foundation for my custom build.</p>
+        <p class="text-lg leading-relaxed">I sourced the wheels, hub motors, and trucks from a Meepo V4S electric skateboard. These parts matched my riding style and had already proven themselves reliable, so they made a great foundation for my custom project.</p>
         <div class="my-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <figure class="bg-white rounded-lg shadow-md overflow-hidden">
             <img src="images/Meepov4sproductimage.png" alt="Meepo V4S product image" class="w-full h-auto object-contain rounded-t-lg">
@@ -93,21 +93,18 @@
 
       <section id="battery-pack" class="mb-10 scroll-mt-20">
         <h2 class="text-3xl font-semibold mb-4 border-b pb-2">4. Custom Battery Pack: 10s2p P45B Cells</h2>
-        <p class="text-lg leading-relaxed mb-4">The first major component I designed for this board was a custom battery pack using a 10s2p configuration with Molicel P45B cells. This setup provides 10 cells in series (for a nominal voltage of 36V) and 2 in parallel, resulting in a total of 20 cells. Each P45B cell has a nominal capacity of 4.5Ah, so the pack delivers a total capacity of 9Ah (324Wh at nominal voltage). This high capacity allows for long-range commuting, minimizing the need for frequent recharging and supporting my goal of reliable campus transportation.</p>
+        <p class="text-lg leading-relaxed mb-4">I built the battery pack using a 10s2p configuration with Molicel P45B cells—10 in series for 36V, and 2 in parallel for a total of 20 cells. Each cell had a nominal capacity of 4.5Ah, so my pack delivered 9Ah (324Wh at nominal voltage). This gave me the long-range capability I wanted, letting me commute for days without worrying about recharging.</p>
         <div class="mb-6 p-4 bg-blue-50 rounded-lg">
           <h3 class="text-2xl font-semibold mb-2">Theoretical Range Estimation</h3>
-          <p class="text-lg mb-2">To estimate the skateboard's theoretical range, we use the battery's total energy and typical energy consumption rates for electric skateboards:</p>
           <ul class="list-disc list-inside text-lg mb-2">
             <li><strong>Battery capacity:</strong> 324 Wh (9Ah × 36V)</li>
-            <li><strong>Average consumption:</strong> ~10-15 Wh per mile (varies by speed, rider weight, terrain, and riding style)</li>
+            <li><strong>Average consumption:</strong> ~10-15 Wh per mile (depending on speed, my weight, terrain, and riding style)</li>
           </ul>
-          <p class="text-lg mb-2">Using these numbers:</p>
           <ul class="list-disc list-inside text-lg mb-2">
             <li><strong>Conservative estimate (15 Wh/mi):</strong> <span class="font-mono">324 Wh ÷ 15 Wh/mi ≈ 21.6 miles</span></li>
             <li><strong>Optimistic estimate (10 Wh/mi):</strong> <span class="font-mono">324 Wh ÷ 10 Wh/mi ≈ 32.4 miles</span></li>
           </ul>
-          <p class="text-gray-700 mb-2">Real-world range will depend on factors like rider weight, speed, terrain, wind, and how aggressively you accelerate. For most campus commutes and moderate riding, expect <span class="font-bold text-blue-600">20–30 miles</span> per charge—significantly more than typical budget boards, which often deliver only <span class="font-bold text-blue-600">8–12 miles.</span>*</p>
-          <p class="text-gray-700 text-sm">This extended range means you can ride for several days between charges, tackle longer routes, and maintain high performance even as the battery drains.</p>
+          <p class="text-gray-700 mb-2">In real-world use, my range depended on my weight, speed, terrain, wind, and how aggressively I accelerated. For most campus commutes and moderate riding, I got <span class="font-bold text-blue-600">20–30 miles</span> per charge—much more than typical budget boards, which usually deliver only <span class="font-bold text-blue-600">8–12 miles.</span>*</p>
           <p class="text-gray-500 text-xs mt-2">*Budget eboard range estimate based on published specs for entry-level models such as the Meepo V4S and WowGo 2S Max. <a href="https://www.meepoboard.com/products/meepo-v4s-shuffle" class="underline text-blue-600" target="_blank" rel="noopener">[Meepo V4S Specs]</a></p>
         </div>
         <div class="mb-4">
