@@ -22,36 +22,36 @@
       }
     </style>
   </head>
-  <body class="bg-gray-100 text-gray-900 font-sans">
-    <nav class="bg-white shadow p-4 sticky top-0 z-50 flex justify-between items-center relative">
-      <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
+  <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
+    <nav class="bg-white dark:bg-gray-800 shadow p-4 sticky top-0 z-50 flex justify-between items-center relative">
+      <a href="../../index.html" class="text-blue-600 dark:text-blue-400 hover:underline">&larr; Back to Home</a>
       <div class="relative">
-        <button id="tocToggleButton" class="lg:hidden text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600" aria-label="Toggle table of contents">
+        <button id="tocToggleButton" class="lg:hidden text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:text-blue-600 dark:focus:text-blue-400" aria-label="Toggle table of contents">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
-        <div id="tocDropdownMenu" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-md shadow-lg z-[60] py-2 lg:hidden">
-          <h2 class="text-lg font-semibold px-4 py-2">Contents</h2>
+        <div id="tocDropdownMenu" class="hidden absolute right-0 mt-2 w-72 bg-white dark:bg-gray-800 rounded-md shadow-lg z-[60] py-2 lg:hidden">
+          <h2 class="text-lg font-semibold px-4 py-2 dark:text-gray-100">Contents</h2>
           <ul class="text-sm">
-            <li><a href="#introduction" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">1. Introduction</a></li>
-            <li><a href="#project-goals" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">2. Project Goals & Motivation</a></li>
+            <li><a href="#introduction" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">1. Introduction</a></li>
+            <li><a href="#project-goals" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">2. Project Goals & Motivation</a></li>
             <li>
-              <a href="#design-process" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">3. Design Process</a>
+              <a href="#design-process" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">3. Design Process</a>
               <ul class="ml-4">
-                <li><a href="#front-bumper-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-gray-100">3.1 Front Bumper</a></li>
-                <li><a href="#rear-bumper-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-gray-100">3.2 Rear Bumper</a></li>
-                <li><a href="#roof-rack-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-gray-100">3.3 Roof Rack</a></li>
-                <li><a href="#ladder-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-gray-100">3.4 Side Access Ladder</a></li>
-                <li><a href="#molle-panels-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-gray-100">3.5 Molle Panels</a></li>
-                <li><a href="#lighting-integration-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-gray-100">3.6 Offroad Lighting</a></li>
-                <li><a href="#wheel-tire-selection" class="toc-link-dropdown block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-gray-100">3.7 Wheel & Tire Selection</a></li>
+                <li><a href="#front-bumper-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">3.1 Front Bumper</a></li>
+                <li><a href="#rear-bumper-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">3.2 Rear Bumper</a></li>
+                <li><a href="#roof-rack-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">3.3 Roof Rack</a></li>
+                <li><a href="#ladder-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">3.4 Side Access Ladder</a></li>
+                <li><a href="#molle-panels-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">3.5 Molle Panels</a></li>
+                <li><a href="#lighting-integration-design" class="toc-link-dropdown block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">3.6 Offroad Lighting</a></li>
+                <li><a href="#wheel-tire-selection" class="toc-link-dropdown block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">3.7 Wheel & Tire Selection</a></li>
               </ul>
             </li>
-            <li><a href="#challenges" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">4. Challenges & Solutions</a></li>
-            <li><a href="#gallery" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">5. Final Product Gallery</a></li>
-            <li><a href="#real-world-use" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">5.5 Real-World Utility & Showcase</a></li>
-            <li><a href="#outcome" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">6. Outcome & Learnings</a></li>
+            <li><a href="#challenges" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">4. Challenges & Solutions</a></li>
+            <li><a href="#gallery" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">5. Final Product Gallery</a></li>
+            <li><a href="#real-world-use" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">5.5 Real-World Utility & Showcase</a></li>
+            <li><a href="#outcome" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">6. Outcome & Learnings</a></li>
           </ul>
         </div>
       </div>
