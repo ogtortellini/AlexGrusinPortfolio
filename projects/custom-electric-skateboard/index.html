@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Custom Electric Skateboard Project | Alex Grusin</title>
+    <!-- Tailwind CSS Framework -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS for smooth scrolling and TOC highlighting -->
     <style>
       html { scroll-behavior: smooth; }
       .toc-link.active { font-weight: bold; color: #2563eb; }
@@ -16,14 +18,17 @@
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
+    <!-- Navigation Bar and Mobile TOC Dropdown -->
     <nav class="bg-white dark:bg-gray-800 shadow p-4 sticky top-0 z-50 flex justify-between items-center relative">
       <a href="../../index.html" class="text-blue-600 dark:text-blue-400 hover:underline">&larr; Back to Home</a>
       <div class="relative">
+        <!-- Hamburger button for mobile TOC -->
         <button id="tocToggleButton" class="lg:hidden text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:text-blue-600 dark:focus:text-blue-400" aria-label="Toggle table of contents">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
+        <!-- Mobile TOC Dropdown Menu -->
         <div id="tocDropdownMenu" class="hidden absolute right-0 mt-2 w-72 bg-white dark:bg-gray-800 rounded-md shadow-lg z-[60] py-2 lg:hidden">
           <h2 class="text-lg font-semibold px-4 py-2 dark:text-gray-100">Contents</h2>
           <ul class="text-sm">
@@ -36,7 +41,9 @@
       </div>
     </nav>
 
+    <!-- Main Content Layout: Sidebar TOC and Main Article -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
+      <!-- Desktop Sidebar Table of Contents -->
       <aside id="tableOfContentsAside" class="hidden lg:block w-full lg:w-1/4 bg-transparent lg:shadow-none lg:sticky lg:top-20 lg:h-auto lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto self-start mb-8 lg:mb-0 lg:mr-8">
         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
           <h2 class="text-xl font-semibold mb-4 dark:text-gray-100">Contents</h2>
@@ -49,32 +56,35 @@
         </div>
       </aside>
 
+      <!-- Main Article Content -->
       <main class="w-full lg:w-3/4 bg-white dark:bg-gray-800 p-8 rounded-lg shadow">
         <h1 class="text-4xl font-bold mb-2 text-center dark:text-gray-100">Custom Electric Skateboard</h1>
+        <!-- ===================== Section 1: Introduction (HTML) ===================== -->
         <section id="introduction" class="mb-10 scroll-mt-20">
           <h2 class="text-3xl font-semibold mb-4 border-b pb-2 dark:text-gray-100 border-gray-200 dark:border-gray-700">1. Introduction</h2>
           <p class="text-lg leading-relaxed dark:text-gray-200">I started riding an electric skateboard in my freshman year of college. 
-            Quickly, my mind was opened to the possibilities, especially as a means of local commuting. 
-            To the chagrin of my contemporaries, I became an advocate for the popularization of PEVs.
-            After owning a few electric skateboards, I took what I learned to build a custom electric skateboard with advanced motor control and a long-range battery.</p>
+            Quickly, my mind was opened to the possibilities, especially as a means of local commuting.
+            In the years since, I have owned a few different boards, and became an advocate for personal electric vehicles (PEVs) on any campus. 
+            I learned a lot about what I liked and didn't like, and what I wanted in a PEV. 
+            I took what I learned to build a custom electric skateboard with advanced motor control and a long-range battery.</p>
         </section>
 
+      <!-- ===================== Section 2: Design Considerations (HTML) ===================== -->
       <section id="design-considerations" class="mb-10 scroll-mt-20">
         <h2 class="text-3xl font-semibold mb-4 border-b pb-2 dark:text-gray-100 border-gray-200 dark:border-gray-700">2. Design Considerations</h2>
-        <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">Before I started building, I set a few clear priorities: long range, comfort on rough terrain, and reliability in all weather. Here are the most important factors I considered:</p>
+      
         <ul class="list-disc list-inside text-lg text-gray-700 dark:text-gray-200 mb-4">
           <li><strong>Range:</strong> I knew I needed a high-capacity battery and efficient power management to avoid frequent recharging.</li>
           <li><strong>Acceleration & Braking:</strong> I wanted motors with enough torque for quick starts and safe, controlled stops in busy campus traffic.</li>
           <li><strong>Ride Quality:</strong> Large wheels were a must for rolling over cracks and rough terrain without losing comfort.</li>
           <li><strong>Weather Resistance:</strong> I planned to seal all electronics and enclosures so I could ride in the rain without worry.</li>
           <li><strong>Durability:</strong> Every part I picked had to be tough enough for year-round, daily use.</li>
-          <li><strong>Weight & Portability:</strong> I balanced strong materials with the need to carry the board between classes.</li>
-          <li><strong>Comfort:</strong> I shaped the deck and chose grip tape for long rides and secure footing.</li>
-          <li><strong>Looks:</strong> I wanted a custom paint job and finish that would make my board stand out on campus.</li>
+          <li><strong>Weight & Portability:</strong> I had to balance strong materials with the need to carry the board between classes, but understood that this was an area where tradeoffs would likely need to be made.</li>
         </ul>
-        <!-- priorities summary removed for clarity -->
+       
       </section>
 
+      <!-- ===================== Section 3: Donor Board (HTML) ===================== -->
       <section id="donor-board" class="mb-10 scroll-mt-20">
         <h2 class="text-3xl font-semibold mb-4 border-b pb-2 dark:text-gray-100 border-gray-200 dark:border-gray-700">3. Donor Board: Meepo V4S</h2>
         <p class="text-lg leading-relaxed dark:text-gray-200">I sourced the wheels, hub motors, and trucks from a Meepo V4S electric skateboard. These parts matched my riding style and had already proven themselves reliable, so they made a great foundation for my custom project.</p>
@@ -94,6 +104,7 @@
         </div>
       </section>
 
+      <!-- ===================== Section 4: Custom Battery Pack (HTML) ===================== -->
       <section id="battery-pack" class="mb-10 scroll-mt-20">
         <h2 class="text-3xl font-semibold mb-4 border-b pb-2 dark:text-gray-100 border-gray-200 dark:border-gray-700">4. Custom Battery Pack: 10s2p P45B Cells</h2>
         <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">I built the battery pack using a 10s2p configuration with Molicel P45B cells—10 in series for 36V, and 2 in parallel for a total of 20 cells. Each cell had a nominal capacity of 4.5Ah, so my pack delivered 9Ah (324Wh at nominal voltage). This gave me the long-range capability I wanted, letting me commute for days without worrying about recharging.</p>
@@ -120,7 +131,9 @@
           <li><span class="font-bold text-blue-600 dark:text-blue-400">Blue:</span> ER 10s2p P45B (my pack)</li>
           <li><span class="font-bold text-gray-500 dark:text-gray-400">Gray:</span> Budget 10s2p 25R (typical entry-level eboard)</li>
         </ul>
+        <!-- Chart.js Library (Script) -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- Battery Torque Graph Script (Script) -->
         <script>
           // Simulated torque (relative units) vs capacity for ER (P45B) and budget (25R) packs
           // P45B: high current, maintains torque at low SOC; 25R: voltage sags, torque drops off
@@ -178,7 +191,24 @@
         </script>
       </section>
 
-<!-- Scripts -->
+
+      </section>
+
+      <section id="motor-control" class="mb-10 scroll-mt-20">
+      <!-- ===================== Section 5: Motor Control & ESC Tuning (HTML) ===================== -->
+        <h2 class="text-3xl font-semibold mb-4 border-b pb-2 dark:text-gray-100 border-gray-200 dark:border-gray-700">5. Motor Control & ESC Tuning</h2>
+        <p class="text-lg leading-relaxed dark:text-gray-200 mb-4">
+          The heart of any electric skateboard is its motor controller, or ESC (Electronic Speed Controller). For this build, I used an open-source programmable ESC that allowed me full control of the boards dynamics.
+          This meant I could fine-tune acceleration, braking, throttle response, and implement safety features like thermal protection and current limiting.
+          I could also adjust the motor's power output to match the battery's capabilities, ensuring smooth performance without risking damage to the components.
+        </p>
+        <p class="text-gray-700 dark:text-gray-200 text-sm mb-2">
+          <strong>ESC Used:</strong> Flipsky VESC-based controller (open-source, highly customizable, and widely used in the DIY eboard community).
+        </p>
+      </section>
+
+
+<!-- ========== Page Scripts: Table of Contents Scroll & Toggle (Script) ========== -->
 <script src="../../assets/js/toc-scroller.js"></script>
 <script src="../../assets/js/toc-toggle.js"></script>
 </body>
