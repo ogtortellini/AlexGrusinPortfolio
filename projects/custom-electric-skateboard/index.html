@@ -15,22 +15,22 @@
       }
     </style>
   </head>
-  <body class="bg-gray-100 text-gray-900 font-sans">
-    <nav class="bg-white shadow p-4 sticky top-0 z-50 flex justify-between items-center relative">
-      <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
+  <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
+    <nav class="bg-white dark:bg-gray-800 shadow p-4 sticky top-0 z-50 flex justify-between items-center relative">
+      <a href="../../index.html" class="text-blue-600 dark:text-blue-400 hover:underline">&larr; Back to Home</a>
       <div class="relative">
-        <button id="tocToggleButton" class="lg:hidden text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600" aria-label="Toggle table of contents">
+        <button id="tocToggleButton" class="lg:hidden text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:text-blue-600 dark:focus:text-blue-400" aria-label="Toggle table of contents">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
-        <div id="tocDropdownMenu" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-md shadow-lg z-[60] py-2 lg:hidden">
-          <h2 class="text-lg font-semibold px-4 py-2">Contents</h2>
+        <div id="tocDropdownMenu" class="hidden absolute right-0 mt-2 w-72 bg-white dark:bg-gray-800 rounded-md shadow-lg z-[60] py-2 lg:hidden">
+          <h2 class="text-lg font-semibold px-4 py-2 dark:text-gray-100">Contents</h2>
           <ul class="text-sm">
-            <li><a href="#introduction" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">1. Introduction</a></li>
-            <li><a href="#design-considerations" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">2. Design Considerations</a></li>
-            <li><a href="#donor-board" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">3. Donor Board</a></li>
-            <li><a href="#battery-pack" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">4. Custom Battery Pack</a></li>
+            <li><a href="#introduction" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">1. Introduction</a></li>
+            <li><a href="#design-considerations" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">2. Design Considerations</a></li>
+            <li><a href="#donor-board" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">3. Donor Board</a></li>
+            <li><a href="#battery-pack" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">4. Custom Battery Pack</a></li>
           </ul>
         </div>
       </div>
@@ -38,28 +38,28 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
       <aside id="tableOfContentsAside" class="hidden lg:block w-full lg:w-1/4 bg-transparent lg:shadow-none lg:sticky lg:top-20 lg:h-auto lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto self-start mb-8 lg:mb-0 lg:mr-8">
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h2 class="text-xl font-semibold mb-4">Contents</h2>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+          <h2 class="text-xl font-semibold mb-4 dark:text-gray-100">Contents</h2>
           <ul class="space-y-2 text-sm">
-            <li><a href="#introduction" class="toc-link text-gray-700 hover:text-blue-600">1. Introduction</a></li>
-            <li><a href="#design-considerations" class="toc-link text-gray-700 hover:text-blue-600">2. Design Considerations</a></li>
-            <li><a href="#donor-board" class="toc-link text-gray-700 hover:text-blue-600">3. Donor Board</a></li>
-            <li><a href="#battery-pack" class="toc-link text-gray-700 hover:text-blue-600">4. Custom Battery Pack</a></li>
+            <li><a href="#introduction" class="toc-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">1. Introduction</a></li>
+            <li><a href="#design-considerations" class="toc-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">2. Design Considerations</a></li>
+            <li><a href="#donor-board" class="toc-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">3. Donor Board</a></li>
+            <li><a href="#battery-pack" class="toc-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">4. Custom Battery Pack</a></li>
           </ul>
         </div>
       </aside>
 
-      <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
-        <h1 class="text-4xl font-bold mb-2 text-center">Custom Electric Skateboard</h1>
+      <main class="w-full lg:w-3/4 bg-white dark:bg-gray-800 p-8 rounded-lg shadow">
+        <h1 class="text-4xl font-bold mb-2 text-center dark:text-gray-100">Custom Electric Skateboard</h1>
         <section id="introduction" class="mb-10 scroll-mt-20">
-          <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction</h2>
-          <p class="text-lg leading-relaxed">I built this custom electric skateboard with advanced motor control and a long-range battery to solve my daily campus commute. Here’s how I approached the project and what I learned along the way.</p>
+          <h2 class="text-3xl font-semibold mb-4 border-b pb-2 dark:text-gray-100 border-gray-200 dark:border-gray-700">1. Introduction</h2>
+          <p class="text-lg leading-relaxed dark:text-gray-200">I built this custom electric skateboard with advanced motor control and a long-range battery to solve my daily campus commute. Here’s how I approached the project and what I learned along the way.</p>
         </section>
 
       <section id="design-considerations" class="mb-10 scroll-mt-20">
-        <h2 class="text-3xl font-semibold mb-4 border-b pb-2">2. What I Considered Before Building</h2>
-        <p class="text-lg leading-relaxed mb-4">Before I started building, I set a few clear priorities: long range, comfort on rough terrain, and reliability in all weather. Here are the most important factors I considered:</p>
-        <ul class="list-disc list-inside text-lg text-gray-700 mb-4">
+        <h2 class="text-3xl font-semibold mb-4 border-b pb-2 dark:text-gray-100 border-gray-200 dark:border-gray-700">2. What I Considered Before Building</h2>
+        <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">Before I started building, I set a few clear priorities: long range, comfort on rough terrain, and reliability in all weather. Here are the most important factors I considered:</p>
+        <ul class="list-disc list-inside text-lg text-gray-700 dark:text-gray-200 mb-4">
           <li><strong>Range:</strong> I knew I needed a high-capacity battery and efficient power management to avoid frequent recharging.</li>
           <li><strong>Acceleration & Braking:</strong> I wanted motors with enough torque for quick starts and safe, controlled stops in busy campus traffic.</li>
           <li><strong>Ride Quality:</strong> Large wheels were a must for rolling over cracks and rough terrain without losing comfort.</li>
@@ -73,49 +73,49 @@
       </section>
 
       <section id="donor-board" class="mb-10 scroll-mt-20">
-        <h2 class="text-3xl font-semibold mb-4 border-b pb-2">3. Donor Board: Meepo V4S</h2>
-        <p class="text-lg leading-relaxed">I sourced the wheels, hub motors, and trucks from a Meepo V4S electric skateboard. These parts matched my riding style and had already proven themselves reliable, so they made a great foundation for my custom project.</p>
+        <h2 class="text-3xl font-semibold mb-4 border-b pb-2 dark:text-gray-100 border-gray-200 dark:border-gray-700">3. Donor Board: Meepo V4S</h2>
+        <p class="text-lg leading-relaxed dark:text-gray-200">I sourced the wheels, hub motors, and trucks from a Meepo V4S electric skateboard. These parts matched my riding style and had already proven themselves reliable, so they made a great foundation for my custom project.</p>
         <div class="my-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <figure class="bg-white rounded-lg shadow-md overflow-hidden">
+          <figure class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
             <img src="images/Meepov4sproductimage.png" alt="Meepo V4S product image" class="w-full h-auto object-contain rounded-t-lg">
-            <figcaption class="text-center p-2 text-sm text-gray-700">Meepo V4S - Product Image</figcaption>
+            <figcaption class="text-center p-2 text-sm text-gray-700 dark:text-gray-200">Meepo V4S - Product Image</figcaption>
           </figure>
-          <figure class="bg-white rounded-lg shadow-md overflow-hidden">
+          <figure class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
             <img src="images/Meepov4sHubMotors.png" alt="Meepo V4S hub motors" class="w-full h-auto object-contain rounded-t-lg">
-            <figcaption class="text-center p-2 text-sm text-gray-700">Meepo V4 - Hub Motors</figcaption>
+            <figcaption class="text-center p-2 text-sm text-gray-700 dark:text-gray-200">Meepo V4 - Hub Motors</figcaption>
           </figure>
-          <figure class="bg-white rounded-lg shadow-md overflow-hidden">
+          <figure class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
             <img src="images/Meepov4sTrucks.png" alt="Meepo V4S trucks" class="w-full h-auto object-contain rounded-t-lg">
-            <figcaption class="text-center p-2 text-sm text-gray-700">Meepo V4S - Trucks</figcaption>
+            <figcaption class="text-center p-2 text-sm text-gray-700 dark:text-gray-200">Meepo V4S - Trucks</figcaption>
           </figure>
         </div>
       </section>
 
       <section id="battery-pack" class="mb-10 scroll-mt-20">
-        <h2 class="text-3xl font-semibold mb-4 border-b pb-2">4. Custom Battery Pack: 10s2p P45B Cells</h2>
-        <p class="text-lg leading-relaxed mb-4">I built the battery pack using a 10s2p configuration with Molicel P45B cells—10 in series for 36V, and 2 in parallel for a total of 20 cells. Each cell had a nominal capacity of 4.5Ah, so my pack delivered 9Ah (324Wh at nominal voltage). This gave me the long-range capability I wanted, letting me commute for days without worrying about recharging.</p>
-        <div class="mb-6 p-4 bg-blue-50 rounded-lg">
-          <h3 class="text-2xl font-semibold mb-2">Theoretical Range Estimation</h3>
-          <ul class="list-disc list-inside text-lg mb-2">
+        <h2 class="text-3xl font-semibold mb-4 border-b pb-2 dark:text-gray-100 border-gray-200 dark:border-gray-700">4. Custom Battery Pack: 10s2p P45B Cells</h2>
+        <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">I built the battery pack using a 10s2p configuration with Molicel P45B cells—10 in series for 36V, and 2 in parallel for a total of 20 cells. Each cell had a nominal capacity of 4.5Ah, so my pack delivered 9Ah (324Wh at nominal voltage). This gave me the long-range capability I wanted, letting me commute for days without worrying about recharging.</p>
+        <div class="mb-6 p-4 bg-blue-50 dark:bg-blue-900 rounded-lg">
+          <h3 class="text-2xl font-semibold mb-2 dark:text-gray-100">Theoretical Range Estimation</h3>
+          <ul class="list-disc list-inside text-lg mb-2 dark:text-gray-200">
             <li><strong>Battery capacity:</strong> 324 Wh (9Ah × 36V)</li>
             <li><strong>Average consumption:</strong> ~10-15 Wh per mile (depending on speed, my weight, terrain, and riding style)</li>
           </ul>
-          <ul class="list-disc list-inside text-lg mb-2">
+          <ul class="list-disc list-inside text-lg mb-2 dark:text-gray-200">
             <li><strong>Conservative estimate (15 Wh/mi):</strong> <span class="font-mono">324 Wh ÷ 15 Wh/mi ≈ 21.6 miles</span></li>
             <li><strong>Optimistic estimate (10 Wh/mi):</strong> <span class="font-mono">324 Wh ÷ 10 Wh/mi ≈ 32.4 miles</span></li>
           </ul>
-          <p class="text-gray-700 mb-2">In real-world use, my range depended on my weight, speed, terrain, wind, and how aggressively I accelerated. For most campus commutes and moderate riding, I got <span class="font-bold text-blue-600">20–30 miles</span> per charge—much more than typical budget boards, which usually deliver only <span class="font-bold text-blue-600">8–12 miles.</span>*</p>
-          <p class="text-gray-500 text-xs mt-2">*Budget eboard range estimate based on published specs for entry-level models such as the Meepo V4S and WowGo 2S Max. <a href="https://www.meepoboard.com/products/meepo-v4s-shuffle" class="underline text-blue-600" target="_blank" rel="noopener">[Meepo V4S Specs]</a></p>
+          <p class="text-gray-700 dark:text-gray-200 mb-2">In real-world use, my range depended on my weight, speed, terrain, wind, and how aggressively I accelerated. For most campus commutes and moderate riding, I got <span class="font-bold text-blue-600 dark:text-blue-400">20–30 miles</span> per charge—much more than typical budget boards, which usually deliver only <span class="font-bold text-blue-600 dark:text-blue-400">8–12 miles.</span>*</p>
+          <p class="text-gray-500 dark:text-gray-400 text-xs mt-2">*Budget eboard range estimate based on published specs for entry-level models such as the Meepo V4S and WowGo 2S Max. <a href="https://www.meepoboard.com/products/meepo-v4s-shuffle" class="underline text-blue-600 dark:text-blue-400" target="_blank" rel="noopener">[Meepo V4S Specs]</a></p>
         </div>
         <div class="mb-4">
           <canvas id="batteryGraph" width="400" height="250"></canvas>
         </div>
-        <p class="text-gray-700 text-sm mb-2">
+        <p class="text-gray-700 dark:text-gray-200 text-sm mb-2">
           <strong>Graph:</strong> Estimated available torque vs. remaining battery capacity for the 10s2p P45B "Extended Range" (ER) pack compared to a typical budget eboard battery (10s2p 25R). Higher torque at lower states of charge means more consistent acceleration and hill-climbing, especially as the battery drains.
         </p>
-        <ul class="text-gray-700 text-sm mb-4">
-          <li><span class="font-bold text-blue-600">Blue:</span> ER 10s2p P45B (your pack)</li>
-          <li><span class="font-bold text-gray-500">Gray:</span> Budget 10s2p 25R (typical entry-level eboard)</li>
+        <ul class="text-gray-700 dark:text-gray-200 text-sm mb-4">
+          <li><span class="font-bold text-blue-600 dark:text-blue-400">Blue:</span> ER 10s2p P45B (your pack)</li>
+          <li><span class="font-bold text-gray-500 dark:text-gray-400">Gray:</span> Budget 10s2p 25R (typical entry-level eboard)</li>
         </ul>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
