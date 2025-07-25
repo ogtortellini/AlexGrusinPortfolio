@@ -16,27 +16,27 @@
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
-    <nav class="bg-white dark:bg-gray-800 shadow p-4 sticky top-0 z-50 flex justify-between items-center relative">
-      <a href="../../index.html" class="text-blue-600 dark:text-blue-400 hover:underline">&larr; Back to Home</a>
+    <nav class="bg-white shadow p-4 sticky top-0 z-50 flex justify-between items-center relative">
+      <a href="../../index.html" class="text-blue-600 hover:underline">&larr; Back to Home</a>
       <div class="relative">
-        <button id="tocToggleButton" class="lg:hidden text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:text-blue-600 dark:focus:text-blue-400" aria-label="Toggle table of contents">
+        <button id="tocToggleButton" class="lg:hidden text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600" aria-label="Toggle table of contents">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
-        <div id="tocDropdownMenu" class="hidden absolute right-0 mt-2 w-72 bg-white dark:bg-gray-800 rounded-md shadow-lg z-[60] py-2 lg:hidden">
+        <div id="tocDropdownMenu" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-md shadow-lg z-[60] py-2 lg:hidden">
           <h2 class="text-lg font-semibold px-4 py-2 dark:text-gray-100">Contents</h2>
           <ul class="text-sm">
-            <li><a href="#introduction" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">1. Introduction & Early Restoration (2018)</a></li>
-            <li><a href="#timeline-daily-driving" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">2. Daily Driving & Manual Mastery (2019)</a></li>
-            <li><a href="#timeline-transmission-rebuild" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">3. Transmission Rebuild (2020)</a></li>
-            <li><a href="#timeline-engine-failure-rebuild" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">4. First Engine Failure & OEM Rebuild (2020-2021)</a></li>
-            <li><a href="#timeline-ecu-tuning-1" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">5. ECU Tuning Phase 1 (2022)</a></li>
-            <li><a href="#timeline-ecu-tuning-2" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">6. ECU Tuning Phase 2 (2023)</a></li>
-            <li><a href="#timeline-ecu-tuning-3" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">7. ECU Tuning Phase 3 (2023-2024)</a></li>
-            <li><a href="#timeline-tuning-summary" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">8. Full Tuning File Table</a></li>
-            <li><a href="#summary-status" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">9. Summary & Current Status (2025)</a></li>
-            <li><a href="#gallery" class="toc-link-dropdown block px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700">10. Gallery</a></li>
+            <li><a href="#introduction" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">1. Introduction & Early Restoration (2018)</a></li>
+            <li><a href="#timeline-daily-driving" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">2. Daily Driving & Manual Mastery (2019)</a></li>
+            <li><a href="#timeline-transmission-rebuild" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">3. Transmission Rebuild (2020)</a></li>
+            <li><a href="#timeline-engine-failure-rebuild" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">4. First Engine Failure & OEM Rebuild (2020-2021)</a></li>
+            <li><a href="#timeline-ecu-tuning-1" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">5. ECU Tuning Phase 1 (2022)</a></li>
+            <li><a href="#timeline-ecu-tuning-2" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">6. ECU Tuning Phase 2 (2023)</a></li>
+            <li><a href="#timeline-ecu-tuning-3" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">7. ECU Tuning Phase 3 (2023-2024)</a></li>
+            <li><a href="#timeline-tuning-summary" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">8. Full Tuning File Table</a></li>
+            <li><a href="#summary-status" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">9. Summary & Current Status (2025)</a></li>
+            <li><a href="#gallery" class="toc-link-dropdown block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100">10. Gallery</a></li>
           </ul>
         </div>
       </div>
@@ -44,10 +44,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row">
       <!-- Table of Contents (Sticky on larger screens, togglable on smaller) -->
       <aside id="tableOfContentsAside" class="hidden w-full bg-white shadow-md sticky top-16 z-40 h-[calc(100vh-4rem)] overflow-y-auto lg:block lg:w-1/4 lg:bg-transparent lg:shadow-none lg:sticky lg:top-20 lg:h-auto lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto self-start mb-8 lg:mb-0 lg:mr-8">
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h2 class="text-xl font-semibold mb-4">Contents</h2>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+          <h2 class="text-xl font-semibold mb-4 dark:text-gray-100">Contents</h2>
           <ul class="space-y-2 text-sm">
-            <li><a href="#introduction" class="toc-link text-gray-700 hover:text-blue-600">1. Introduction & Early Restoration (2018)</a></li>
+            <li><a href="#introduction" class="toc-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">1. Introduction & Early Restoration (2018)</a></li>
             <li><a href="#timeline-daily-driving" class="toc-link text-gray-700 hover:text-blue-600">2. Daily Driving & Manual Mastery (2019)</a></li>
             <li><a href="#timeline-transmission-rebuild" class="toc-link text-gray-700 hover:text-blue-600">3. Transmission Rebuild (2020)</a></li>
             <li><a href="#timeline-engine-failure-rebuild" class="toc-link text-gray-700 hover:text-blue-600">4. First Engine Failure & OEM Rebuild (2020-2021)</a></li>
@@ -61,9 +61,9 @@
         </div>
       </aside>
       <!-- Main Content -->
-      <main class="w-full lg:w-3/4 bg-white p-8 rounded-lg shadow">
+      <main class="w-full lg:w-3/4 bg-white dark:bg-gray-800 p-8 rounded-lg shadow">
         <h1 class="text-4xl font-bold mb-2 text-center">My Restomod 3000GT VR4 Project</h1>
-        <p class="text-center text-gray-600 mb-8">This project chronicles my ongoing technical and educational journey in restoring and modifying a 1997 Mitsubishi 3000GT VR4. Spanning multiple years, I've taken this car from a rusted, non-functional platform to a high-performance, street-capable machine. Since starting in 2018, the build has involved a full chassis and subframe restoration, two engine rebuilds, a transmission overhaul, and a highly iterative ECU tuning process. For me, this project serves as a hands-on laboratory for learning systems integration, reliability engineering, and motorsport-grade calibration.</p>
+        <p class="text-center text-gray-600 mb-8 dark:text-gray-400">This project chronicles my ongoing technical and educational journey in restoring and modifying a 1997 Mitsubishi 3000GT VR4. Spanning multiple years, I've taken this car from a rusted, non-functional platform to a high-performance, street-capable machine. Since starting in 2018, the build has involved a full chassis and subframe restoration, two engine rebuilds, a transmission overhaul, and a highly iterative ECU tuning process. For me, this project serves as a hands-on laboratory for learning systems integration, reliability engineering, and motorsport-grade calibration.</p>
 
         <section id="introduction" class="mb-10 scroll-mt-20">
           <h2 class="text-3xl font-semibold mb-4 border-b pb-2">1. Introduction & My Early Restoration (2018)</h2>
