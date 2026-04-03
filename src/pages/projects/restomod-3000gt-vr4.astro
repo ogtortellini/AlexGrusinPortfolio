@@ -1,0 +1,296 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL;
+const img = (name: string) => `${base}projects/restomod-3000gt-vr4/images/${name}`;
+
+const toc = [
+  { label: '1. Introduction (2018)', href: '#introduction' },
+  { label: '2. Daily Driving (2019)', href: '#timeline-daily-driving' },
+  { label: '3. Transmission Rebuild (2020)', href: '#timeline-transmission-rebuild' },
+  { label: '4. Engine Rebuild (2020–2021)', href: '#timeline-engine-failure-rebuild' },
+  { label: '5. ECU Tuning Phase 1 (2022)', href: '#timeline-ecu-tuning-1' },
+  { label: '6. ECU Tuning Phase 2 (2023)', href: '#timeline-ecu-tuning-2' },
+  { label: '7. ECU Tuning Phase 3 (2023–2024)', href: '#timeline-ecu-tuning-3' },
+  { label: '8. Tuning File Table', href: '#timeline-tuning-summary' },
+  { label: '9. Current Status (2025)', href: '#summary-status' },
+  { label: '10. Gallery', href: '#gallery' },
+];
+---
+
+<ProjectLayout
+  title="Restomod 3000GT VR4"
+  subtitle="From a rusted, non-functional 1997 Mitsubishi 3000GT VR4 to a high-performance street car — two engine rebuilds, a transmission overhaul, chassis restoration, and iterative ECU tuning over seven years."
+  toc={toc}
+>
+  <section id="introduction" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">1. Introduction & Early Restoration (2018)</h2>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">
+      In June 2018, at age 14, I began this project while visiting family. My initial repairs took place at my uncle's house, where my father and I fixed a leaking rear brake line and restored the AC functionality. Despite my limited experience, I absorbed foundational mechanical skills during these early repairs.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 my-4">
+      <div>
+        <img src={img('photo of when i saw the vr4 for the first time.JPG')} alt="First sight of the VR4" class="rounded-lg shadow" />
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">The 3000GT VR4 as first found.</p>
+      </div>
+      <div>
+        <img src={img('leaky rear brakelines.JPG')} alt="Leaky brake lines" class="rounded-lg shadow" />
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">Addressing the brake line leak.</p>
+      </div>
+    </div>
+    <p class="text-lg leading-relaxed mt-4 dark:text-gray-200">
+      My father and I drove the car 600 miles home. It was in severe disrepair: no AC, holes through the floor, only a temporary brake line fix. That summer I initiated a full undercarriage teardown — cutting out rusted floor sections and replacing them with junkyard donor panels I welded in. I removed, stripped, refinished, and reassembled both subframes with polyurethane bushings, new axles, fresh seals, and rubber lines.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
+      {[
+        ['rusted hole in the passenger side floor.JPG', 'Passenger floor rust damage'],
+        ['rusted hole in the passeneger rear fender well.JPG', 'Rear fender well corrosion'],
+        ['close up of the rear subframe rusting away.JPG', 'Rear subframe rust'],
+      ].map(([file, caption]) => (
+        <div>
+          <img src={img(file)} alt={caption} class="rounded-lg shadow" />
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">{caption}</p>
+        </div>
+      ))}
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
+      {[
+        ['rusty rear subframe removed from the car.JPG', 'Rear subframe removed'],
+        ['burning the old brittle and crusty bushings from the rear subframe.JPG', 'Removing old bushings'],
+        ['prepping+painting rear subframe.JPG', 'Subframe prepped and painted'],
+        ['repainted rear subframe.JPG', 'Restored rear subframe'],
+        ['assembled subframe before.JPG', 'Before restoration'],
+        ['assembled subframe after.JPG', 'After restoration'],
+      ].map(([file, caption]) => (
+        <div>
+          <img src={img(file)} alt={caption} class="rounded-lg shadow" />
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">{caption}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-lg leading-relaxed mt-4 dark:text-gray-200">
+      I also rebuilt all four brake calipers, installed new e-brake shoes, had the undercarriage soda blasted then coated, and sourced replacement parts — down to body panel clips — from donor cars.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
+      {[
+        ['freshly repainted subframe and gas tank installed.JPG', 'Restored subframe and gas tank'],
+        ['beauty shot of the rear suspension+knuckle assembly.jpg', 'Rear suspension detail'],
+        ['fully restored rear knuckle+caliper+rotor+control arms.JPG', 'Completed rear assembly'],
+        ['undercarriage before soda blast.JPG', 'Undercarriage before'],
+        ['undercarriage after soda blast.JPG', 'After soda blasting'],
+        ['undercarriage after coating.JPG', 'After protective coating'],
+      ].map(([file, caption]) => (
+        <div>
+          <img src={img(file)} alt={caption} class="rounded-lg shadow" />
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">{caption}</p>
+        </div>
+      ))}
+    </div>
+    <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border-l-4 border-blue-500">
+      <p class="font-semibold mb-1 dark:text-gray-100">Learnings</p>
+      <ul class="list-disc list-inside text-base dark:text-gray-200 space-y-1">
+        <li>Gained foundational mechanical skills through repair of critical systems.</li>
+        <li>Learned rust remediation: cutting, welding, panel replacement.</li>
+        <li>Understood the importance of systematic disassembly and reassembly.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="timeline-daily-driving" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">2. Daily Driving & Mastering Manual (2019)</h2>
+    <p class="text-lg leading-relaxed dark:text-gray-200">
+      By September 2019 the car was roadworthy. I taught myself to drive manual in it and began using the 3000GT as my daily driver through mid-2020, gaining real-world experience and confidence in the reliability of my restoration work.
+    </p>
+  </section>
+
+  <section id="timeline-transmission-rebuild" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">3. Transmission Rebuild (2020)</h2>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">
+      By fall 2020, driveability issues led to a full teardown of the W6MG1 6-speed manual transmission. Symptoms: grinding into 3rd, difficulty holding reverse, hard 1st engagement. The teardown revealed severely worn synchro friction surfaces on 3rd and reverse, a broken roll pin on the 3/4 shift fork, and 1st/2nd gear and slider wear.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 my-4">
+      <div>
+        <img src={img('painting the transmission.JPG')} alt="Painting the transmission" class="rounded-lg shadow" />
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">Transmission case prepped and painted.</p>
+      </div>
+      <div>
+        <img src={img('disassembled dash and interior.JPG')} alt="Disassembled interior" class="rounded-lg shadow" />
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">Interior disassembly for transmission access.</p>
+      </div>
+    </div>
+    <p class="text-lg leading-relaxed dark:text-gray-200">
+      Rebuild included new 3/4 and reverse hub/slider assemblies, replacement input and intermediate shaft bearings, new seals, shift detents, stabilizer bushings, and refreshed linkage. Completed late 2020.
+    </p>
+    <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border-l-4 border-blue-500">
+      <p class="font-semibold mb-1 dark:text-gray-100">Learnings</p>
+      <ul class="list-disc list-inside text-base dark:text-gray-200 space-y-1">
+        <li>First full gearbox teardown — understood precision engagement geometry and wear behavior.</li>
+        <li>Learned to diagnose transmission issues from symptoms to internal inspection.</li>
+        <li>Developed the meticulousness required for assembling complex gear systems.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="timeline-engine-failure-rebuild" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">4. First Engine Failure & OEM Rebuild (Nov 2020 – Sept 2021)</h2>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">
+      In November 2020, the factory engine failed catastrophically. After evaluating a forged performance rebuild (Ross pistons, high-compression gaskets), I opted for an OEM-spec configuration due to cost, complexity, and intended use.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
+      {[
+        ['engine bay teardown before the first engine rebuild.jpg', 'Engine bay teardown'],
+        ['empy engine bay top view.jpg', 'Empty engine bay'],
+        ['original engine torn down the the bloack.jpg', 'Engine torn to bare block'],
+      ].map(([file, caption]) => (
+        <div>
+          <img src={img(file)} alt={caption} class="rounded-lg shadow" />
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">{caption}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">
+      Rebuild specs: cleaned and honed block (by MMW), polished OEM crank, stock pistons and rods, full OEM gasket kit with Athena MLS-style head gaskets, refreshed oil pump, water pump, and timing components. Verified ring gaps and bearing clearances with plastigage and micrometers; torqued ARP main studs to spec.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
+      {[
+        ['first rebuild bare block and piston+rod.JPG', 'Block with pistons and rods'],
+        ['painting the engine block.JPG', 'Engine block painted'],
+        ['reinstalling the crankshaft + mains.JPG', 'Crankshaft reinstallation'],
+        ['first rebuild reassembled short block.JPG', 'Reassembled short block'],
+        ['Titanium valve spring and retainer.JPG', 'Titanium valve springs'],
+        ['first rebuild new fuel rails.JPG', 'New fuel rails'],
+      ].map(([file, caption]) => (
+        <div>
+          <img src={img(file)} alt={caption} class="rounded-lg shadow" />
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">{caption}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">
+      Final assembly included powdercoated valve covers and intake manifold, new fuel rails, new engine mounts, and new turbos. I began assembly in April 2021 and completed it in September. First start occurred that month — reinstalling the engine with my dad was a proud moment.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
+      {[
+        ['freshly powdercoated valve covers and intake manifold.jpg', 'Powdercoated valve covers and intake'],
+        ['beauty shot of first rebuild longblock+valvecovers.JPG', 'Completed long block'],
+        ['reinstalling the first engine rebuild with my dad.jpeg', 'Reinstalling with my dad'],
+      ].map(([file, caption]) => (
+        <div>
+          <img src={img(file)} alt={caption} class="rounded-lg shadow" />
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">{caption}</p>
+        </div>
+      ))}
+    </div>
+    <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border-l-4 border-blue-500">
+      <p class="font-semibold mb-1 dark:text-gray-100">Learnings</p>
+      <ul class="list-disc list-inside text-base dark:text-gray-200 space-y-1">
+        <li>Navigated OEM vs. aftermarket decisions under budget and use-case constraints.</li>
+        <li>Mastered precision measurement for critical tolerances (plastigage, micrometers).</li>
+        <li>The emotional significance of hearing an engine I rebuilt run for the first time.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="timeline-ecu-tuning-1" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">5. ECU Tuning Phase 1 (Jan–Feb 2022)</h2>
+    <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">
+      Began tuning with a Chrome ECU, Tactrix OpenPort 2.0 cable, and wideband O2 sensor. Supported by Morgan of RacerX Performance. Established stable idle, base fuel map, cold start enrichment, and initial road tune with data logging.
+    </p>
+    <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border-l-4 border-blue-500">
+      <p class="font-semibold mb-1 dark:text-gray-100">Learnings</p>
+      <ul class="list-disc list-inside text-base dark:text-gray-200 space-y-1">
+        <li>Steep learning curve in ECU logic, fuel maps, and ignition timing.</li>
+        <li>Learned to interpret wideband O2 data to optimize AFRs.</li>
+        <li>Developed a systematic approach to data logging and iterative refinement.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="timeline-ecu-tuning-2" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">6. ECU Tuning Phase 2 (Mar–Dec 2023)</h2>
+    <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">
+      Focused on drivability and reliability: fine-tuned acceleration enrichment and transient throttle response, optimized cruise conditions, implemented basic boost control, and addressed knock and sensor irregularities.
+    </p>
+    <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border-l-4 border-blue-500">
+      <p class="font-semibold mb-1 dark:text-gray-100">Learnings</p>
+      <ul class="list-disc list-inside text-base dark:text-gray-200 space-y-1">
+        <li>Balancing performance with long-term engine health.</li>
+        <li>Understanding the interplay between ECU parameters.</li>
+        <li>Grew more confident in making incremental, data-driven changes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="timeline-ecu-tuning-3" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">7. ECU Tuning Phase 3 (Jan 2023 – Feb 2024)</h2>
+    <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">
+      Advanced tuning: installed and calibrated 720cc injectors, implemented a MAF-less Speed Density setup, refined boost control, extensive full-load data logging, and experimented with different fuel types.
+    </p>
+    <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border-l-4 border-blue-500">
+      <p class="font-semibold mb-1 dark:text-gray-100">Learnings</p>
+      <ul class="list-disc list-inside text-base dark:text-gray-200 space-y-1">
+        <li>Mastered Speed Density tuning and volumetric efficiency calibration.</li>
+        <li>Calibrated precise fuel delivery for larger injectors.</li>
+        <li>Learned the critical importance of knock detection when pushing power.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="timeline-tuning-summary" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">8. Tuning File Log</h2>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">Each file corresponds to a significant hardware change or calibration milestone.</p>
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white dark:bg-gray-700 rounded-lg shadow text-sm">
+        <thead class="bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-200">
+          <tr>
+            <th class="py-2 px-4 border-b dark:border-gray-500 text-left font-mono">Date</th>
+            <th class="py-2 px-4 border-b dark:border-gray-500 text-left font-mono">File</th>
+            <th class="py-2 px-4 border-b dark:border-gray-500 text-left">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="dark:text-gray-200">
+          {[
+            ['2022-01-15', 'Alex_Base_Tune_v1.HEX', 'Initial Chrome ECU setup, basic idle and fuel map.'],
+            ['2022-02-05', 'Alex_ColdStart_Tune_v2.HEX', 'Cold start enrichment dialed in.'],
+            ['2023-03-20', 'Alex_RoadTune_Boost_v3.HEX', 'Initial boost control, road tuning refinements.'],
+            ['2023-07-10', 'Alex_720cc_Injectors_v4.HEX', 'Scaled for 720cc injectors.'],
+            ['2023-10-01', 'Alex_SpeedDensity_Base_v5.HEX', 'Initial MAF-less (Speed Density) conversion.'],
+            ['2024-01-15', 'Alex_SD_BoostRefined_v6.HEX', 'Refined SD tune, optimized boost control.'],
+            ['2024-02-28', 'Alex_SD_Final_Street_v7.HEX', 'Current street tune — optimized for drivability.'],
+          ].map(([date, file, notes]) => (
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td class="py-2 px-4 border-b dark:border-gray-500 font-mono text-gray-500 dark:text-gray-400 whitespace-nowrap">{date}</td>
+              <td class="py-2 px-4 border-b dark:border-gray-500 font-mono text-xs">{file}</td>
+              <td class="py-2 px-4 border-b dark:border-gray-500">{notes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="summary-status" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">9. Current Status (2025)</h2>
+    <p class="text-lg leading-relaxed dark:text-gray-200">
+      As of early 2025, the 3000GT VR4 is fully operational and regularly driven. The journey from a neglected shell to its current state has provided invaluable hands-on experience in mechanical engineering, failure analysis, precision assembly, and ECU calibration. Future plans are modest — continued maintenance, minor refinements, and perhaps advanced data acquisition for performance analysis. This project solidified my passion for automotive engineering and gave me a practical skill set that directly complements my academic studies.
+    </p>
+  </section>
+
+  <section id="gallery" class="mb-4 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">10. Gallery</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {[
+        ['3000gt cover photo.jpg', '3000GT VR4 — cover shot'],
+        ['beauty shot of first rebuild longblock+valvecovers.JPG', 'Rebuilt engine'],
+        ['restored driveshaft + new exhaust installed.JPG', 'Restored driveshaft and exhaust'],
+        ['beauty shot of the rear suspension+knuckle assembly.jpg', 'Rear suspension detail'],
+        ['fully restored rear knuckle+caliper+rotor+control arms.JPG', 'Rear knuckle assembly'],
+        ['freshly repainted subframe and gas tank installed.JPG', 'Repainted subframe'],
+      ].map(([file, caption]) => (
+        <div class="rounded-lg overflow-hidden shadow">
+          <img src={img(file)} alt={caption} class="w-full h-48 object-cover" />
+          <p class="text-center text-sm text-gray-500 dark:text-gray-400 p-2">{caption}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</ProjectLayout>

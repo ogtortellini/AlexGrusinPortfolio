@@ -1,0 +1,145 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL;
+const img = (name: string) => `${base}projects/custom-electric-skateboard/images/${name}`;
+
+const toc = [
+  { label: '1. Introduction', href: '#introduction' },
+  { label: '2. Design Considerations', href: '#design-considerations' },
+  { label: '3. Donor Board', href: '#donor-board' },
+  { label: '4. Custom Battery Pack', href: '#battery-pack' },
+  { label: '5. Motor Control & ESC Tuning', href: '#motor-control' },
+];
+---
+
+<ProjectLayout
+  title="Custom Electric Skateboard"
+  subtitle="Built a long-range electric skateboard using a custom 10s2p P45B battery pack, Meepo V4S drivetrain components, and an open-source VESC-based ESC."
+  toc={toc}
+>
+  <section id="introduction" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">1. Introduction</h2>
+    <p class="text-lg leading-relaxed dark:text-gray-200">
+      I started riding an electric skateboard in my freshman year of college. It immediately opened my mind to personal electric vehicles as a practical commuting tool on campus. Over the years I owned several boards, developed strong opinions about what worked and what didn't, and eventually built my own — optimized for the range, ride quality, and motor control I actually wanted.
+    </p>
+  </section>
+
+  <section id="design-considerations" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">2. Design Considerations</h2>
+    <ul class="list-disc list-inside text-lg space-y-2 dark:text-gray-200">
+      <li><strong>Range:</strong> High-capacity battery with efficient power management to avoid frequent recharging.</li>
+      <li><strong>Acceleration & Braking:</strong> Enough torque for quick starts and safe, controlled stops in busy campus traffic.</li>
+      <li><strong>Ride Quality:</strong> Large wheels for rolling over cracks and rough terrain.</li>
+      <li><strong>Weather Resistance:</strong> Sealed electronics and enclosures for riding in the rain.</li>
+      <li><strong>Durability:</strong> Components tough enough for year-round daily use.</li>
+      <li><strong>Weight & Portability:</strong> Balanced against strength — accepted that tradeoffs would be necessary.</li>
+    </ul>
+  </section>
+
+  <section id="donor-board" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">3. Donor Board: Meepo V4S</h2>
+    <p class="text-lg leading-relaxed mb-6 dark:text-gray-200">
+      I sourced the wheels, hub motors, and trucks from a Meepo V4S. These parts matched my riding style and had already proven themselves reliable — a solid foundation for a custom build.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {[
+        ['Meepov4sproductimage.png', 'Meepo V4S'],
+        ['Meepov4sHubMotors.png', 'Hub motors'],
+        ['Meepov4sTrucks.png', 'Trucks'],
+      ].map(([file, caption]) => (
+        <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+          <img src={img(file)} alt={caption} class="w-full h-auto object-contain" />
+          <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">{caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section id="battery-pack" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">4. Custom Battery Pack: 10s2p P45B</h2>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">
+      I built the pack using a 10s2p configuration with Molicel P45B cells — 10 in series for 36V, 2 in parallel for 20 cells total. Each cell: 4.5Ah nominal, so 9Ah total (324Wh at nominal voltage).
+    </p>
+    <div class="mb-6 p-5 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
+      <h3 class="text-lg font-semibold mb-3 dark:text-gray-100">Range Estimation</h3>
+      <ul class="list-disc list-inside text-base mb-3 dark:text-gray-200 space-y-1">
+        <li><strong>Battery capacity:</strong> 324 Wh (9Ah × 36V)</li>
+        <li><strong>Conservative (15 Wh/mi):</strong> <span class="font-mono">324 ÷ 15 ≈ 21.6 miles</span></li>
+        <li><strong>Optimistic (10 Wh/mi):</strong> <span class="font-mono">324 ÷ 10 ≈ 32.4 miles</span></li>
+      </ul>
+      <p class="text-base dark:text-gray-200">
+        Real-world: <strong class="text-blue-600 dark:text-blue-400">20–30 miles per charge</strong> for most campus commutes — roughly 2× the range of budget boards (typically 8–12 miles).*
+      </p>
+      <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">*Based on published specs for entry-level boards such as the Meepo V4S and WowGo 2S Max.</p>
+    </div>
+
+    <div class="mb-4">
+      <canvas id="batteryGraph" class="w-full max-w-xl mx-auto block" height="220"></canvas>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mb-1">
+      <strong>Graph:</strong> Estimated available torque vs. remaining battery capacity. The P45B maintains torque at low states of charge due to lower internal resistance — more consistent acceleration and hill-climbing as the pack drains.
+    </p>
+    <div class="flex gap-6 text-sm mb-4">
+      <span><span class="inline-block w-3 h-3 rounded-full bg-blue-600 mr-1"></span>ER 10s2p P45B (this build)</span>
+      <span><span class="inline-block w-3 h-3 rounded-full bg-gray-400 mr-1"></span>Budget 10s2p 25R</span>
+    </div>
+  </section>
+
+  <section id="motor-control" class="mb-4 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">5. Motor Control & ESC Tuning</h2>
+    <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">
+      The heart of any electric skateboard is its ESC. I used a Flipsky VESC-based open-source controller — fully programmable, widely used in the DIY eboard community. This gave me complete control over acceleration curves, braking force, throttle response, thermal protection, and current limiting.
+    </p>
+    <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">ESC: Flipsky VESC-based &nbsp;|&nbsp; Tuning tool: VESC Tool</p>
+
+    <div class="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg">
+      <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+      <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add details on VESC configuration, specific motor parameters tuned, and real-world performance results.</p>
+    </div>
+  </section>
+</ProjectLayout>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('batteryGraph');
+  if (ctx) {
+    new (window as any).Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0],
+        datasets: [
+          {
+            label: 'ER 10s2p P45B',
+            data: [100, 100, 98, 97, 95, 93, 90, 88, 85, 80, 70],
+            borderColor: 'rgb(37, 99, 235)',
+            backgroundColor: 'rgba(37, 99, 235, 0.08)',
+            tension: 0.3,
+            fill: true,
+            pointRadius: 2,
+          },
+          {
+            label: 'Budget 10s2p 25R',
+            data: [100, 95, 90, 85, 80, 75, 65, 55, 40, 25, 10],
+            borderColor: 'rgb(107, 114, 128)',
+            backgroundColor: 'rgba(107, 114, 128, 0.08)',
+            borderDash: [6, 4],
+            tension: 0.3,
+            fill: true,
+            pointRadius: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Available Torque vs. Battery Capacity' },
+        },
+        scales: {
+          x: { title: { display: true, text: 'Remaining Capacity (%)' }, reverse: true },
+          y: { title: { display: true, text: 'Relative Torque (%)' }, min: 0, max: 110 },
+        },
+      },
+    });
+  }
+</script>

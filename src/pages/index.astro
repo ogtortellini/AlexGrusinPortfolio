@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+
+const base = import.meta.env.BASE_URL;
+const featuredImages = projects.filter((p) => p.featured).map((p) => ({ src: p.cover, title: p.title }));
+---
+
+<BaseLayout title="Alex Grusin | Engineering Portfolio">
+  <!-- Nav -->
+  <nav class="bg-white dark:bg-gray-800 shadow p-4 flex justify-between items-center sticky top-0 z-50">
+    <span class="text-base md:text-xl font-bold dark:text-gray-100">Alex Grusin</span>
+    <button id="menu-btn" class="md:hidden text-gray-700 dark:text-gray-200 focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+    <ul id="menu-links" class="hidden md:flex gap-6 text-sm font-medium">
+      <li><a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+      <li><a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Experience</a></li>
+      <li><a href={`${base}about`} class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+      <li><a href={`${base}contact`} class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden bg-white dark:bg-gray-800 shadow-md md:hidden">
+    <ul class="flex flex-col text-sm font-medium px-6 py-4 gap-4">
+      <li><a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400">Projects</a></li>
+      <li><a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400">Experience</a></li>
+      <li><a href={`${base}about`} class="hover:text-blue-600 dark:hover:text-blue-400">About</a></li>
+      <li><a href={`${base}contact`} class="hover:text-blue-600 dark:hover:text-blue-400">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Slideshow -->
+  <section class="relative w-full overflow-hidden bg-gray-900">
+    <div class="relative h-80 md:h-[30rem] xl:h-[36rem]" id="slideshow-container">
+      {featuredImages.map((img, i) => (
+        <div
+          class="slide absolute inset-0 transition-transform duration-700 ease-in-out"
+          style={`transform: translateX(${i * 100}%)`}
+          data-index={i}
+        >
+          <img src={img.src} alt={img.title} class="w-full h-full object-cover opacity-90" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <p class="absolute bottom-6 left-6 text-white text-xl font-semibold drop-shadow">{img.title}</p>
+        </div>
+      ))}
+    </div>
+    <!-- Controls -->
+    <button id="prev-slide" class="absolute top-0 left-0 z-10 h-full px-4 flex items-center" aria-label="Previous">
+      <span class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center transition-colors">
+        <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+        </svg>
+      </span>
+    </button>
+    <button id="next-slide" class="absolute top-0 right-0 z-10 h-full px-4 flex items-center" aria-label="Next">
+      <span class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center transition-colors">
+        <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+        </svg>
+      </span>
+    </button>
+    <!-- Indicators -->
+    <div id="indicators" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      {featuredImages.map((_, i) => (
+        <button
+          class="indicator w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"
+          data-index={i}
+          aria-label={`Go to slide ${i + 1}`}
+        />
+      ))}
+    </div>
+  </section>
+
+  <main>
+    <!-- Projects -->
+    <section id="projects" class="px-6 py-14">
+      <h2 class="text-2xl font-bold mb-2 text-center dark:text-gray-100">Projects</h2>
+      <p class="text-center text-gray-500 dark:text-gray-400 text-sm font-mono mb-8">Selected engineering work</p>
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="px-6 py-14 bg-white dark:bg-gray-800">
+      <h2 class="text-2xl font-bold mb-2 text-center dark:text-gray-100">Experience</h2>
+      <p class="text-center text-gray-500 dark:text-gray-400 text-sm font-mono mb-8">Where I've worked</p>
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a
+          href={`${base}experience/starforge`}
+          class="group bg-gray-50 dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col"
+        >
+          <div class="overflow-hidden h-48">
+            <img
+              src={`${base}experience/starforge/images/starforge laser cut skatboard rack.JPG`}
+              alt="Starforge Makerspace"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h4 class="text-lg font-semibold mb-2 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              Starforge
+            </h4>
+            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed flex-1">
+              Student-run makerspace at UT Austin. Access to fabrication tools, laser cutters, and a space to turn coursework into real hardware.
+            </p>
+            <span class="mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline">
+              View Experience &rarr;
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-8 border-t border-gray-200 dark:border-gray-700">
+    <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">&copy; 2025 Alex Grusin</p>
+  </footer>
+</BaseLayout>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
+
+  // Slideshow
+  const slides = document.querySelectorAll<HTMLElement>('.slide');
+  const indicators = document.querySelectorAll<HTMLButtonElement>('.indicator');
+  let current = 0;
+
+  function goTo(index: number) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      (slide as HTMLElement).style.transform = `translateX(${(i - current) * 100}%)`;
+    });
+    indicators.forEach((ind, i) => {
+      ind.classList.toggle('bg-white', i === current);
+      ind.classList.toggle('bg-white/50', i !== current);
+    });
+  }
+
+  document.getElementById('prev-slide')?.addEventListener('click', () => goTo(current - 1));
+  document.getElementById('next-slide')?.addEventListener('click', () => goTo(current + 1));
+  indicators.forEach((ind) => {
+    ind.addEventListener('click', () => goTo(Number(ind.dataset.index)));
+  });
+
+  goTo(0);
+  setInterval(() => goTo(current + 1), 5000);
+</script>
