@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="About | Alex Grusin">
+  <nav class="bg-white dark:bg-gray-800 shadow p-4">
+    <a href={`${base}`} class="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium">
+      &larr; Back to Home
+    </a>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-6 py-14">
+    <h1 class="text-3xl font-bold mb-1 dark:text-gray-100">Alex Grusin</h1>
+    <p class="text-gray-500 dark:text-gray-400 font-mono text-sm mb-8">Mechanical Engineering Student</p>
+
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-8 mb-10">
+      <img
+        src={`${base}assets/images/headshot hydrolysis year 2.jpg`}
+        alt="Alex Grusin"
+        class="w-36 h-36 rounded-full shadow-md object-cover flex-shrink-0 mx-auto md:mx-0"
+      />
+      <div>
+        <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">
+          I'm a mechanical engineering student with a strong bias toward execution. I work at the intersection of design, analysis, and fabrication, translating complex problems into practical, testable solutions. My approach is grounded in evidence, iteration, and a clear understanding of system behavior — from material properties and thermal limits to control logic and mechanical interfaces.
+        </p>
+        <p class="text-lg leading-relaxed dark:text-gray-200">
+          I combine theoretical knowledge with hands-on ability, equally comfortable modeling in code or troubleshooting hardware. I value clarity, precision, and performance — whether debugging a simulation, refining a design, or tracking down the root cause of a failure.
+        </p>
+      </div>
+    </div>
+
+    <h2 class="text-xl font-semibold mb-3 dark:text-gray-100">My Engineering Journey</h2>
+    <p class="text-lg mb-4 leading-relaxed dark:text-gray-200">
+      I have known I wanted to be an engineer for most of my life. At first, I was interested in software and computers, intimidated by the math and physics I thought I would have to master in mechanical engineering. My perspective shifted after I built my first car. Having helped my dad with the family's cars before, this was the first time I truly grasped how they worked. For the first time, I felt personally invested in something I was creating, and I've been addicted to engineering ever since.
+    </p>
+    <p class="text-lg mb-10 leading-relaxed dark:text-gray-200">
+      My favorite part about mechanical engineering is how powerful of a tool it is. I work at a student-run maker space called Starforge. It's not a paid position, but the freedom to be curious and creative that comes from having access to tools and space is invaluable. At Starforge, I can harness the theory and formulas from my studies and turn them into real designs. Some projects I've been part of at Starforge include a hydrogen fuel cell, a hybrid race car, a few robots, and many more. I am confident that mastering my problem-solving and technical skills as a mechanical engineer will unlock my capacity for creativity.
+    </p>
+
+    <h2 class="text-xl font-semibold mb-3 dark:text-gray-100">Core Strengths</h2>
+    <ul class="list-disc list-inside text-lg mb-10 space-y-1 dark:text-gray-200">
+      <li>Mechanical systems design and integration</li>
+      <li>Numerical modeling and optimization</li>
+      <li>Failure analysis and iterative testing</li>
+      <li>Materials selection and processing</li>
+      <li>Embedded systems understanding</li>
+      <li>Hands-on fabrication and prototyping</li>
+    </ul>
+
+    <h2 class="text-xl font-semibold mb-3 dark:text-gray-100">Tools & Environments</h2>
+    <p class="text-lg mb-10 bg-gray-100 dark:bg-gray-700 p-4 rounded-lg font-mono text-sm dark:text-gray-200">
+      MATLAB &nbsp;|&nbsp; Python &nbsp;|&nbsp; SolidWorks &nbsp;|&nbsp; Fusion 360 &nbsp;|&nbsp; Simulink &nbsp;|&nbsp; VESC Tool &nbsp;|&nbsp; Oscilloscopes &nbsp;|&nbsp; Machining & Welding &nbsp;|&nbsp; Git
+    </p>
+
+    <p class="text-lg italic text-gray-600 dark:text-gray-300 mb-10 border-l-4 border-blue-600 pl-4">
+      I'm looking for opportunities where engineering decisions have consequences — where clean design, deep understanding, and execution under constraints make the difference.
+    </p>
+
+    <a
+      href={`${base}assets/files/Resume.pdf`}
+      target="_blank"
+      class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 font-semibold transition-colors"
+    >
+      View Resume (PDF)
+    </a>
+  </main>
+
+  <footer class="text-center py-8 mt-8 border-t border-gray-200 dark:border-gray-700">
+    <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">&copy; 2025 Alex Grusin</p>
+  </footer>
+</BaseLayout>

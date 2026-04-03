@@ -1,0 +1,139 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL;
+const img = (name: string) => `${base}projects/hybrid-racecar/images/${name}`;
+
+const toc = [
+  { label: '1. Introduction', href: '#introduction' },
+  { label: '2. ICE Powerplant', href: '#ice-powerplant' },
+  { label: '3. FWD Electric Drivetrain', href: '#fwd-electric-drivetrain' },
+  { label: '4. Integration', href: '#integration' },
+  { label: '5. Challenges', href: '#challenges' },
+  { label: '6. Outcome', href: '#outcome' },
+];
+---
+
+<ProjectLayout
+  title="Hybrid Racecar"
+  subtitle="Designed and integrated a front-wheel-drive electric drivetrain into an SCCA Spec Racer Ford as a 'push to pass' hybrid system for endurance racing."
+  toc={toc}
+>
+  <section id="introduction" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">1. Introduction</h2>
+    <p class="text-lg leading-relaxed dark:text-gray-200">
+      The Hybrid Racecar Project began when SCCA Enterprises approached our team with a unique challenge: the engine used in the Spec Racer Ford (SRF) series was being phased out of production, and they needed a replacement. Beyond simply finding a new engine, SCCA was interested in how we could modernize and improve the decades-old racing spec.
+    </p>
+    <p class="text-lg leading-relaxed mt-3 dark:text-gray-200">
+      We pursued hybridization for two key reasons: keeping the car eligible for tracks nationwide as new environmental regulations emerged, and implementing the hybrid system as a "push to pass" feature — giving drivers a temporary electric boost at the press of a button to make passing safer and more frequent. Our focus was integrating a front-wheel-drive electric system, optimizing the ICE for hybrid operation, and developing robust solutions for packaging, cooling, and system integration.
+    </p>
+    <div class="my-6 space-y-4">
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('Entire Racecar team posing with the finished testbench version of the racecar (cover photo).jpeg')} alt="Team with testbench racecar" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Team with the testbench racecar</figcaption>
+      </figure>
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('Racecar with gold and black livery iso view.jpg')} alt="Racecar with livery" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Racecar with final livery</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="ice-powerplant" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">2. ICE Powerplant</h2>
+
+    <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg mb-6">
+      <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+      <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add description of ICE selection rationale, engine modifications for hybrid operation, and key design decisions. Images are in place.</p>
+    </div>
+
+    <div class="space-y-4">
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('Before of the engine bay for the SRF gen 3 (how it came originally).jpg')} alt="Original SRF engine bay" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Original SRF Gen 3 engine bay</figcaption>
+      </figure>
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('Mechanical team posing with the sadev sequential.jpg')} alt="Team with Sadev sequential" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Mechanical team with Sadev sequential gearbox</figcaption>
+      </figure>
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('BellhouseAdaptor mounted to engine with clutch and flywheel assembly.jpg')} alt="Bellhouse adaptor" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Bellhouse adaptor with clutch/flywheel</figcaption>
+      </figure>
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('cross-section view of the engine+transmission used to verify flywheel and clutch clearance with new bellhouse adaptor.png')} alt="Clearance verification CAD" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Clearance verification in CAD</figcaption>
+      </figure>
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('test fit bellhousing adaptor using laser cut sheets of wood.jpg')} alt="Wood mockup test fit" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Wood mockup for bellhousing test fit</figcaption>
+      </figure>
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('3d printed throttle body manifold.jpg')} alt="3D printed throttle body manifold" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">3D printed throttle body manifold</figcaption>
+      </figure>
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('screengrab of CFD testing for the new cooling duct.jpg')} alt="CFD cooling duct" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Cooling duct CFD analysis</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="fwd-electric-drivetrain" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">3. FWD Electric Drivetrain</h2>
+
+    <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg mb-6">
+      <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+      <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add description of motor selection, battery system, chassis modifications for the FWD electric system, and control strategy.</p>
+    </div>
+
+    <div class="space-y-4">
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('modified front chassis to support added drivetrain weight and clearance the axles.jpg')} alt="Modified front chassis" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Modified front chassis for electric drivetrain</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="integration" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">4. Integration</h2>
+
+    <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg mb-6">
+      <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+      <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add details on how the ICE and electric systems were integrated: packaging, control strategy, testing results, and vehicle dynamics changes.</p>
+    </div>
+
+    <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+      <img src={img('cybertruck towing the racecar to the racetrack in Dallas.jpg')} alt="Transporting to racetrack" class="w-full h-auto object-contain" />
+      <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Transporting to the Dallas racetrack for testing</figcaption>
+    </figure>
+  </section>
+
+  <section id="challenges" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">5. Challenges & Learnings</h2>
+
+    <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg">
+      <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+      <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add overall project challenges and key learnings — especially those spanning multiple subsystems or related to project execution and team dynamics.</p>
+    </div>
+  </section>
+
+  <section id="outcome" class="mb-4 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">6. Outcome & Reflections</h2>
+
+    <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg mb-6">
+      <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+      <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add outcome summary — what was delivered, what worked, what didn't, and personal reflections on the project.</p>
+    </div>
+
+    <div class="space-y-4">
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('Racecar team posed with spot robot dog in front of racecar with livery.JPG')} alt="Team with Spot robot dog" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Team with Spot robot at final presentation</figcaption>
+      </figure>
+      <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+        <img src={img('Racecar with gold and black livery top view.jpg')} alt="Racecar top view" class="w-full h-auto object-contain" />
+        <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Racecar with livery — top view</figcaption>
+      </figure>
+    </div>
+  </section>
+</ProjectLayout>

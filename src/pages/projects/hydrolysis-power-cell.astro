@@ -1,0 +1,217 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL;
+const img = (name: string) => `${base}projects/hydrolysis-power-cell/images/${name}`;
+
+const toc = [
+  { label: '1. Introduction', href: '#intro-problem' },
+  { label: '2. Project Goals', href: '#project-goals' },
+  {
+    label: '3. Design & Development',
+    href: '#design-development-journey',
+    children: [
+      { label: '3.1 Design Approach', href: '#design-approach' },
+      { label: '3.2 Phase 1: Research', href: '#timeline-phase-1' },
+      { label: '3.3 Phase 2: Prototyping', href: '#timeline-phase-2' },
+      { label: '3.4 Phase 3: Manufacturing', href: '#timeline-phase-3' },
+      { label: '3.5 Phase 4: Testing', href: '#timeline-phase-4' },
+    ],
+  },
+  { label: '4. Reflections', href: '#reflections-future' },
+  { label: '5. Gallery', href: '#gallery' },
+  { label: '6. Project Context', href: '#project-context' },
+  { label: '7. Presentation PDF', href: '#presentation-pdf' },
+];
+---
+
+<ProjectLayout
+  title="Hydrolysis Power Cell"
+  subtitle="Designed and built a portable hydrogen generation system using water electrolysis — custom gaskets, electrode stack, gas separation membrane, and iterative testing."
+  toc={toc}
+>
+  <section id="intro-problem" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">1. Introduction</h2>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">
+      This project focuses on the design, development, and testing of a portable hydrolysis power cell. The goal: create a compact system capable of generating hydrogen gas through water electrolysis for use in power applications.
+    </p>
+    <div class="my-4 text-center">
+      <img src={img('hydrogen generator beauty shot.JPG')} alt="Hydrogen Generator" class="w-full max-w-lg mx-auto rounded-lg shadow" />
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">The portable hydrogen generation system.</p>
+    </div>
+  </section>
+
+  <section id="project-goals" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">2. Project Goals</h2>
+    <ul class="list-disc pl-6 text-lg space-y-2 dark:text-gray-200">
+      <li>Design and build a functional hydrolysis power cell prototype.</li>
+      <li>Optimize for energy efficiency (hydrogen output vs. electrical input).</li>
+      <li>Ensure safe operation with appropriate pressure and leak safety features.</li>
+      <li>Develop a compact, portable form factor.</li>
+      <li>Use cost-effective materials and manufacturing processes.</li>
+      <li>Document the design, build, and testing process thoroughly.</li>
+    </ul>
+  </section>
+
+  <section id="design-development-journey" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">3. Design & Development Journey</h2>
+
+    <article id="design-approach" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.1 Overall Design Approach</h3>
+
+      <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg mb-4">
+        <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+        <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add electrolyzer type (PEM vs. alkaline), key design decisions, electrode material selection, and housing material rationale.</p>
+      </div>
+
+      <div class="space-y-4">
+        <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+          <img src={img('hydrogen generator beauty shot.JPG')} alt="CAD rendering" class="w-full h-auto object-contain" />
+          <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">CAD rendering of the hydrogen generator.</figcaption>
+        </figure>
+        <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+          <video class="w-full h-auto" controls poster={img('hydrogen generator beauty shot.JPG')}>
+            <source src={img('Assembly of hydrogen generator in CAD.mp4')} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">CAD assembly animation.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article id="timeline-phase-1" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.2 Phase 1: Research & Concept</h3>
+
+      <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg mb-4">
+        <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+        <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add literature review findings, key early design decisions, and preliminary power/output calculations.</p>
+      </div>
+
+      <div class="p-3 bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-400 rounded-lg">
+        <strong class="dark:text-gray-100">Learnings:</strong>
+        <span class="dark:text-gray-200"> Trade-offs between PEM, alkaline, and SOEC electrolyzer types. Importance of material compatibility with electrolytes.</span>
+      </div>
+    </article>
+
+    <article id="timeline-phase-2" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.3 Phase 2: Detailed Design & Prototyping</h3>
+
+      <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg mb-4">
+        <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+        <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add CAD software used, any FEA performed, and early prototype test results for the electrode stack and sealing.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+          <img src={img('stacking the prototype hydrogen generator gaskets.jpg')} alt="Stacking prototype gaskets" class="w-full h-64 object-cover" />
+          <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">Stacking prototype gaskets</figcaption>
+        </figure>
+      </div>
+
+      <div class="p-3 bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-400 rounded-lg">
+        <strong class="dark:text-gray-100">Learnings:</strong>
+        <span class="dark:text-gray-200"> Challenges in achieving reliable sealing. Iterative gasket design improvements. Sourcing appropriate membrane materials.</span>
+      </div>
+    </article>
+
+    <article id="timeline-phase-3" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.4 Phase 3: Manufacturing & Assembly</h3>
+
+      <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg mb-4">
+        <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+        <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add manufacturing methods (CNC, laser cutting, 3D printing), electrode prep process, and assembly sequence details.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        {[
+          ['laser cutting custom rubber gaskets for the hydrogen generator.jpg', 'Laser cutting custom gaskets'],
+          ['prepping the stainless electrode plates in HCL.JPG', 'Prepping electrode plates in HCl'],
+          ['bonding the gas seperation membrane between two gaskets.JPG', 'Bonding gas separation membrane'],
+          ['stacking the prototype hydrogen generator gaskets.jpg', 'Stacking gasket stack'],
+        ].map(([file, caption]) => (
+          <figure class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
+            <img src={img(file)} alt={caption} class="w-full h-56 object-cover" />
+            <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">{caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div class="p-3 bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-400 rounded-lg">
+        <strong class="dark:text-gray-100">Learnings:</strong>
+        <span class="dark:text-gray-200"> Importance of manufacturing tolerances. Techniques for handling delicate membranes. Assembly sequence optimization.</span>
+      </div>
+    </article>
+
+    <article id="timeline-phase-4" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.5 Phase 4: Testing & Iteration</h3>
+
+      <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg mb-4">
+        <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+        <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add testing setup, leak test results, hydrogen output measurements at various power inputs, efficiency calculations, and iteration details.</p>
+      </div>
+
+      <div class="p-3 bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-400 rounded-lg">
+        <strong class="dark:text-gray-100">Learnings:</strong>
+        <span class="dark:text-gray-200"> Identifying and resolving unexpected issues. Importance of systematic testing procedures. Validating theory with experimental data.</span>
+      </div>
+    </article>
+  </section>
+
+  <section id="reflections-future" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">4. Reflections & Future Work</h2>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">
+      Key challenges included achieving reliable sealing in the electrode stack (requiring multiple gasket iterations), ensuring material compatibility with the electrolyte, and managing heat generated at higher power inputs.
+    </p>
+    <p class="text-lg leading-relaxed dark:text-gray-200">
+      Future directions: optimize electrode catalyst materials, integrate a more sophisticated control system for automated safety monitoring, and explore direct integration with a fuel cell for a complete power system.
+    </p>
+  </section>
+
+  <section id="gallery" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">5. Gallery</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {[
+        ['hydrogen generator beauty shot.JPG', 'Beauty shot'],
+        ['1st semester team photo.JPG', '1st semester team photo'],
+        ['laser cutting custom rubber gaskets for the hydrogen generator.jpg', 'Laser cutting gaskets'],
+        ['bonding the gas seperation membrane between two gaskets.JPG', 'Bonding membrane'],
+        ['prepping the stainless electrode plates in HCL.JPG', 'Prepping electrode plates'],
+        ['stacking the prototype hydrogen generator gaskets.jpg', 'Stacking gaskets'],
+      ].map(([file, caption]) => (
+        <figure class="rounded-lg overflow-hidden shadow">
+          <img src={img(file)} alt={caption} class="w-full h-56 object-cover" />
+          <figcaption class="text-center p-2 text-sm text-gray-500 dark:text-gray-400">{caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section id="project-context" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">6. Project Context</h2>
+
+    <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-lg mb-4">
+      <p class="font-semibold text-amber-800 dark:text-amber-300">TODO</p>
+      <p class="text-amber-700 dark:text-amber-400 text-sm mt-1">Add course/capstone context, team members and their roles, and acknowledgements for faculty or lab support.</p>
+    </div>
+
+    <div class="my-4 text-center">
+      <img src={img('1st semester team photo.JPG')} alt="Team photo" class="w-full max-w-md mx-auto rounded-lg shadow" />
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">The team during the first semester.</p>
+    </div>
+  </section>
+
+  <section id="presentation-pdf" class="mb-4 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">7. Final Presentation</h2>
+    <p class="text-lg leading-relaxed mb-6 dark:text-gray-200">
+      Download the final presentation slides for a detailed overview including specific data and analysis.
+    </p>
+    <div class="text-center">
+      <a
+        href={`${base}projects/hydrolysis-power-cell/files/Saratoga Presentation.pdf`}
+        target="_blank"
+        class="inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Download Presentation (PDF)
+      </a>
+    </div>
+  </section>
+</ProjectLayout>

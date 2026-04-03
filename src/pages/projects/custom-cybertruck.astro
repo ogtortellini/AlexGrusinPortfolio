@@ -1,0 +1,212 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+const base = import.meta.env.BASE_URL;
+const img = (name: string) => `${base}projects/custom-cybertruck/images/${name}`;
+
+const toc = [
+  { label: '1. Introduction', href: '#introduction' },
+  { label: '2. Project Goals', href: '#project-goals' },
+  {
+    label: '3. Design Process',
+    href: '#design-process',
+    children: [
+      { label: '3.1 Front Bumper', href: '#front-bumper-design' },
+      { label: '3.2 Rear Bumper', href: '#rear-bumper-design' },
+      { label: '3.3 Roof Rack', href: '#roof-rack-design' },
+      { label: '3.4 Side Ladder', href: '#ladder-design' },
+      { label: '3.5 Molle Panels', href: '#molle-panels-design' },
+      { label: '3.6 Offroad Lighting', href: '#lighting-integration-design' },
+      { label: '3.7 Wheel & Tire', href: '#wheel-tire-selection' },
+    ],
+  },
+  { label: '4. Challenges', href: '#challenges' },
+  { label: '5. Gallery', href: '#gallery' },
+  { label: '5.5 Real-World Use', href: '#real-world-use' },
+  { label: '6. Outcome', href: '#outcome' },
+];
+---
+
+<ProjectLayout
+  title="Custom Cybertruck"
+  subtitle="Designed and fabricated a tubular exoskeleton, roof rack, bumpers, and offroad lighting for a client-commissioned Cybertruck build — over 100 hours in Fusion 360."
+  toc={toc}
+>
+  <section id="introduction" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">1. Introduction</h2>
+    <p class="text-lg leading-relaxed dark:text-gray-200">
+      This project chronicles the transformation of a Tesla Cybertruck into a statement piece, commissioned by a client to advertise their virtual power plant business in Texas. The core request: make the Cybertruck "as Texas as possible." After exploring custom sheet metal body panels, we pivoted to a tubular exoskeleton-inspired design — leveraging our team's tube cutting and welding expertise — to alter the truck's proportions and enhance its utility. I spent over 100 hours in Fusion 360 developing three distinct design versions before settling on the fabricated components below.
+    </p>
+  </section>
+
+  <section id="project-goals" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">2. Project Goals</h2>
+    <ul class="list-disc list-inside text-lg space-y-2 dark:text-gray-200">
+      <li><strong>Client vision:</strong> A Cybertruck that is unmistakably unique and "as Texas as possible."</li>
+      <li><strong>Aesthetic transformation:</strong> Address the controversial tapering side profile with a prominent roof rack and structural struts.</li>
+      <li><strong>Functional enhancements:</strong> Winch-ready front bumper, roof rack, molle panels, rear bash bar, offroad lighting.</li>
+      <li><strong>Showcasing makerspace capabilities:</strong> CAD, metal fabrication, powder coating, vinyl wrap — all in-house.</li>
+    </ul>
+    <p class="text-sm text-gray-500 dark:text-gray-400 font-mono mt-3">Budget: $12,000 &nbsp;|&nbsp; All steel components: sandblasted + textured black powder coat</p>
+  </section>
+
+  <section id="design-process" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">3. Design Process</h2>
+    <p class="text-lg leading-relaxed mb-6 dark:text-gray-200">
+      The design process was highly iterative, involving close client collaboration. After the sheet metal pivot, I spent 100+ hours in Fusion 360 developing three exoskeleton versions before landing on the final fabrication-ready designs. All steel components were standardized to 2-inch or 1-inch OD mild steel tubing and finished in textured black powder coat.
+    </p>
+    <div class="my-4 bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
+      <img src={img('Initial Exoskeleton Sketch.jpg')} alt="Initial Exoskeleton Sketch" class="rounded-lg shadow mx-auto max-h-96 object-contain" />
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Early concept sketch exploring the exoskeleton idea.</p>
+    </div>
+
+    <article id="front-bumper-design" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.1 Front Bumper</h3>
+      <h4 class="font-semibold mb-1 dark:text-gray-200">Design</h4>
+      <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">Designed to be winch-ready with an aggressive stance and auxiliary lighting mounts. FEA was performed under bodyweight loading to verify structural integrity.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <img src={img('front bumper concept 1.png')} alt="Front Bumper Concept" class="rounded-lg shadow object-contain max-h-72" />
+        <img src={img('Front Bumper Static Test (Bodyweight).jpg')} alt="Front Bumper FEA" class="rounded-lg shadow object-contain max-h-72" />
+      </div>
+      <h4 class="font-semibold mb-1 dark:text-gray-200">Fabrication</h4>
+      <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">Constructed from <strong>2-inch OD, 1/8-inch wall mild steel tubing</strong>. Sandblasted and powder coated after fabrication.</p>
+      <img src={img('Front Beauty Shot.jpg')} alt="Finished Front Bumper" class="rounded-lg shadow object-contain max-h-72 mx-auto" />
+    </article>
+
+    <article id="rear-bumper-design" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.2 Rear Bumper</h3>
+      <h4 class="font-semibold mb-1 dark:text-gray-200">Design</h4>
+      <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">A "Mad-Max" aesthetic bash bar designed to mount to the vehicle's frame and tow hitch points for robust protection.</p>
+      <h4 class="font-semibold mb-1 dark:text-gray-200">Fabrication</h4>
+      <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">Built from <strong>2-inch OD, 1/8-inch wall mild steel tubing</strong>. A custom jig was essential for achieving the precise alignment before sandblasting and powder coating.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <img src={img('Rear Bumper Jig.jpg')} alt="Rear Bumper Jig" class="rounded-lg shadow object-contain max-h-72" />
+        <img src={img('Rear Bumper Isometric Night.jpg')} alt="Finished Rear Bash Bar" class="rounded-lg shadow object-contain max-h-72" />
+      </div>
+    </article>
+
+    <article id="roof-rack-design" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.3 Roof Rack & Support Struts</h3>
+      <h4 class="font-semibold mb-1 dark:text-gray-200">Design</h4>
+      <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">The most visually impactful element — designed to correct the Cybertruck's tapering side profile. Integrated struts connect to the tailgate area for structural rigidity and exoskeleton aesthetics.</p>
+      <h4 class="font-semibold mb-1 dark:text-gray-200">Fabrication</h4>
+      <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">Fabricated from <strong>1-inch OD, 1/8-inch wall mild steel tubing</strong>. Required the most refinement of any component — multiple cutting, adjusting, and re-welding cycles to match vehicle contours.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <img src={img('Roof Rack Unfinished Passenger Side View.jpg')} alt="Roof Rack in progress" class="rounded-lg shadow object-contain max-h-80" />
+        <img src={img('Roof Rack + Rear Bumper Alignment.jpg')} alt="Roof Rack alignment check" class="rounded-lg shadow object-contain max-h-80" />
+        <img src={img('Side Profile + Lights +Starforge Backdrop.jpg')} alt="Finished side profile" class="rounded-lg shadow object-contain max-h-80" />
+      </div>
+    </article>
+
+    <article id="ladder-design" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.4 Side Access Ladder</h3>
+      <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">Engineered to mount from the roof rack structure down to the vehicle's side steps for roof rack access. Fabricated from <strong>1-inch OD, 1/8-inch wall mild steel tubing</strong>.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <img src={img('Unfinished Ladder.jpeg')} alt="Ladder during fabrication" class="rounded-lg shadow object-contain max-h-80" />
+        <img src={img('photo of me climbing the ladder on the cybertruck.jpg')} alt="Testing the ladder" class="rounded-lg shadow object-contain max-h-80" />
+      </div>
+    </article>
+
+    <article id="molle-panels-design" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.5 Molle Panels</h3>
+      <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">Custom MOLLE panels designed in Fusion 360 to integrate with the roof rack support struts, providing versatile mounting points for tools and recovery gear. Fiber-laser cut from steel, then sandblasted and powder coated.</p>
+      <img src={img('Molle Panel + Ladder Mockup.jpg')} alt="Molle Panel mockup" class="rounded-lg shadow object-contain max-h-80 mx-auto" />
+    </article>
+
+    <article id="lighting-integration-design" class="mb-10 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.6 Offroad Lighting</h3>
+      <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">High-power LED light bars and pods mounted on the front bumper and roof rack. The wiring harness was carefully routed and protected for a clean, reliable installation.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <img src={img('Front Light Harness.jpg')} alt="Front light wiring harness" class="rounded-lg shadow object-contain max-h-72" />
+        <img src={img('Isometric With Lights.jpg')} alt="All lights illuminated" class="rounded-lg shadow object-contain max-h-72" />
+      </div>
+    </article>
+
+    <article id="wheel-tire-selection" class="mb-6 scroll-mt-20">
+      <h3 class="text-xl font-semibold mb-3">3.7 Wheel & Tire Selection</h3>
+      <p class="text-lg leading-relaxed mb-3 dark:text-gray-200">
+        Wheel fitment required analysis of offset and poke relative to stock (55.8mm). Three options using <strong>Black Rhino Armory wheels</strong> were presented to the client:
+      </p>
+      <ul class="list-disc list-inside text-lg space-y-2 mb-4 dark:text-gray-200">
+        <li><strong>Option 1:</strong> 18×9.5, -18mm offset, 35-inch tires — 138.65mm poke (~$2,295 net)</li>
+        <li><strong>Option 2:</strong> 18×9.5, -18mm offset, 37-inch tires — same poke, taller (~$2,575 net)</li>
+        <li><strong>Option 3:</strong> 20×9.5, +6mm offset, 37-inch tires — 114.65mm poke, more tucked (~$3,095 net)</li>
+      </ul>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <img src={img('scaled cybertruck model with wheel to validate fitment before purchase.png')} alt="Scaled model for fitment validation" class="rounded-lg shadow object-contain max-h-72" />
+        <img src={img('Final Proposal CAD.png')} alt="Final CAD proposal" class="rounded-lg shadow object-contain max-h-72" />
+      </div>
+    </article>
+  </section>
+
+  <section id="challenges" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">4. Challenges & Solutions</h2>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">Translating the abstract "as Texas as possible" request into concrete, fabricable designs within a $12,000 budget was an ongoing challenge. The sheet metal to steel tubing pivot was the key early decision.</p>
+
+    <div class="space-y-6">
+      <div>
+        <h4 class="font-semibold text-lg dark:text-gray-100">Tube Bending</h4>
+        <p class="text-lg leading-relaxed mt-1 dark:text-gray-200">
+          Our plan to retrofit a manual bender with a hydraulic ram from Harbor Freight failed at the die stage. Professional dies were too expensive; our plasma-cut and 3D-printed custom dies caused <strong>kinking and marring</strong>. This setback cost over a month before we found a workable solution.
+        </p>
+        <img src={img('Roof Rack Test Fit Panels.jpg')} alt="Roof rack fabrication" class="rounded-lg shadow object-contain max-h-72 mx-auto mt-3" />
+      </div>
+      <div>
+        <h4 class="font-semibold text-lg dark:text-gray-100">Fabrication Precision</h4>
+        <p class="text-lg leading-relaxed mt-1 dark:text-gray-200">The rear bumper required a custom jig and engineering drawings. The roof rack — the most complex assembly — demanded multiple cut-adjust-reweld cycles.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-lg dark:text-gray-100">Full Vehicle Vinyl Wrap</h4>
+        <p class="text-lg leading-relaxed mt-1 dark:text-gray-200">My first full vehicle wrap — a week-long process done by two people. Steep learning curve but a new skill earned.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+          <img src={img('Wrap Surface Prep.jpg')} alt="Surface prep for wrap" class="rounded-lg shadow object-contain max-h-64" />
+          <img src={img('Passenger Side Wrap Install.jpg')} alt="Wrap installation" class="rounded-lg shadow object-contain max-h-64" />
+          <img src={img('Tailgate Wrap Install.jpg')} alt="Tailgate wrap" class="rounded-lg shadow object-contain max-h-64" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">5. Final Product Gallery</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {[
+        ['Front Beauty Shot.jpg', 'Front view'],
+        ['Side Profile + Lights +Starforge Backdrop.jpg', 'Side profile'],
+        ['Rear Bumper Isometric Night.jpg', 'Rear bash bar at night'],
+        ['Isometric With Lights.jpg', 'Isometric — lights on'],
+        ['Isometric Beauty Shot.jpg', 'Isometric beauty shot'],
+      ].map(([file, caption]) => (
+        <div class="rounded-lg overflow-hidden shadow">
+          <img src={img(file)} alt={caption} class="w-full h-56 object-cover" />
+          <p class="text-center text-sm text-gray-500 dark:text-gray-400 p-2">{caption}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="real-world-use" class="mb-12 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">5.5 Real-World Utility</h2>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">Beyond its appearance, the truck was immediately put to work — towing racecars and hauling materials for a new fabrication room build.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="rounded-lg overflow-hidden shadow p-4 bg-gray-50 dark:bg-gray-700">
+        <img src={img('Hauling RaceCar.jpg')} alt="Cybertruck hauling a racecar" class="rounded object-contain max-h-80 mx-auto" />
+        <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-2">Hauling a racecar to the track.</p>
+      </div>
+      <div class="rounded-lg overflow-hidden shadow p-4 bg-gray-50 dark:bg-gray-700">
+        <img src={img('using the cybertruck as a work truck to build new metal fabrication room.jpg')} alt="Cybertruck as work truck" class="rounded object-contain max-h-80 mx-auto" />
+        <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-2">Used as a work truck during a new fab room build.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="outcome" class="mb-4 scroll-mt-20">
+    <h2 class="text-2xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">6. Outcome & Learnings</h2>
+    <p class="text-lg leading-relaxed mb-4 dark:text-gray-200">
+      <strong>The truck is complete and on the road.</strong> It fulfills the client's vision as a fully functional off-road and promotional vehicle that "turns heads everywhere it goes." The project reinforced the value of iterative design, clear client communication, and leveraging team strengths. The tube bending failure cost us a month but taught us to validate fabrication methods early before committing to a design direction.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <img src={img('delivery of finished truck driver rear iso.jpg')} alt="Finished truck — driver rear" class="rounded-lg shadow object-contain max-h-80" />
+      <img src={img('delivery of finished truck passenger rear iso.jpg')} alt="Finished truck — passenger rear" class="rounded-lg shadow object-contain max-h-80" />
+    </div>
+  </section>
+</ProjectLayout>
