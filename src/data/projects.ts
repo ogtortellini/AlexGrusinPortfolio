@@ -6,7 +6,7 @@ export interface Project {
   featured: boolean;
 }
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 export const projects: Project[] = [
   {

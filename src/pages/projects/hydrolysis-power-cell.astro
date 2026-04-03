@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const img = (name: string) => `${base}projects/hydrolysis-power-cell/images/${name}`;
 
 const toc = [

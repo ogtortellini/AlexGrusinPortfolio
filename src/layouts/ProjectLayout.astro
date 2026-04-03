@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { title, subtitle, toc } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <BaseLayout title={`${title} | Alex Grusin`}>
